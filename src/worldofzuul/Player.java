@@ -2,7 +2,7 @@
  make le items le Mikkelo
 
  */
-package Player;
+package worldofzuul;
 
 /**
  *
@@ -13,22 +13,14 @@ public class Player {
     
     
     // Jeg ved ikke om det skal være private fields eller måske public fields
-    public int hp, hpDecrease, hpIncrease, maxHP;
-    
-    public int intellect, intellectIncrease, intellectDecrease, intellectMaximum;
-    
-    public int endurance, enduranceIncrease, enduranceDecrease, enduranceMaximum;
-    
-    public int strength, strengthIncrease, strengthDecrease, strengthtMaximum;
-    
-    public int agility, agiliyIncrease, agilityIncrease, agilityMaximum;
-  
-    // Constructor for navnet på playeren
+    public int hp, hpDecrease, hpIncrease, maxHP;   
+// Constructor for navnet på playeren
     public Player(String name){
         this.name = name;
     }
-    // klasser til de forskellige stats 
-    class HealthPoints(int hp, int hpIncrease, int hpDecrease, int maxHP) {
+    // Vi laver ny klasse for hver stats. derfra henter vi statsne i den enkelte klasse.
+
+public Player(int hp, int hpIncrease, int hpDecrease, int maxHP) {
         this.hp = hp; 
         this.hpIncrease = hpIncrease;
         this.hpDecrease= hpDecrease;
@@ -38,42 +30,36 @@ public class Player {
     public int getHP(){
         return hp;
     }
-    class Intellect(int intellect, int intellectIncrease, int intellectDecrease, int intellectMaximum) {
-        this.intellect = intellect; 
-        this.intellectIncrease = intellectIncrease;
-        this.intellectDecrease= intellectDecrease;
-        this.intellectMaximum = intellectMaximum;     
+
+    public int getHpDecrease() {
+        return hpDecrease;
     }
-    public int getIntellect(){//Lave getvalue til alle de andre a
-        return intellect;
+
+    public int getHpIncrease() {
+        return hpIncrease;
     }
-    class Endurance(int endurance, int enduranceIncrease, int enduranceDecrease, int enduranceMaximum) {
-        this.endurance = endurance; 
-        this.enduranceIncrease = enduranceIncrease;
-        this.enduranceDecrease= enduranceDecrease;
-        this.enduranceMaximum = enduranceMaximum;     
+
+    public int getMaxHP() {
+        return maxHP;
     }
-    public int getEndurance(){//Lave getvalue til alle de andre a
-        return endurance;
+
+    public void setHp(int hp) {
+        this.hp = hp;
     }
-    class Strength(int strength, int strengthIncrease, int strengthDecrease, int strengthMaximum) {
-        this.strength = strength; 
-        this.strengthIncrease = strengthIncrease;
-        this.strengthDecrease= strengthDecrease;
-        this.strengthMaximum = strengthMaximum;     
+
+    public void setHpDecrease(int hpDecrease) {
+        this.hpDecrease = hpDecrease;
     }
-    public int getStrength(){//Lave getvalue til alle de andre a
-        return strength;
+
+    public void setHpIncrease(int hpIncrease) {
+        this.hpIncrease = hpIncrease;
     }
-    class Agility(int agility, int agilityIncrease, int agilityDecrease, int agilityMaximum) {
-        this.agility = agility; 
-        this.agilityIncrease = agilityIncrease;
-        this.agilityDecrease= agilityDecrease;
-        this.agilityMaximum = agilityhMaximum;     
+
+    public void setMaxHP(int maxHP) {
+        this.maxHP = maxHP;
     }
-    public int getAgility(){//Lave getvalue til alle de andre a
-        return agility;
-    }
+    
+    
 }
     
     
