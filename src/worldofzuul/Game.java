@@ -27,7 +27,7 @@ public class Game {
         Item teacherBook = new Item("The teacher's book", 10, 10, 10, 10);
         Item powerfulNerdGlasses = new Item("Glasses of the Nerd", 100, 100, 100, 100);
         
-        itemDatabase.addItem(new Item("Coffine", 2, 50, 2, 10));
+        itemDatabase.addItem(new Item("Caffeine pills", 2, 50, 2, 10));
         
         itemDatabase.addItem(mightyPen);
         itemDatabase.addItem(bookOfAddition);
