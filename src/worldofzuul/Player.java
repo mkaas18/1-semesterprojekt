@@ -27,6 +27,21 @@ public Player(int hp, int hpIncrease, int hpDecrease, int maxHP) {
         this.maxHP = maxHP;     
     }
     
+ public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setHpDecrease(int hpDecrease) {
+        this.hpDecrease = hpDecrease;
+    }
+
+    public void setHpIncrease(int hpIncrease) {
+        this.hpIncrease = hpIncrease;
+    }
+
+    public void setMaxHP(int maxHP) {
+        this.maxHP = maxHP;
+    }
     public int getHP(){
         return hp;
     }
@@ -43,21 +58,7 @@ public Player(int hp, int hpIncrease, int hpDecrease, int maxHP) {
         return maxHP;
     }
 
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-
-    public void setHpDecrease(int hpDecrease) {
-        this.hpDecrease = hpDecrease;
-    }
-
-    public void setHpIncrease(int hpIncrease) {
-        this.hpIncrease = hpIncrease;
-    }
-
-    public void setMaxHP(int maxHP) {
-        this.maxHP = maxHP;
-    }
+   
     
     
 }

@@ -20,6 +20,23 @@ public class Intellect {
         this.intellectDecrease= intellectDecrease;
         this.intellectMaximum = intellectMaximum;     
     }
+    
+    public void setIntellect(int intellect) {
+        this.intellect = intellect;
+    }
+
+    public void setIntellectIncrease(int intellectIncrease) {
+        this.intellectIncrease = intellectIncrease;
+    }
+
+    public void setIntellectDecrease(int intellectDecrease) {
+        this.intellectDecrease = intellectDecrease;
+    }
+
+    public void setIntellectMaximum(int intellectMaximum) {
+        this.intellectMaximum = intellectMaximum;
+    }
+    
     public int getIntellect(){//Lave getvalue til alle de andre a
         return intellect;
     }
@@ -37,20 +54,4 @@ public class Intellect {
     }
     
 
-    public void setIntellect(int intellect) {
-        this.intellect = intellect;
-    }
-
-    public void setIntellectIncrease(int intellectIncrease) {
-        this.intellectIncrease = intellectIncrease;
-    }
-
-    public void setIntellectDecrease(int intellectDecrease) {
-        this.intellectDecrease = intellectDecrease;
-    }
-
-    public void setIntellectMaximum(int intellectMaximum) {
-        this.intellectMaximum = intellectMaximum;
-    }
-    
 }

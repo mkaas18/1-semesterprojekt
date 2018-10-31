@@ -20,6 +20,21 @@ public class Endurance {
     
     
 }
+  public void setEndurance(int endurance) {
+        this.endurance = endurance;
+    }
+
+    public void setEnduranceIncrease(int enduranceIncrease) {
+        this.enduranceIncrease = enduranceIncrease;
+    }
+
+    public void setEnduranceDecrease(int enduranceDecrease) {
+        this.enduranceDecrease = enduranceDecrease;
+    }
+
+    public void setEnduranceMaximum(int enduranceMaximum) {
+        this.enduranceMaximum = enduranceMaximum;
+    }
   public int getEndurance(){//Lave getvalue til alle de andre a
         return endurance;
  
@@ -38,21 +53,6 @@ public class Endurance {
     }
   
 
-    public void setEndurance(int endurance) {
-        this.endurance = endurance;
-    }
-
-    public void setEnduranceIncrease(int enduranceIncrease) {
-        this.enduranceIncrease = enduranceIncrease;
-    }
-
-    public void setEnduranceDecrease(int enduranceDecrease) {
-        this.enduranceDecrease = enduranceDecrease;
-    }
-
-    public void setEnduranceMaximum(int enduranceMaximum) {
-        this.enduranceMaximum = enduranceMaximum;
-    }
-  
+    
 }
 

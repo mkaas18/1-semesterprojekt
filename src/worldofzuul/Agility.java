@@ -21,6 +21,21 @@ public class Agility {
         this.agilityDecrease= agilityDecrease;
         this.agilityMaximum = agilityMaximum;     
     }
+      public void setAgility(int agility) {
+        this.agility = agility;
+    }
+
+    public void setAgilityIncrease(int agilityIncrease) {
+        this.agilityIncrease = agilityIncrease;
+    }
+
+    public void setAgilityDecrease(int agilityDecrease) {
+        this.agilityDecrease = agilityDecrease;
+    }
+
+    public void setAgilityMaximum(int agilityMaximum) {
+        this.agilityMaximum = agilityMaximum;
+    }
     public int getAgility(){//Lave getvalue til alle de andre a
         return agility;
     }
@@ -37,21 +52,6 @@ public class Agility {
     }
     
 
-    public void setAgility(int agility) {
-        this.agility = agility;
-    }
-
-    public void setAgilityIncrease(int agilityIncrease) {
-        this.agilityIncrease = agilityIncrease;
-    }
-
-    public void setAgilityDecrease(int agilityDecrease) {
-        this.agilityDecrease = agilityDecrease;
-    }
-
-    public void setAgilityMaximum(int agilityMaximum) {
-        this.agilityMaximum = agilityMaximum;
-    }
 
     
 }

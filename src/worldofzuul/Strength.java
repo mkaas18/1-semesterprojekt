@@ -23,7 +23,22 @@ public class Strength {
     public int getStrength(){//Lave getvalue til alle de andre a
         return strength;
     }
+ public void setStrength(int strength) {
+        this.strength = strength;
+    }
 
+    public void setStrengthIncrease(int strengthIncrease) {
+        this.strengthIncrease = strengthIncrease;
+    }
+
+    public void setStrengthDecrease(int strengthDecrease) {
+        this.strengthDecrease = strengthDecrease;
+    }
+
+    public void setStrengthtMaximum(int strengthtMaximum) {
+        this.strengthtMaximum = strengthtMaximum;
+    }
+    
     public int getStrengthIncrease() {
         return strengthIncrease;
     }
@@ -41,20 +56,5 @@ public class Strength {
     }
     
 
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
 
-    public void setStrengthIncrease(int strengthIncrease) {
-        this.strengthIncrease = strengthIncrease;
-    }
-
-    public void setStrengthDecrease(int strengthDecrease) {
-        this.strengthDecrease = strengthDecrease;
-    }
-
-    public void setStrengthtMaximum(int strengthtMaximum) {
-        this.strengthtMaximum = strengthtMaximum;
-    }
-    
 }
