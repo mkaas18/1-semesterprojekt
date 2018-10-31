@@ -1,28 +1,52 @@
 package worldofzuul;
 
-public class Game 
-{
+public class Game {
+
     private Parser parser;
     private Room currentRoom;
-        
 
-    public Game() 
-    {
+    public Game() {
         createRooms();
         parser = new Parser();
+        createItems();
     }
 
+    public void createItems() {
+        
+        ItemDatabase itemDatabase = new ItemDatabase();
+        
+//        Items TEST = new Items(itemName, int intelligence, int endurance, int strength, int agility)
 
-    private void createRooms()
-    {
+        Item mightyPen = new Item("Mighty Pen of Math", 10, 10, 10, 10);
+        Item bookOfAddition = new Item("Addition Book", 1, 1, 1, 1);
+        Item bookOfSubtraction = new Item("Subtraction Book", 1, 1, 1, 1);
+        Item bookOfMultication = new Item("Multication Book", 1, 1, 1, 1);
+        Item bookOfDivision = new Item("Division Book", 1, 1, 1, 1);
+        Item coffeMug = new Item("Coffe Mug", 0, 0, 0, 10);
+        Item cake = new Item("Cake", 0, 10, 0, 0);
+        Item teacherBook = new Item("The teacher's book", 10, 10, 10, 10);
+        
+        itemDatabase.addItem(new Item("Coffine", 2, 50, 1, 10));
+        
+        itemDatabase.addItem(mightyPen);
+        itemDatabase.addItem(bookOfAddition);
+        itemDatabase.addItem(bookOfSubtraction);
+        itemDatabase.addItem(bookOfMultication);
+        itemDatabase.addItem(bookOfDivision);
+        itemDatabase.addItem(coffeMug);
+        itemDatabase.addItem(cake);
+        itemDatabase.addItem(teacherBook);
+    }
+
+    private void createRooms() {
         Room outside, theatre, pub, lab, office;
-      
+
         outside = new Room("outside the main entrance of the university");
         theatre = new Room("in a lecture theatre");
         pub = new Room("in the campus pub");
         lab = new Room("in a computing lab");
         office = new Room("in the computing admin office");
-        
+
         outside.setExit("east", theatre);
         outside.setExit("south", lab);
         outside.setExit("west", pub);
@@ -39,21 +63,18 @@ public class Game
         currentRoom = outside;
     }
 
-    public void play() 
-    {            
+    public void play() {
         printWelcome();
 
-                
         boolean finished = false;
-        while (! finished) {
+        while (!finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
 
-    private void printWelcome()
-    {
+    private void printWelcome() {
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
@@ -62,31 +83,27 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
     }
 
-    private boolean processCommand(Command command) 
-    {
+    private boolean processCommand(Command command) {
         boolean wantToQuit = false;
 
         CommandWord commandWord = command.getCommandWord();
 
-        if(commandWord == CommandWord.UNKNOWN) {
+        if (commandWord == CommandWord.UNKNOWN) {
             System.out.println("I don't know what you mean...");
             return false;
         }
 
         if (commandWord == CommandWord.HELP) {
             printHelp();
-        }
-        else if (commandWord == CommandWord.GO) {
+        } else if (commandWord == CommandWord.GO) {
             goRoom(command);
-        }
-        else if (commandWord == CommandWord.QUIT) {
+        } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
         return wantToQuit;
     }
 
-    private void printHelp() 
-    {
+    private void printHelp() {
         System.out.println("You are lost. You are alone. You wander");
         System.out.println("around at the university.");
         System.out.println();
@@ -94,9 +111,8 @@ public class Game
         parser.showCommands();
     }
 
-    private void goRoom(Command command) 
-    {
-        if(!command.hasSecondWord()) {
+    private void goRoom(Command command) {
+        if (!command.hasSecondWord()) {
             System.out.println("Go where?");
             return;
         }
@@ -107,20 +123,17 @@ public class Game
 
         if (nextRoom == null) {
             System.out.println("There is no door!");
-        }
-        else {
+        } else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
     }
 
-    private boolean quit(Command command) 
-    {
-        if(command.hasSecondWord()) {
+    private boolean quit(Command command) {
+        if (command.hasSecondWord()) {
             System.out.println("Quit what?");
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }

@@ -7,8 +7,8 @@ import java.util.Iterator;
 
 public class Room 
 {
-    private String description;
-    private HashMap<String, Room> exits;
+    private final String description;
+    private final HashMap<String, Room> exits;
 
     public Room(String description) 
     {
