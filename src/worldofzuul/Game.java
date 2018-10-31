@@ -18,15 +18,16 @@ public class Game {
 //        Items TEST = new Items(itemName, int intelligence, int endurance, int strength, int agility)
 
         Item mightyPen = new Item("Mighty Pen of Math", 10, 10, 10, 10);
-        Item bookOfAddition = new Item("Addition Book", 1, 1, 1, 1);
-        Item bookOfSubtraction = new Item("Subtraction Book", 1, 1, 1, 1);
-        Item bookOfMultication = new Item("Multication Book", 1, 1, 1, 1);
-        Item bookOfDivision = new Item("Division Book", 1, 1, 1, 1);
+        Item bookOfAddition = new Item("Book of Addition", 5, 5, 5, 5);
+        Item bookOfSubtraction = new Item("Book of Subtraction", 5, 5, 5, 5);
+        Item bookOfMultication = new Item("Book of Multication", 5, 5, 5, 5);
+        Item bookOfDivision = new Item("Book ofDivision ", 5, 5, 5, 5);
         Item coffeMug = new Item("Coffe Mug", 0, 0, 0, 10);
         Item cake = new Item("Cake", 0, 10, 0, 0);
         Item teacherBook = new Item("The teacher's book", 10, 10, 10, 10);
+        Item powerfulNerdGlasses = new Item("Glasses of the Nerd", 100, 100, 100, 100);
         
-        itemDatabase.addItem(new Item("Coffine", 2, 50, 1, 10));
+        itemDatabase.addItem(new Item("Coffine", 2, 50, 2, 10));
         
         itemDatabase.addItem(mightyPen);
         itemDatabase.addItem(bookOfAddition);
@@ -36,6 +37,7 @@ public class Game {
         itemDatabase.addItem(coffeMug);
         itemDatabase.addItem(cake);
         itemDatabase.addItem(teacherBook);
+        itemDatabase.addItem(powerfulNerdGlasses);
     }
 
     private void createRooms() {
