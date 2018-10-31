@@ -20,6 +20,8 @@ public class Map {
     Room jailRoom3 = new Room("14");
     Room roomRoom3 = new Room("15");
     ArrayList<Room> roomList = new ArrayList<>();
+    
+    private Room startingRoom;
 
     public Map(int levelSize) {
 
@@ -48,23 +50,46 @@ public class Map {
 
         grid = genNeighbours(grid, startingRoomPos, startingRoomPos);
 
-        while (roomList.size() > 0) {
-            for (int y = 0; y < grid.length; y++) {
-                for (int x = 0; x < grid[y].length; x++) {
-                    if (grid[y][x] != null) {
-                        genNeighbours(grid, y, x);
-                    }
-                    if (roomList.size() <= 0) {
-                        break;
-                    }
+        //Iterates through 2 dimensional array "grid", and generates rooms with genNeighbours method
+        for (int y = 0; y < grid.length; y++) {
+            for (int x = 0; x < grid[y].length; x++) {
+                if (grid[y][x] != null) {
+                    genNeighbours(grid, y, x);
                 }
-
                 if (roomList.size() <= 0) {
                     break;
                 }
             }
+
+            if (roomList.size() <= 0) {
+                break;
+            }
+        }
+        //Iterates through the map, setting up exits
+        for (int y = 0; y < grid.length; y++) {
+            
+            for (int x = 0; x < grid[y].length; x++) {
+                
+                //Checks for location north of room, if a room exsists there, and links up the room with an exit/entrance if it does
+                 if (y - 1 >= 0 && grid[y - 1][x] != null && grid[y][x] != null) {
+                    grid[y][x].setExit("north", grid[y - 1][x]);
+                }
+                //Checks for location west of room, if a room exsists there, and links up the room with an exit/entrance if it does
+                if (x - 1 >= 0 && grid[y][x - 1] != null && grid[y][x] != null) {
+                    grid[y][x].setExit("west", grid[y][x - 1]);
+                }
+                //Checks for location east of room, if a room exsists there, and links up the room with an exit/entrance if it does
+                if (x + 1 < grid[y].length && grid[y][x + 1] != null && grid[y][x] != null) {
+                    grid[y][x].setExit("east", grid[y][x + 1]);
+                }
+                //Checks for location south of room, if a room exsists there, and links up the room with an exit/entrance if it does
+                if (y + 1 < grid.length && grid[y + 1][x] != null && grid[y][x] != null) {
+                    grid[y][x].setExit("south", grid[y + 1][x]);
+                }
+            }
         }
 
+        //Prints a visualisation of the map in grid form
         for (int y = 0; y < grid.length; y++) {
             for (int x = 0; x < grid[y].length; x++) {
                 if (grid[y][x] != null) {
@@ -74,14 +99,10 @@ public class Map {
             }
             System.out.println("");
         }
-
-        for (int i = 0; i < 10; i++) {
-            System.out.println((int) (Math.random() * levelSize));
-        }
+        this.startingRoom = grid[startingRoomPos][startingRoomPos];
     }
 
     public Room[][] genNeighbours(Room[][] map, int x, int y) {
-        System.out.println(map[x][y]);
 
         //Check north, if no room exists, create random room
         //If room exists, create no room
@@ -112,6 +133,10 @@ public class Map {
             roomList.remove(roomIndex);
         }
         return map;
+    }
+    
+    public Room getStartingRoom(){
+        return this.startingRoom;
     }
 
 }
