@@ -10,9 +10,10 @@ public class Game
     {
         createRooms();
         parser = new Parser();
+        Map map = new Map(7);
     }
 
-
+//Modify to random map generation
     private void createRooms()
     {
         Room outside, theatre, pub, lab, office;
