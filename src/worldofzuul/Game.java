@@ -8,10 +8,18 @@ public class Game
     private Question question = new Question();
         
 
+<<<<<<< HEAD
     public Game() {
         createRooms();
         parser = new Parser();
         createItems();
+=======
+    public Game() 
+    {
+        parser = new Parser();
+        Map map = new Map(7);
+        currentRoom = map.getStartingRoom();
+>>>>>>> MapGen_Test
     }
 
     public void createItems() {
@@ -30,6 +38,7 @@ public class Game
 
     }
 
+<<<<<<< HEAD
     private void createRooms() {
         Room outside, theatre, pub, lab, office;
 
@@ -54,6 +63,8 @@ public class Game
 
         currentRoom = outside;
     }
+=======
+>>>>>>> MapGen_Test
 
     public void play() {
         printWelcome();
