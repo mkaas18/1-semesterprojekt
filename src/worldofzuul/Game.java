@@ -4,6 +4,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
+    private Questions question;
         
 
     public Game() 
@@ -82,6 +83,9 @@ public class Game
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
+        else if(commandWord == CommandWord.MATH){
+            mathQuestion(command);
+        }
         return wantToQuit;
     }
 
@@ -113,7 +117,13 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
         }
     }
-
+    private void mathQuestion(Command command){
+        if(command.hasSecondWord()){
+            System.out.println("What you mean?");
+        } else {
+            question = new NormalQuestion();
+        }
+    }
     private boolean quit(Command command) 
     {
         if(command.hasSecondWord()) {
