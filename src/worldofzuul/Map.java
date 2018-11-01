@@ -56,14 +56,7 @@ public class Map {
             for (int x = 0; x < grid[y].length; x++) {
                 if (grid[y][x] != null) {
                     genNeighbours(grid, y, x);
-                }
-                if (roomList.size() <= 0) {
-                    break;
-                }
-            }
-
-            if (roomList.size() <= 0) {
-                break;
+                }   
             }
         }
         }
@@ -109,35 +102,45 @@ public class Map {
 
         //Check north, if no room exists, create random room
         //If room exists, create no room
-        if (y - 1 >= 0 && map[y - 1][x] == null && Math.random() < 0.75) {
+        if (y - 1 >= 0 && map[y - 1][x] == null && Math.random() < 0.75 
+                && checkRoomlistSize() && checkRoom(map, x, y)) {
             int roomIndex = (int) (Math.random() * roomList.size());
             map[y - 1][x] = roomList.get(roomIndex);
             roomList.remove(roomIndex);
         }
         //Check west, if no room exists, create random room
         //If room exists, create no room
-        if (x - 1 >= 0 && map[y][x - 1] == null && Math.random() < 0.75) {
+        if (x - 1 >= 0 && map[y][x - 1] == null && Math.random() < 0.75 
+                && checkRoomlistSize() && checkRoom(map, x, y)) {
             int roomIndex = (int) (Math.random() * roomList.size());
             map[y][x - 1] = roomList.get(roomIndex);
             roomList.remove(roomIndex);
         }
         //Check east, if no room exists, create random room
         //If room exists, create no room
-        if (x + 1 < map[y].length && map[y][x + 1] == null && Math.random() < 0.75) {
+        if (x + 1 < map[y].length-1 && map[y][x + 1] == null && Math.random() < 0.75  
+                && checkRoomlistSize() && checkRoom(map, x, y)) {
             int roomIndex = (int) (Math.random() * roomList.size());
             map[y][x + 1] = roomList.get(roomIndex);
             roomList.remove(roomIndex);
         }
         //Check south, if no room exists, create random room
         //If room exists, create no room
-        if (y + 1 < map.length && map[y + 1][x] == null && Math.random() < 0.75) {
+        if (y + 1 < map.length-1 && map[y + 1][x] == null && Math.random() < 0.75  
+                && checkRoomlistSize() && checkRoom(map, x, y)) {
             int roomIndex = (int) (Math.random() * roomList.size());
             map[y + 1][x] = roomList.get(roomIndex);
             roomList.remove(roomIndex);
         }
         return map;
     }
-    
+    public boolean checkRoomlistSize(){
+        return roomList.size() > 0;
+    }
+    public boolean checkRoom(Room[][] grid, int x, int y){
+        return grid[y][x] != null;
+            
+    }
     public Room getStartingRoom(){
         return this.startingRoom;
     }
