@@ -7,27 +7,44 @@ public class Item {
      */
     private String itemName;
     private String itemDescription;
+    private Stats stats;
 
     public Item() {
     }
 
-    public Item(String itemName, int intelligence, int endurance, int strenght, int agility) {
+    public Item(String itemName, Stats stats) {
         this.itemName = itemName;
-        /* 
-        Some code that add intelligence to the current player's stats // player.class.stats. += intelligence
-        Some code that add endurance to the current player's stats // player.class.stats. += endurance
-        Some code that add strenght to the current player's stats // player.class.stats. += strength
-        Some code that add agility to the current player's stats // player.class.stats. += agility
-        */
+        this.stats = stats;
+    }
+
+    public Item(String itemName, Stats stats, String itemDescription) {
+        this.itemName = itemName;
+        this.stats = stats;
+        this.itemDescription = itemDescription;
     }
 
     public String getName() {
         return itemName;
     }
 
-    // Ved ikke 
     public void setName(String itemName) {
         this.itemName = itemName;
+    }
+
+    public Stats getStats() {
+        return stats;
+    }
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
+    }
+
+    public String getItemDescription() {
+        return itemDescription;
+    }
+
+    public void setItemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
     }
 
 }

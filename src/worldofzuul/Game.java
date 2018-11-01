@@ -12,32 +12,19 @@ public class Game {
     }
 
     public void createItems() {
-        
-        ItemDatabase itemDatabase = new ItemDatabase();
-        
-//        Items TEST = new Items(itemName, int intelligence, int endurance, int strength, int agility)
 
-        Item mightyPen = new Item("Mighty Pen of Math", 10, 10, 10, 10);
-        Item bookOfAddition = new Item("Book of Addition", 5, 5, 5, 5);
-        Item bookOfSubtraction = new Item("Book of Subtraction", 5, 5, 5, 5);
-        Item bookOfMultication = new Item("Book of Multication", 5, 5, 5, 5);
-        Item bookOfDivision = new Item("Book ofDivision ", 5, 5, 5, 5);
-        Item coffeMug = new Item("Coffe Mug", 0, 0, 0, 10);
-        Item cake = new Item("Cake", 0, 10, 0, 0);
-        Item teacherBook = new Item("The teacher's book", 10, 10, 10, 10);
-        Item powerfulNerdGlasses = new Item("Glasses of the Nerd", 100, 100, 100, 100);
-        
-        itemDatabase.addItem(new Item("Caffeine pills", 2, 50, 2, 10));
-        
-        itemDatabase.addItem(mightyPen);
-        itemDatabase.addItem(bookOfAddition);
-        itemDatabase.addItem(bookOfSubtraction);
-        itemDatabase.addItem(bookOfMultication);
-        itemDatabase.addItem(bookOfDivision);
-        itemDatabase.addItem(coffeMug);
-        itemDatabase.addItem(cake);
-        itemDatabase.addItem(teacherBook);
-        itemDatabase.addItem(powerfulNerdGlasses);
+        ItemDatabase itemDatabase = new ItemDatabase();
+        ItemGenerator itemGenerator = new ItemGenerator();
+
+        for (int i = 0; i < 10; i++) {
+
+            Item item = itemGenerator.generateItem();
+            System.out.println(item.getName());
+            System.out.println(item.getStats().toString());
+            System.out.println();   
+            itemDatabase.addItem(item);
+        }
+
     }
 
     private void createRooms() {
