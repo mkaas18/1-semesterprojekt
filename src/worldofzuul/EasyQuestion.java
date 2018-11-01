@@ -14,8 +14,8 @@ package worldofzuul;
 public class EasyQuestion implements Questions{
     private String question;
     private double answer;
-    private int number1;
-    private int number2;
+    private double number1;
+    private double number2;
     
     public EasyQuestion(){
 
@@ -23,16 +23,16 @@ public class EasyQuestion implements Questions{
 
     @Override
     public void addition() {
-        number1 = (int)getRandomNumber();
-        number2 = (int)getRandomNumber();
+        number1 = getRandomNumber();
+        number2 = getRandomNumber();
         question = "What is " + number1 + " + " + number2 + "?";
         answer = number1 + number2;
     }
 
     @Override
     public void multiplication() {
-        number1 = (int)getRandomNumber();
-        number2 = (int)getRandomNumber();
+        number1 = getRandomNumber();
+        number2 = getRandomNumber();
         question = "What is " + number1 + " x " + number2 + "?";
         answer = number1 * number2;
 
@@ -41,9 +41,9 @@ public class EasyQuestion implements Questions{
     @Override
     public void division() {
         while(true){
-            number1 = (int)getRandomNumber();
-            number2 = (int)getRandomNumber();
-            if(number1%number2==0){
+            number1 = getRandomNumber();
+            number2 = getRandomNumber();
+            if(number1%number2==0 && number1 != 0 && number2 > 1){
                 break;
             }
         } 
@@ -54,15 +54,15 @@ public class EasyQuestion implements Questions{
 
     @Override
     public void subtraction() {
-        number1 = (int)getRandomNumber();
-        number2 = (int)getRandomNumber();
+        number1 = getRandomNumber();
+        number2 = getRandomNumber();
         question = "What is " + number1 + " - " + number2 + "?";
         answer = number1 - number2;
     }
 
     @Override
     public double getRandomNumber() {
-        return (Math.random()*10);
+        return (int)(Math.random()*10);
     }
 
     @Override

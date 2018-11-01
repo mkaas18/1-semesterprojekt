@@ -14,8 +14,8 @@ package worldofzuul;
 public class NormalQuestion implements Questions{
     private String question;
     private double answer;
-    private int number1;
-    private int number2;
+    private double number1;
+    private double number2;
     
     public NormalQuestion(){
         
@@ -33,16 +33,16 @@ public class NormalQuestion implements Questions{
     public void multiplication() {
         number1 = (int)getRandomNumber()/10;
         number2 = (int)getRandomNumber();
-        question = "What is " + number1 + " x " + number2 + "?";
+        question = "What is " + (int)number1 + " x " + number2 + "?";
         answer = number1 * number2;
     }
 
     @Override
     public void division() {
         while(true){
-            number1 = (int)getRandomNumber()/10;
-            number2 = (int)getRandomNumber();
-            if(number1%number2==0){
+            number1 = (int)getRandomNumber();
+            number2 = (int)(getRandomNumber()/10.0);
+            if(number1%number2==0 && number1 != 0 && number2 > 1){
                 break;
             }
         } 
@@ -60,7 +60,7 @@ public class NormalQuestion implements Questions{
 
     @Override
     public double getRandomNumber() {
-        return (int)(Math.random()*100);
+        return Math.random()*100;
     }
 
     @Override
