@@ -1,8 +1,11 @@
+
 /*
  make le items le Mikkelo
 
  */
 package worldofzuul;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -16,6 +19,7 @@ public class Player {
     private int agility = 0;
     private int intellect = 0;
     private int damagetaken = 0;
+    private ArrayList inventory;
     
     public Player(String name, int maxHP, int endurance, int strength, int agility, int intellect, int damagetaken){
         this.name = name;
