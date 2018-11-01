@@ -43,6 +43,7 @@ public class Monster {
     public void combat(QuestionResults results, Player player) {
         Scanner getAnswer = new Scanner(System.in);
         double answer;
+        
         System.out.println(results.getQuestion());
         answer = getAnswer.nextDouble();
         if (answer == results.getAnswer()) {
@@ -57,7 +58,7 @@ public class Monster {
     }
 
     public void combatInitiate(Questions question, Player player) {
-        
+        System.out.println("A " + this.name + " approaches!");
         while (player.getHp()> 0 && this.getHp() > 0) {
             switch (this.getType()) {
                 case "add":
@@ -77,7 +78,7 @@ public class Monster {
         if(player.getHp()<0){
             System.out.println("Du døde :(");
         }else {
-            System.out.println("The monster perished");
+            System.out.println("The " + this.name + " perished");
         }
     }
 }
