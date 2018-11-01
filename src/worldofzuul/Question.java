@@ -21,7 +21,10 @@ public class Question {
         normal = new NormalQuestion();
         easy = new EasyQuestion();
     }
-
+    /*
+    This method is purely for testing purposes. Incorporates scanners and switches
+    to ask the user what difficulty the user wants
+    */
     public void mathQuestion(Command command) {
         boolean gotType = false;
         if (!command.hasSecondWord()) {
@@ -53,7 +56,9 @@ public class Question {
 
         }
     }
-
+    /*
+    Exact same story here as before, but this method asks what kind question you want
+    */
     public boolean questionType(Questions question) {
         System.out.println("What question type?");
         switch (getAnswer.next()) {
