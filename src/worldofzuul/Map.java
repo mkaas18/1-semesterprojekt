@@ -51,7 +51,8 @@ public class Map {
         grid = genNeighbours(grid, startingRoomPos, startingRoomPos);
 
         //Iterates through 2 dimensional array "grid", and generates rooms with genNeighbours method
-        for (int y = 0; y < grid.length; y++) {
+        while(roomList.size() > 0){
+            for (int y = 0; y < grid.length; y++) {
             for (int x = 0; x < grid[y].length; x++) {
                 if (grid[y][x] != null) {
                     genNeighbours(grid, y, x);
@@ -65,24 +66,26 @@ public class Map {
                 break;
             }
         }
-        //Iterates through the map, setting up exits
+        }
+        
+        //Iterate through the map, setting up exits
         for (int y = 0; y < grid.length; y++) {
             
             for (int x = 0; x < grid[y].length; x++) {
                 
-                //Checks for location north of room, if a room exsists there, and links up the room with an exit/entrance if it does
+                //Check for location north of room, if a room exsists there, and links up the room with an exit/entrance if it does
                  if (y - 1 >= 0 && grid[y - 1][x] != null && grid[y][x] != null) {
                     grid[y][x].setExit("north", grid[y - 1][x]);
                 }
-                //Checks for location west of room, if a room exsists there, and links up the room with an exit/entrance if it does
+                //Check for location west of room, if a room exsists there, and links up the room with an exit/entrance if it does
                 if (x - 1 >= 0 && grid[y][x - 1] != null && grid[y][x] != null) {
                     grid[y][x].setExit("west", grid[y][x - 1]);
                 }
-                //Checks for location east of room, if a room exsists there, and links up the room with an exit/entrance if it does
+                //Check for location east of room, if a room exsists there, and links up the room with an exit/entrance if it does
                 if (x + 1 < grid[y].length && grid[y][x + 1] != null && grid[y][x] != null) {
                     grid[y][x].setExit("east", grid[y][x + 1]);
                 }
-                //Checks for location south of room, if a room exsists there, and links up the room with an exit/entrance if it does
+                //Check for location south of room, if a room exsists there, and links up the room with an exit/entrance if it does
                 if (y + 1 < grid.length && grid[y + 1][x] != null && grid[y][x] != null) {
                     grid[y][x].setExit("south", grid[y + 1][x]);
                 }
@@ -106,28 +109,28 @@ public class Map {
 
         //Check north, if no room exists, create random room
         //If room exists, create no room
-        if (map[y - 1][x] == null && y - 1 >= 0) {
+        if (y - 1 >= 0 && map[y - 1][x] == null && Math.random() < 0.75) {
             int roomIndex = (int) (Math.random() * roomList.size());
             map[y - 1][x] = roomList.get(roomIndex);
             roomList.remove(roomIndex);
         }
         //Check west, if no room exists, create random room
         //If room exists, create no room
-        if (map[y][x - 1] == null && x - 1 >= 0) {
+        if (x - 1 >= 0 && map[y][x - 1] == null && Math.random() < 0.75) {
             int roomIndex = (int) (Math.random() * roomList.size());
             map[y][x - 1] = roomList.get(roomIndex);
             roomList.remove(roomIndex);
         }
         //Check east, if no room exists, create random room
         //If room exists, create no room
-        if (map[y][x + 1] == null && x + 1 < map[y].length) {
+        if (x + 1 < map[y].length && map[y][x + 1] == null && Math.random() < 0.75) {
             int roomIndex = (int) (Math.random() * roomList.size());
             map[y][x + 1] = roomList.get(roomIndex);
             roomList.remove(roomIndex);
         }
         //Check south, if no room exists, create random room
         //If room exists, create no room
-        if (map[y + 1][x] == null && y + 1 < map.length) {
+        if (y + 1 < map.length && map[y + 1][x] == null && Math.random() < 0.75) {
             int roomIndex = (int) (Math.random() * roomList.size());
             map[y + 1][x] = roomList.get(roomIndex);
             roomList.remove(roomIndex);
