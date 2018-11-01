@@ -1,9 +1,20 @@
 package worldofzuul;
 
+<<<<<<< HEAD
 public class Game {
 
     private Parser parser;
     private Room currentRoom;
+=======
+import java.util.Scanner;
+
+public class Game 
+{
+    private Parser parser;
+    private Room currentRoom;
+    private Question question = new Question();
+        
+>>>>>>> questions
 
     public Game() {
         createRooms();
@@ -89,6 +100,7 @@ public class Game {
         } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
+
         return wantToQuit;
     }
 
