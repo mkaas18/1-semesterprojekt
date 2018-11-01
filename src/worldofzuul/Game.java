@@ -85,9 +85,7 @@ public class Game
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
-        else if(commandWord == CommandWord.MATH){
-            question.mathQuestion(command);
-        }
+
         return wantToQuit;
     }
 

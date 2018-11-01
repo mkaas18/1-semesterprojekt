@@ -21,66 +21,6 @@ public class Question {
         normal = new NormalQuestion();
         easy = new EasyQuestion();
     }
-    /*
-    This method is purely for testing purposes. Incorporates scanners and switches
-    to ask the user what difficulty the user wants
-    */
-    public void mathQuestion(Command command) {
-        boolean gotType = false;
-        if (!command.hasSecondWord()) {
-            System.out.println("What difficulty?");
-        } else {
-            switch (command.getSecondWord()) {
-                case "easy":
-                    gotType = questionType(easy);
-                    if (gotType) {
-                        answerQuestion(easy);
-                    }
-                    break;
-                case "normal":
-                    gotType = questionType(normal);
-                    if (gotType) {
-                        answerQuestion(normal);
-                    }
-                    break;
-                case "hard":
-                    gotType = questionType(hard);
-                    if (gotType) {
-                        answerQuestion(hard);
-                    }
-                    break;
-                default:
-                    System.out.println("There is no such difficulty");
-                    break;
-            }
-
-        }
-    }
-    /*
-    Exact same story here as before, but this method asks what kind question you want
-    */
-    public boolean questionType(Questions question) {
-        System.out.println("What question type?");
-        switch (getAnswer.next()) {
-            case "addition":
-                question.addition();
-                return true;
-            case "subtraction":
-                question.subtraction();
-                return true;
-            case "multiplication":
-                question.multiplication();
-                return true;
-            case "division":
-                question.division();
-                return true;
-            default:
-                System.out.println("No such question of that type");
-                return false;
-
-        }
-    }
-
     public void answerQuestion(Questions question) {
         double answer;
         System.out.println(question.getQuestion());
