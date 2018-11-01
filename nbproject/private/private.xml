@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Game.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/HardQuestion.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Room.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/NormalQuestion.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Starter.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/CommandWords.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Command.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/EasyQuestion.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Parser.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/CommandWord.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Questions.java</file>
+            <file>file:/C:/Users/SteamyBlizzard/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Questions.java</file>
+            <file>file:/C:/Users/SteamyBlizzard/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Question.java</file>
+            <file>file:/C:/Users/SteamyBlizzard/Documents/GitHub/1-semesterprojekt/src/worldofzuul/HardQuestion.java</file>
+            <file>file:/C:/Users/SteamyBlizzard/Documents/GitHub/1-semesterprojekt/src/worldofzuul/NormalQuestion.java</file>
         </group>
     </open-files>
 </project-private>
