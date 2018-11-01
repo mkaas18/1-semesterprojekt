@@ -1,12 +1,5 @@
 package worldofzuul;
 
-<<<<<<< HEAD
-public class Game {
-
-    private Parser parser;
-    private Room currentRoom;
-=======
-import java.util.Scanner;
 
 public class Game 
 {
@@ -14,7 +7,6 @@ public class Game
     private Room currentRoom;
     private Question question = new Question();
         
->>>>>>> questions
 
     public Game() {
         createRooms();
