@@ -1,10 +1,12 @@
 package worldofzuul;
 
+import java.util.Scanner;
+
 public class Game 
 {
     private Parser parser;
     private Room currentRoom;
-    private Questions question;
+    private Question question = new Question();
         
 
     public Game() 
@@ -84,7 +86,7 @@ public class Game
             wantToQuit = quit(command);
         }
         else if(commandWord == CommandWord.MATH){
-            mathQuestion(command);
+            question.mathQuestion(command);
         }
         return wantToQuit;
     }
@@ -117,13 +119,7 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
         }
     }
-    private void mathQuestion(Command command){
-        if(command.hasSecondWord()){
-            System.out.println("What you mean?");
-        } else {
-            question = new NormalQuestion();
-        }
-    }
+
     private boolean quit(Command command) 
     {
         if(command.hasSecondWord()) {

@@ -1,6 +1,5 @@
 package worldofzuul;
 
-import java.util.HashMap;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,22 +31,22 @@ public class HardQuestion implements Questions{
 
     @Override
     public void multiplication() {
-        number1 = getRandomNumber()*10;
+        number1 = (getRandomNumber()*10);
         number2 = (int)getRandomNumber()/10;
-        question = "What is " + number1 + " x " + number2 + "?";
+        question = "What is " + (int)number1 + " x " + number2 + "?";
         answer = number1 * number2;
     }
 
     @Override
     public void division() {
         while(true){
-            number1 = getRandomNumber()*10;
+            number1 = (getRandomNumber()*10);
             number2 = (int)getRandomNumber()/10;
             if(number1%number2==0){
                 break;
             }
         } 
-        question = "What is " + number1 + " / " + number2 + "?";
+        question = "What is " + (int)number1 + " / " + number2 + "?";
         answer = number1 / number2;
     }
 
