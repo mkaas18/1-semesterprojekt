@@ -16,30 +16,32 @@ public class EasyQuestion implements Questions{
     private double answer;
     private double number1;
     private double number2;
+    QuestionResults results;
     
     public EasyQuestion(){
 
     }
 
     @Override
-    public void addition() {
+    public QuestionResults addition() {
         number1 = getRandomNumber();
         number2 = getRandomNumber();
         question = "What is " + number1 + " + " + number2 + "?";
         answer = number1 + number2;
+        return results = new QuestionResults(question, answer);
     }
 
     @Override
-    public void multiplication() {
+    public QuestionResults multiplication() {
         number1 = getRandomNumber();
         number2 = getRandomNumber();
         question = "What is " + number1 + " x " + number2 + "?";
         answer = number1 * number2;
-
+        return results = new QuestionResults(question, answer);
     }
 
     @Override
-    public void division() {
+    public QuestionResults division() {
         while(true){
             number1 = getRandomNumber();
             number2 = getRandomNumber();
@@ -49,15 +51,17 @@ public class EasyQuestion implements Questions{
         } 
         question = "What is " + number1 + " / " + number2 + "?";
         answer = number1 / number2;
+        return results = new QuestionResults(question, answer);
 
     }
 
     @Override
-    public void subtraction() {
+    public QuestionResults subtraction() {
         number1 = getRandomNumber();
         number2 = getRandomNumber();
         question = "What is " + number1 + " - " + number2 + "?";
         answer = number1 - number2;
+        return results = new QuestionResults(question, answer);
     }
 
     @Override
@@ -65,15 +69,8 @@ public class EasyQuestion implements Questions{
         return (int)(Math.random()*10);
     }
 
-    @Override
-    public String getQuestion() {
-        return question;
-    }
 
-    @Override
-    public double getAnswer() {
-        return answer;
-    }
+    
 
    
     

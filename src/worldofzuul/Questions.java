@@ -14,11 +14,9 @@ package worldofzuul;
 This
 */
 public interface Questions {
-    public void addition();
-    public void multiplication();
-    public void division();
-    public void subtraction();
-    public String getQuestion();
-    public double getAnswer();
+    public QuestionResults addition();
+    public QuestionResults multiplication();
+    public QuestionResults division();
+    public QuestionResults subtraction();
     public double getRandomNumber();
 }

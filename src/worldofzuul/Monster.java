@@ -5,33 +5,79 @@
  */
 package worldofzuul;
 
+import java.util.Scanner;
+
 /**
  *
  * @author SteamyBlizzard
  */
 public class Monster {
+
     private String name;
-    private int difficulty;
     private int damage;
-    
-    public Monster(String name, int difficulty){
+    private int hp;
+    private String type;
+
+    public Monster(String name, String type) {
         this.name = name;
-        this.difficulty = difficulty;
+        this.hp = 100;
+        this.type = type;
     }
-    int getDifficulty(){
-        return this.difficulty;
-}
-    public int getDamage(){
-        int temp = this.getDifficulty();
-        switch(temp){
-            case 0:
-                return 5;
-            case 1:
-                return 20;
-            case 2:
-                return 40;
-            default:
-                return -1;
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+    
+    public void changeHp(int hp){
+        this.hp += hp;
+    }
+    
+    public void combat(QuestionResults results, Player player) {
+        Scanner getAnswer = new Scanner(System.in);
+        double answer;
+        System.out.println(results.getQuestion());
+        answer = getAnswer.nextDouble();
+        if (answer == results.getAnswer()) {
+            System.out.println("The answer was correct!");
+            this.changeHp(-35);
+            
+        } else {
+            System.out.println("Wrong answer :(");
+            player.addHp(-35);
+        }
+
+    }
+
+    public void combatInitiate(Questions question, Player player) {
+        
+        while (player.getHp()> 0 && this.getHp() > 0) {
+            switch (this.getType()) {
+                case "add":
+                    combat(question.addition(), player);
+                    break;
+                case "sub":
+                    combat(question.subtraction(), player);
+                    break;
+                case "multi":
+                    combat(question.multiplication(), player);
+                    break;
+                case "divi":
+                    combat(question.division(), player);
+                    break;
+            }
+        }
+        if(player.getHp()<0){
+            System.out.println("Du døde :(");
+        }else {
+            System.out.println("The monster perished");
         }
     }
 }

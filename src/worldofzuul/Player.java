@@ -14,21 +14,20 @@ import java.util.ArrayList;
 public class Player {
     private String name;
     private int maxHP = 100;
+    private int hp = maxHP;
     private int endurance = 0;
     private int strength = 0;
     private int agility = 0;
     private int intellect = 0;
     private int damagetaken = 0;
-    private ArrayList inventory;
+    private ArrayList<Item> inventory = new ArrayList<>();
     
-    public Player(String name, int maxHP, int endurance, int strength, int agility, int intellect, int damagetaken){
+    public Player(String name, int endurance, int strength, int agility, int intellect){
         this.name = name;
-        this.maxHP = maxHP;
         this.endurance = endurance;
         this.strength = strength;
         this.agility = agility;
         this.intellect = intellect;
-        this.damagetaken = damagetaken;
     }
     public String getName(String name){
     return this.name;
@@ -41,11 +40,19 @@ public class Player {
     public void addmaxHP(int amount){
     this.maxHP += amount;
     }
+    
+    public int getHp(){
+        return hp;
+    }
+    
+    public void addHp(int hp){
+        this.hp += hp;
+    }
     public int damagetaken(){
         return this.damagetaken;
     }
     
-    public int adddamagetaken(int amount){
+    public int addDamagetaken(int amount){
         return this.maxHP -= amount;
     
     }

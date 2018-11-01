@@ -1,20 +1,27 @@
 package worldofzuul;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 
 public class Game 
 {
     private Parser parser;
     private Room currentRoom;
-    private Question question = new Question();
-        
+    private Questions questions;
+    private Player player;
 
 
     public Game() 
     {
         parser = new Parser();
+        createWorld();
+    }
+    public void createWorld(){
         Map map = new Map(7);
         currentRoom = map.getStartingRoom();
         createItems();
+        player = new Player("Boii", 4, 7, 5, 4);
     }
 
     public void createItems() {
@@ -25,17 +32,17 @@ public class Game
         for (int i = 0; i < 10; i++) {
 
             Item item = itemGenerator.generateItem();
-            System.out.println(item.getName());
-            System.out.println(item.getStats().toString());
-            System.out.println();   
+//            System.out.println(item.getName());
+//            System.out.println(item.getStats().toString());
+//            System.out.println();   
             itemDatabase.addItem(item);
         }
 
     }
 
     public void play() {
+        while(!pickDifficulty()){}
         printWelcome();
-
         boolean finished = false;
         while (!finished) {
             Command command = parser.getCommand();
@@ -62,7 +69,6 @@ public class Game
             System.out.println("I don't know what you mean...");
             return false;
         }
-
         if (commandWord == CommandWord.HELP) {
             printHelp();
         } else if (commandWord == CommandWord.GO) {
@@ -91,7 +97,9 @@ public class Game
         String direction = command.getSecondWord();
 
         Room nextRoom = currentRoom.getExit(direction);
-
+        if((int)(Math.floor(Math.random()*10)) > 7){
+            getRandomMonster().combatInitiate(questions, player);
+        }
         if (nextRoom == null) {
             System.out.println("There is no door!");
         } else {
@@ -99,7 +107,41 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
         }
     }
-
+    private boolean pickDifficulty(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Please pick a difficulty:\nEasy\nNormal\nHard");
+        switch(scan.next()){
+            case "easy":
+                questions = new EasyQuestion();
+                System.out.println("You've picked 'Easy'");
+                return true;
+            case "normal":
+                questions = new NormalQuestion();
+                System.out.println("You've picked 'Normal'");
+                return true;
+            case "hard":
+                questions = new HardQuestion();
+                System.out.println("You've picked 'Hard'");
+                return true;
+            default:
+                System.out.println("Not a difficulty");
+                return false;
+        }
+    }
+    private Monster getRandomMonster(){  
+        switch((int)(Math.floor(Math.random()*4))){
+            case 0:
+                return new Monster("AddMonster", "add");
+            case 1:
+                return new Monster("SubMonster", "sub");
+            case 2:
+                return new Monster("DiviMonster", "divi");    
+            case 3:
+                return new Monster("MultiMonster", "multi");
+            default:
+                return new Monster("AddMonster", "add");
+        }   
+    }
     private boolean quit(Command command) {
         if (command.hasSecondWord()) {
             System.out.println("Quit what?");
