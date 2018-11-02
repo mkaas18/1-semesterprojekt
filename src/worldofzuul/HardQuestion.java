@@ -16,29 +16,32 @@ public class HardQuestion implements Questions{
     private double answer;
     private double number1;
     private double number2;
+    QuestionResults results;
     
     public HardQuestion(){
         
     }
 
     @Override
-    public void addition() {
+    public QuestionResults addition() {
         number1 = getRandomNumber();
         number2 = getRandomNumber();
         question = "What is " + number1 + " + " + number2 + "?";
         answer = number1 + number2;
+        return results = new QuestionResults(question, answer);
     }
 
     @Override
-    public void multiplication() {
+    public QuestionResults multiplication() {
         number1 = (getRandomNumber()*10);
         number2 = (int)getRandomNumber()/10;
         question = "What is " + (int)number1 + " x " + number2 + "?";
         answer = number1 * number2;
+        return results = new QuestionResults(question, answer);
     }
 
     @Override
-    public void division() {
+    public QuestionResults division() {
         while(true){
             number1 = (getRandomNumber()*10);
             number2 = getRandomNumber()/10.0;
@@ -48,29 +51,21 @@ public class HardQuestion implements Questions{
         } 
         question = "What is " + (int)number1 + " / " + (int)number2 + "?";
         answer = number1 / number2;
+        return results = new QuestionResults(question, answer);
     }
 
     @Override
-    public void subtraction() {
+    public QuestionResults subtraction() {
         number1 = getRandomNumber();
         number2 = getRandomNumber();
         question = "What is " + number1 + " - " + number2 + "?";
         answer = number1 - number2;
+        return results = new QuestionResults(question, answer);
     }
 
     @Override
     public double getRandomNumber() {    
         return ((int)(Math.random()*1000)/10.0);
-    }
-
-    @Override
-    public String getQuestion() {
-        return question;
-    }
-
-    @Override
-    public double getAnswer() {
-        return answer;
     }
   
     

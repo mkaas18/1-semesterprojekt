@@ -6,7 +6,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    private Question question = new Question();
+    private Questions questions;
         
 
     public Game() 
