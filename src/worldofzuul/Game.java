@@ -11,18 +11,19 @@ public class Game
     private Questions questions;
     private Player player;
     private Map map;
+    private boolean finished = false;
 
 
     public Game() 
     {
         parser = new Parser();
         createWorld();
+        player = new Player("Boii", 4, 7, 5, 4);
     }
     public void createWorld(){
         map = new Map(7);
         currentRoom = map.getStartingRoom();
-        createItems();
-        player = new Player("Boii", 4, 7, 5, 4);
+        createItems();        
     }
 
     public void createItems() {
@@ -44,7 +45,6 @@ public class Game
     public void play() {
         while(!pickDifficulty()){}
         printWelcome();
-        boolean finished = false;
         while (!finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
@@ -125,11 +125,15 @@ public class Game
                 questions = new HardQuestion();
                 System.out.println("You've picked 'Hard'");
                 return true;
+            case "quit":
+                finished = true;         
+                return true;
             default:
                 System.out.println("Not a difficulty");
                 return false;
         }
     }
+        
     private Monster getRandomMonster(){  
         switch((int)(Math.floor(Math.random()*4))){
             case 0:

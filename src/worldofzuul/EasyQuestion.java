@@ -11,16 +11,8 @@ package worldofzuul;
  *
  * @author fredd
  */
-public class EasyQuestion implements Questions{
-    private String question;
-    private double answer;
-    private double number1;
-    private double number2;
-    QuestionResults results;
-    
-    public EasyQuestion(){
-
-    }
+public class EasyQuestion extends Questions{
+    public EasyQuestion(){}
 
     @Override
     public QuestionResults addition() {

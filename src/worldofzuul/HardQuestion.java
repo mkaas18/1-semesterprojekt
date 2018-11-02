@@ -11,16 +11,8 @@ package worldofzuul;
  *
  * @author fredd
  */
-public class HardQuestion implements Questions{
-    private String question;
-    private double answer;
-    private double number1;
-    private double number2;
-    QuestionResults results;
-    
-    public HardQuestion(){
-        
-    }
+public class HardQuestion extends Questions{
+    public HardQuestion(){}
 
     @Override
     public QuestionResults addition() {

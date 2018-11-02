@@ -11,12 +11,7 @@ package worldofzuul;
  *
  * @author fredd
  */
-public class NormalQuestion implements Questions{
-    private String question;
-    private double answer;
-    private double number1;
-    private double number2;
-    QuestionResults results;
+public class NormalQuestion extends Questions{
     
     public NormalQuestion(){
         
