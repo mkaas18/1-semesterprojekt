@@ -10,6 +10,7 @@ public class Game
     private Room currentRoom;
     private Questions questions;
     private Player player;
+    private Map map;
 
 
     public Game() 
@@ -18,7 +19,7 @@ public class Game
         createWorld();
     }
     public void createWorld(){
-        Map map = new Map(7);
+        map = new Map(7);
         currentRoom = map.getStartingRoom();
         createItems();
         player = new Player("Boii", 4, 7, 5, 4);
@@ -104,6 +105,7 @@ public class Game
             System.out.println("There is no door!");
         } else {
             currentRoom = nextRoom;
+            map.seeMap(currentRoom);
             System.out.println(currentRoom.getLongDescription());
         }
     }
