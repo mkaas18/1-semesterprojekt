@@ -33,10 +33,17 @@ public class Game
 
         for (int i = 0; i < 10; i++) {
 
+<<<<<<< HEAD
             Item item = itemGenerator.generateItem();
 //            System.out.println(item.getName());
 //            System.out.println(item.getStats().toString());
 //            System.out.println();   
+=======
+            Item item = itemGenerator.generateItem(1);
+            System.out.println(item.getName());
+            System.out.println(item.getStats().toString());
+            System.out.println();   
+>>>>>>> origin/Items
             itemDatabase.addItem(item);
         }
 
