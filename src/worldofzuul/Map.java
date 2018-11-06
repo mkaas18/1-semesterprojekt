@@ -23,6 +23,7 @@ public class Map {
     Room jailRoom3 = new Room("14");
     Room roomRoom3 = new Room("15");
     Room stairRoom3 = new Room("in a room with a winding staircase");
+    Room stairRoom4 = new Room("in a room with a winding staircase");
     ArrayList<Room> levelOneRoomList = new ArrayList<>();
     ArrayList<Room> levelTwoRoomList = new ArrayList<>();
     ArrayList<Room> levelThreeRoomList = new ArrayList<>();
@@ -40,12 +41,13 @@ public class Map {
         this.levelTwoRoomList.add(tortureRoom2);
         this.levelTwoRoomList.add(jailRoom2);
         this.levelTwoRoomList.add(roomRoom2);
+        this.levelTwoRoomList.add(stairRoom3);
         this.levelThreeRoomList.add(wineCellar3);
         this.levelThreeRoomList.add(armoury3);
         this.levelThreeRoomList.add(tortureRoom3);
         this.levelThreeRoomList.add(jailRoom3);
         this.levelThreeRoomList.add(roomRoom3);
-
+        
         Room[][] levelOne = new Room[levelSize][levelSize];
         Room[][] levelTwo = new Room[levelSize][levelSize];
         Room[][] levelThree = new Room[levelSize][levelSize];
@@ -54,7 +56,7 @@ public class Map {
         int startingRoomPos = levelSize / 2;
         levelOne[startingRoomPos][startingRoomPos] = startingRoom;
         levelTwo[startingRoomPos][startingRoomPos] = stairRoom2;
-        levelThree[startingRoomPos][startingRoomPos] = stairRoom3;
+        levelThree[startingRoomPos][startingRoomPos] = stairRoom4;
 
         levelOne = genLevel(levelOne, levelOneRoomList);
         levelTwo = genLevel(levelTwo, levelTwoRoomList);
@@ -66,8 +68,8 @@ public class Map {
         
         this.stairRoom.setExit("down", stairRoom2);
         this.stairRoom2.setExit("up", stairRoom);
-        this.stairRoom2.setExit("down", stairRoom3);
-        this.stairRoom3.setExit("up", stairRoom2);
+        this.stairRoom3.setExit("down", stairRoom4);
+        this.stairRoom4.setExit("up", stairRoom3);
         
         //Prints a visualisation of each layer in grid form
         for (int y = 0; y < levelOne.length; y++) {
