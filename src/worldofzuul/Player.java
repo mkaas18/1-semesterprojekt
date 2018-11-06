@@ -59,16 +59,22 @@ public class Player {
         this.stats.setAgility(this.stats.getAgility() + amount);
     }
 
-    public int getIntellect() {
+    public int getIntelligence() {
         return this.stats.getIntelligence();
     }
 
-    public void addIntellect(int amount) {
+    public void addIntelligence(int amount) {
         this.stats.setIntelligence(this.stats.getIntelligence() + amount);
     }
+
+    @Override
+    public String toString() {
+        String statSummary = "Stats:";
+        statSummary += "\n\tHP: " + getMaxHP();
+        statSummary += "\n\tAgility: " + getAgility();
+        statSummary += "\n\tStrength: " + getStrength();
+        statSummary += "\n\tIntelligence: " + getIntelligence();
+        statSummary += "\n\tEndurance: " + getEndurance();
+        return statSummary;
+    }
 }
-
-//Methods for øge og minke de forskellige variabler 
-// Ikke kommet dertil endnu lel
-// Og de forskellige ting, stats skal lave kunne ?? 
-

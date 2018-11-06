@@ -45,5 +45,10 @@ public class Room
     {
         return exits.get(direction);
     }
+    
+    @Override
+    public String toString(){
+        return this.description;
+    }
 }
 
