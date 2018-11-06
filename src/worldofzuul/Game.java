@@ -8,14 +8,10 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    private Questions questions;
-<<<<<<< HEAD
+    private Question questions;
     private Player player;
     private MonsterDatabase monsterDatabase;
 
-=======
-        
->>>>>>> questions
 
     public Game() 
     {
@@ -130,15 +126,15 @@ public class Game
         System.out.println("Please pick a difficulty:\nEasy\nNormal\nHard");
         switch(scan.next()){
             case "easy":
-                questions = new EasyQuestion();
+                questions = new QuestionEasy();
                 System.out.println("You've picked 'Easy'");
                 return true;
             case "normal":
-                questions = new NormalQuestion();
+                questions = new QuestionNormal();
                 System.out.println("You've picked 'Normal'");
                 return true;
             case "hard":
-                questions = new HardQuestion();
+                questions = new QuestionHard();
                 System.out.println("You've picked 'Hard'");
                 return true;
             default:

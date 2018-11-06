@@ -11,8 +11,8 @@ package worldofzuul;
  *
  * @author fredd
  */
-public class EasyQuestion extends Questions{
-    public EasyQuestion(){}
+public class QuestionEasy extends Question{
+    public QuestionEasy(){}
 
     @Override
     public QuestionResults addition() {

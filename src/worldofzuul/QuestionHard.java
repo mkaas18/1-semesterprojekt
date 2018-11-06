@@ -11,8 +11,8 @@ package worldofzuul;
  *
  * @author fredd
  */
-public class HardQuestion extends Questions{
-    public HardQuestion(){}
+public class QuestionHard extends Question{
+    public QuestionHard(){}
 
     @Override
     public QuestionResults addition() {

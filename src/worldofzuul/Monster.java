@@ -77,7 +77,7 @@ public class Monster {
 
     }
 
-    public void combatInitiate(Questions question, Player player) {
+    public void combatInitiate(Question question, Player player) {
         System.out.println("A " + this.name + " approaches!");
         while (player.getHp()> 0 && this.getHp() > 0) {
             switch ((int)Math.floor(Math.random()*4)) {

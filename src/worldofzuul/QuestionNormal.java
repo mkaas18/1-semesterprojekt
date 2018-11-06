@@ -11,9 +11,9 @@ package worldofzuul;
  *
  * @author fredd
  */
-public class NormalQuestion extends Questions{
+public class QuestionNormal extends Question{
     
-    public NormalQuestion(){
+    public QuestionNormal(){
         
     }
 
