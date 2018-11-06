@@ -23,7 +23,7 @@ public class Game
         currentRoom = map.getStartingRoom();
         createItems();
         createMonsters();
-        player = new Player("Boii", 4, 7, 5, 4);
+        player = new Player("Boii", 100, 7);
     }
 
     public void createItems() {
@@ -89,6 +89,8 @@ public class Game
             goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
+        } else if (commandWord == CommandWord.SHOWSTATS){
+            System.out.println(player);
         }
 
         return wantToQuit;
