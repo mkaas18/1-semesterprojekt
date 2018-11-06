@@ -19,90 +19,42 @@ public class Map {
     Room tortureRoom3 = new Room("13");
     Room jailRoom3 = new Room("14");
     Room roomRoom3 = new Room("15");
-    ArrayList<Room> roomList = new ArrayList<>();
+    ArrayList<Room> levelOneRoomList = new ArrayList<>();
 
     private Room startingRoom;
 
     public Map(int levelSize) {
 
-        this.roomList.add(wineCellar);
-        this.roomList.add(armoury);
-        this.roomList.add(tortureRoom);
-        this.roomList.add(jailRoom);
-        this.roomList.add(roomRoom);
-        this.roomList.add(wineCellar2);
-        this.roomList.add(armoury2);
-        this.roomList.add(tortureRoom2);
-        this.roomList.add(jailRoom2);
-        this.roomList.add(roomRoom2);
-        this.roomList.add(wineCellar3);
-        this.roomList.add(armoury3);
-        this.roomList.add(tortureRoom3);
-        this.roomList.add(jailRoom3);
-        this.roomList.add(roomRoom3);
+        this.levelOneRoomList.add(wineCellar);
+        this.levelOneRoomList.add(armoury);
+        this.levelOneRoomList.add(tortureRoom);
+        this.levelOneRoomList.add(jailRoom);
+        this.levelOneRoomList.add(roomRoom);
+        this.levelOneRoomList.add(wineCellar2);
+        this.levelOneRoomList.add(armoury2);
+        this.levelOneRoomList.add(tortureRoom2);
+        this.levelOneRoomList.add(jailRoom2);
+        this.levelOneRoomList.add(roomRoom2);
+        this.levelOneRoomList.add(wineCellar3);
+        this.levelOneRoomList.add(armoury3);
+        this.levelOneRoomList.add(tortureRoom3);
+        this.levelOneRoomList.add(jailRoom3);
+        this.levelOneRoomList.add(roomRoom3);
         Room[][] grid = new Room[levelSize][levelSize];
+        Room[][] levelOne = new Room[levelSize][levelSize];
         System.out.println("Map Initialised");
 
-        int startingRoom = (int) (Math.random() * roomList.size());
+        int startingRoom = (int) (Math.random() * levelOneRoomList.size());
         int startingRoomPos = levelSize / 2;
-        grid[startingRoomPos][startingRoomPos] = roomList.get(startingRoom);
-        roomList.remove(startingRoom);
-
-        grid = genNeighbours(grid, startingRoomPos, startingRoomPos);
+        levelOne[startingRoomPos][startingRoomPos] = levelOneRoomList.get(startingRoom);
+        levelOneRoomList.remove(startingRoom);
 
         //Iterates through 2 dimensional array "grid", and generates rooms with genNeighbours method
-        while (roomList.size() > 0) {
-            for (int y = 0; y < grid.length; y++) {
-                for (int x = 0; x < grid[y].length; x++) {
-                    if (grid[y][x] != null && Math.random() < 0.75) {
-                        grid = genNeighbours(grid, x, y);
-
-                        //Prints a visualisation of the map in grid form
-                        for (int y1 = 0; y1 < grid.length; y1++) {
-                            for (int x1 = 0; x1 < grid[y1].length; x1++) {
-                                if (grid[y1][x1] != null) {
-                                    System.out.print(" " + grid[y1][x1]);
-                                }
-                                System.out.print(" \t");
-                            }
-                            System.out.println("");
-                        }
-
-                        if (roomList.size() <= 0) {
-                            break;
-                        }
-                    }
-                    if (roomList.size() <= 0) {
-                        break;
-                    }
-                }
-
-            }
-        }
+        levelOne = genLevel(grid, levelOneRoomList);
 
         //Iterate through the map, setting up exits
-        for (int y = 0; y < grid.length; y++) {
-
-            for (int x = 0; x < grid[y].length; x++) {
-
-                //Check for location north of room, if a room exsists there, and links up the room with an exit/entrance if it does
-                if (y - 1 >= 0 && grid[y - 1][x] != null && grid[y][x] != null) {
-                    grid[y][x].setExit("north", grid[y - 1][x]);
-                }
-                //Check for location west of room, if a room exsists there, and links up the room with an exit/entrance if it does
-                if (x - 1 >= 0 && grid[y][x - 1] != null && grid[y][x] != null) {
-                    grid[y][x].setExit("west", grid[y][x - 1]);
-                }
-                //Check for location east of room, if a room exsists there, and links up the room with an exit/entrance if it does
-                if (x + 1 < grid[y].length && grid[y][x + 1] != null && grid[y][x] != null) {
-                    grid[y][x].setExit("east", grid[y][x + 1]);
-                }
-                //Check for location south of room, if a room exsists there, and links up the room with an exit/entrance if it does
-                if (y + 1 < grid.length && grid[y + 1][x] != null && grid[y][x] != null) {
-                    grid[y][x].setExit("south", grid[y + 1][x]);
-                }
-            }
-        }
+        
+        levelOne = genExits(levelOne);
 
         //Prints a visualisation of the map in grid form
         for (int y = 0; y < grid.length; y++) {
@@ -114,10 +66,10 @@ public class Map {
             }
             System.out.println("");
         }
-        this.startingRoom = grid[startingRoomPos][startingRoomPos];
+        this.startingRoom = levelOne[startingRoomPos][startingRoomPos];
     }
 
-    public Room[][] genNeighbours(Room[][] map, int x, int y) {
+    public Room[][] genNeighbours(Room[][] map, int x, int y, ArrayList<Room> roomList) {
 
         //Check north, if no room exists, create random room
         //If room exists, create no room
@@ -148,6 +100,64 @@ public class Map {
             roomList.remove(roomIndex);
         }
         return map;
+    }
+
+    public Room[][] genLevel(Room[][] grid, ArrayList<Room> roomList) {
+        
+            for (int y = 0; y < grid.length; y++) {
+                for (int x = 0; x < grid[y].length; x++) {
+                    if (grid[y][x] != null && Math.random() < 0.75) {
+                        grid = genNeighbours(grid, x, y, roomList);
+
+                        //Prints a visualisation of the map in grid form
+                        for (int y1 = 0; y1 < grid.length; y1++) {
+                            for (int x1 = 0; x1 < grid[y1].length; x1++) {
+                                if (grid[y1][x1] != null) {
+                                    System.out.print(" " + grid[y1][x1]);
+                                }
+                                System.out.print(" \t");
+                            }
+                            System.out.println("");
+                        }
+
+                        if (roomList.size() <= 0) {
+                            break;
+                        }
+                    }
+                    if (roomList.size() <= 0) {
+                        break;
+                    }
+                }
+
+            }
+        
+        return grid;
+    }
+
+    public Room[][] genExits(Room[][] level) {
+        for (int y = 0; y < level.length; y++) {
+
+            for (int x = 0; x < level[y].length; x++) {
+
+                //Check for location north of room, if a room exsists there, and links up the room with an exit/entrance if it does
+                if (y - 1 >= 0 && level[y - 1][x] != null && level[y][x] != null) {
+                    level[y][x].setExit("north", level[y - 1][x]);
+                }
+                //Check for location west of room, if a room exsists there, and links up the room with an exit/entrance if it does
+                if (x - 1 >= 0 && level[y][x - 1] != null && level[y][x] != null) {
+                    level[y][x].setExit("west", level[y][x - 1]);
+                }
+                //Check for location east of room, if a room exsists there, and links up the room with an exit/entrance if it does
+                if (x + 1 < level[y].length && level[y][x + 1] != null && level[y][x] != null) {
+                    level[y][x].setExit("east", level[y][x + 1]);
+                }
+                //Check for location south of room, if a room exsists there, and links up the room with an exit/entrance if it does
+                if (y + 1 < level.length && level[y + 1][x] != null && level[y][x] != null) {
+                    level[y][x].setExit("south", level[y + 1][x]);
+                }
+            }
+        }
+        return level;
     }
 
     public Room getStartingRoom() {
