@@ -9,9 +9,13 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private Questions questions;
+<<<<<<< HEAD
     private Player player;
     private MonsterDatabase monsterDatabase;
 
+=======
+        
+>>>>>>> questions
 
     public Game() 
     {
