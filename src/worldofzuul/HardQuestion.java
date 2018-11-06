@@ -44,7 +44,7 @@ public class HardQuestion implements Questions{
     public QuestionResults division() {
         while(true){
             number1 = (getRandomNumber()*10);
-            number2 = getRandomNumber()/10.0;
+            number2 = getRandomNumber()/10;
             if(number1%number2==0 && number1 != 0 && number2 > 1){
                 break;
             }

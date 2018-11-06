@@ -10,6 +10,7 @@ public class Game
     private Room currentRoom;
     private Questions questions;
     private Player player;
+    private MonsterDatabase monsterDatabase;
 
 
     public Game() 
@@ -21,6 +22,7 @@ public class Game
         Map map = new Map(7);
         currentRoom = map.getStartingRoom();
         createItems();
+        createMonsters();
         player = new Player("Boii", 4, 7, 5, 4);
     }
 
@@ -40,6 +42,18 @@ public class Game
 
     }
 
+    public void createMonsters() {
+        
+        monsterDatabase = new MonsterDatabase();
+        MonsterGenerator monsterGenerator = new MonsterGenerator();
+        
+        for (int i = 0; i < 10; i++) {
+            
+            Monster monster = new Monster(monsterGenerator.generateMonster(), 1);
+            monsterDatabase.addMonster(monster);
+        }
+    }
+    
     public void play() {
         while(!pickDifficulty()){}
         printWelcome();
@@ -129,18 +143,7 @@ public class Game
         }
     }
     private Monster getRandomMonster(){  
-        switch((int)(Math.floor(Math.random()*4))){
-            case 0:
-                return new Monster("AddMonster", "add");
-            case 1:
-                return new Monster("SubMonster", "sub");
-            case 2:
-                return new Monster("DiviMonster", "divi");    
-            case 3:
-                return new Monster("MultiMonster", "multi");
-            default:
-                return new Monster("AddMonster", "add");
-        }   
+        return monsterDatabase.getMonster((int) Math.floor(Math.random() * 9.0));
     }
     private boolean quit(Command command) {
         if (command.hasSecondWord()) {

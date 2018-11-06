@@ -1,32 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <file>file:/C:/Users/Bruger/Dropbox/SDU/SourceTree/1%20semester%20projekt/src/worldofzuul/ItemGenerator.java</file>
-            <file>file:/C:/Users/Bruger/Dropbox/SDU/SourceTree/1%20semester%20projekt/src/worldofzuul/Starter.java</file>
-            <file>file:/C:/Users/Bruger/Dropbox/SDU/SourceTree/1%20semester%20projekt/src/worldofzuul/Stats.java</file>
-            <file>file:/C:/Users/Bruger/Dropbox/SDU/SourceTree/1%20semester%20projekt/src/worldofzuul/Item.java</file>
-            <file>file:/C:/Users/Bruger/Dropbox/SDU/SourceTree/1%20semester%20projekt/src/worldofzuul/Game.java</file>
-            <file>file:/C:/Users/Bruger/Dropbox/SDU/SourceTree/1%20semester%20projekt/src/worldofzuul/ItemDatabase.java</file>
-=======
-            <file>file:/C:/Users/SteamyBlizzard/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Questions.java</file>
-            <file>file:/C:/Users/SteamyBlizzard/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Question.java</file>
-            <file>file:/C:/Users/SteamyBlizzard/Documents/GitHub/1-semesterprojekt/src/worldofzuul/HardQuestion.java</file>
-            <file>file:/C:/Users/SteamyBlizzard/Documents/GitHub/1-semesterprojekt/src/worldofzuul/NormalQuestion.java</file>
->>>>>>> questions
-=======
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/Command.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/Game.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/CommandWord.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/Room.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/CommandWords.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/Map.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/Parser.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/Starter.java</file>
->>>>>>> MapGen_Test
+            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/EasyQuestion.java</file>
+            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Monster.java</file>
+            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Map.java</file>
+            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/ItemDatabase.java</file>
+            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Item.java</file>
+            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Starter.java</file>
+            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Game.java</file>
+            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/ItemGenerator.java</file>
         </group>
     </open-files>
 </project-private>

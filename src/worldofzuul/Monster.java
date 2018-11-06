@@ -1,37 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package worldofzuul;
 
 import java.util.Scanner;
 
-/**
- *
- * @author SteamyBlizzard
- */
 public class Monster {
-
+    
     private String name;
+    private int difficulty;
     private int damage;
+    public String monsterName;
     private int hp;
     private String type;
-
-    public Monster(String name, String type) {
+    
+    public Monster(String name, int difficulty){
         this.name = name;
-        this.hp = 100;
+        this.difficulty = difficulty;
         this.type = type;
+        this.hp = 100;
     }
 
+    public String getName() {
+        return name;
+    }
+    
+    
     public int getDamage() {
         return damage;
     }
-
+    
     public String getType() {
         return type;
     }
-
+    
     public int getHp() {
         return hp;
     }
@@ -40,6 +39,27 @@ public class Monster {
         this.hp += hp;
     }
     
+    int getDifficulty(){
+        return this.difficulty;
+}
+//Level damage modifier
+//    public int getDamagelvl(){
+//        int temp = this.getDifficulty();
+//        switch(temp){
+//            case 0:
+//                return 10;
+//            case 1:
+//                return 20;
+//            case 2:
+//                return 30;
+//            case 4:
+//                return 50;
+//            default:
+//                return -1;
+//        }
+//    }
+
+//Monster QuestionResults
     public void combat(QuestionResults results, Player player) {
         Scanner getAnswer = new Scanner(System.in);
         double answer;
@@ -47,11 +67,11 @@ public class Monster {
         System.out.println(results.getQuestion());
         answer = getAnswer.nextDouble();
         if (answer == results.getAnswer()) {
-            System.out.println("The answer was correct!");
-            this.changeHp(-35);
+            System.out.println("Correct!");
+            this.changeHp(-100);
             
         } else {
-            System.out.println("Wrong answer :(");
+            System.out.println("Wrong answer!");
             player.addHp(-35);
         }
 
@@ -60,25 +80,25 @@ public class Monster {
     public void combatInitiate(Questions question, Player player) {
         System.out.println("A " + this.name + " approaches!");
         while (player.getHp()> 0 && this.getHp() > 0) {
-            switch (this.getType()) {
-                case "add":
+            switch ((int)Math.floor(Math.random()*4)) {
+                case 0:
                     combat(question.addition(), player);
                     break;
-                case "sub":
+                case 1:
                     combat(question.subtraction(), player);
                     break;
-                case "multi":
+                case 2:
                     combat(question.multiplication(), player);
                     break;
-                case "divi":
+                case 3:
                     combat(question.division(), player);
                     break;
             }
         }
         if(player.getHp()<0){
-            System.out.println("Du døde :(");
+            System.out.println("Game over.");
         }else {
-            System.out.println("The " + this.name + " perished");
+            System.out.println("The " + this.name + " perished.");
         }
     }
 }
