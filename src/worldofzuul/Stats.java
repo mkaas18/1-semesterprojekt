@@ -4,25 +4,22 @@ import java.util.ArrayList;
 
 public class Stats {
 
-    ArrayList<Integer> randomInelligence = new ArrayList<>();
-    ArrayList<Integer> randomEndurance = new ArrayList<>();
-    ArrayList<Integer> randomStrength = new ArrayList<>();
-    ArrayList<Integer> randomAgility = new ArrayList<>();
-
     private int intelligence = 0;
     private int endurance = 0;
     private int strength = 0;
     private int agility = 0;
+    private int value = 0;
     // andre?
 
     public Stats() {
     }
 
-    public Stats(int intelligence, int endurance, int strength, int agility) {
+    public Stats(int intelligence, int endurance, int strength, int agility, int value) {
         this.intelligence = intelligence;
         this.endurance = endurance;
         this.strength = strength;
         this.agility = agility;
+        this.value = value;
     }
 
     public int getIntelligence() {
@@ -57,6 +54,14 @@ public class Stats {
         this.agility = agility;
     }
 
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
     @Override
     public String toString() {
         String statSummary = "Stats:";
@@ -64,6 +69,7 @@ public class Stats {
         statSummary += "\n\tStrength: " + strength;
         statSummary += "\n\tIntelligence: " + intelligence;
         statSummary += "\n\tEndurance: " + endurance;
+        statSummary += "\n\tValue: " + value;
         return statSummary;
     }
 

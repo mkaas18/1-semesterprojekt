@@ -24,6 +24,8 @@ public class ItemGenerator {
         firstWord.add("Fish");
         firstWord.add("Scepter");
         firstWord.add("Glasses");
+        firstWord.add("Pen");
+        firstWord.add("Crown");
 
         middleWord.add("of");
 
@@ -37,22 +39,29 @@ public class ItemGenerator {
         lastWord.add("The Nerd");
         lastWord.add("Stars");
         lastWord.add("Spirits");
+        lastWord.add("Sparta");
+        lastWord.add("Zeus");
+        lastWord.add("The Teacher");
     }
 
-    public Item generateItem() {
+    public Item generateItem(int difficulty) {
         Item item = new Item();
         item.setName(generateName());
-        Stats stats = generateStats();
+        Stats stats = generateStats(difficulty);
         item.setStats(stats);
         return item;
     }
 
-    private Stats generateStats() {
-        return new Stats(generateStat(), generateStat(), generateStat(), generateStat());
+    private Stats generateStats(int difficulty) {
+        return new Stats(generateStat(difficulty), generateStat(difficulty), generateStat(difficulty), generateStat(difficulty), generateValue(difficulty));
     }
 
-    private int generateStat() {
-        return (int) Math.floor(Math.random() * 11);
+    private int generateStat(int difficulty) {
+        return (int) Math.floor(Math.random() * 11) * difficulty;
+    }
+
+    private int generateValue(int diffculty) {
+        return (int) Math.floor(Math.random() * 101) * diffculty;
     }
 
     private String generateName() {

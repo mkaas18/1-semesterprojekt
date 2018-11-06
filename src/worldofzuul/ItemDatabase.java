@@ -16,8 +16,4 @@ public class ItemDatabase {
     public void removeItem(Item item) {
         itemList.remove(item);
     }
-
-
-
-
 }
