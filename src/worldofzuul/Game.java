@@ -11,6 +11,7 @@ public class Game
     private Question questions;
     private Player player;
     private MonsterDatabase monsterDatabase;
+    private RandomEvent events = new RandomEvent();
 
 
     public Game() 
@@ -24,6 +25,7 @@ public class Game
         createItems();
         createMonsters();
         player = new Player("Boii", 100, 7);
+        events.createEvents();
     }
 
     public void createItems() {
@@ -53,7 +55,7 @@ public class Game
             monsterDatabase.addMonster(monster);
         }
     }
-    
+
     public void play() {
         while(!pickDifficulty()){}
         printWelcome();
@@ -85,6 +87,7 @@ public class Game
         }
         if (commandWord == CommandWord.HELP) {
             printHelp();
+            events.triggerEvent();
         } else if (commandWord == CommandWord.GO) {
             goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {

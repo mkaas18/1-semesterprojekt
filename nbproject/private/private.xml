@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/EasyQuestion.java</file>
-            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Monster.java</file>
-            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Map.java</file>
-            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/ItemDatabase.java</file>
-            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Item.java</file>
-            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Starter.java</file>
-            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Game.java</file>
-            <file>file:/Users/magnuskaas/Documents/GitHub/1-semesterprojekt/src/worldofzuul/ItemGenerator.java</file>
-=======
-            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Game.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/NormalQuestion.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Questions.java</file>
->>>>>>> questions
+            <file>file:/C:/Users/SteamyBlizzard/Documents/GitHub/1-semesterprojekt/src/worldofzuul/QuestionResults.java</file>
+            <file>file:/C:/Users/SteamyBlizzard/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Starter.java</file>
+            <file>file:/C:/Users/SteamyBlizzard/Documents/GitHub/1-semesterprojekt/src/worldofzuul/RandomEvent.java</file>
+            <file>file:/C:/Users/SteamyBlizzard/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Game.java</file>
         </group>
     </open-files>
 </project-private>
