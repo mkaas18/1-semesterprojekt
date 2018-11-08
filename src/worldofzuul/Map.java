@@ -7,19 +7,19 @@ public class Map {
     Room startingRoom = new Room("in the starting area");
     Room wineCellar = new Room("1");
     Room armoury = new Room("2");
-    Room tortureRoom = new Room("3");
+    Room shop = new Room("3");
     Room jailRoom = new Room("4");
     Room roomRoom = new Room("5");
     Room stairRoom = new Room("in a room with a winding staircase");
     Room wineCellar2 = new Room("6");
     Room armoury2 = new Room("7");
-    Room tortureRoom2 = new Room("8");
+    Room shop2 = new Room("8");
     Room jailRoom2 = new Room("9");
     Room roomRoom2 = new Room("10");
     Room stairRoom2 = new Room("in a room with a winding staircase");
     Room wineCellar3 = new Room("11");
     Room armoury3 = new Room("12");
-    Room tortureRoom3 = new Room("13");
+    Room shop3 = new Room("13");
     Room jailRoom3 = new Room("14");
     Room roomRoom3 = new Room("15");
     Room stairRoom3 = new Room("in a room with a winding staircase");
@@ -32,19 +32,22 @@ public class Map {
 
         this.levelOneRoomList.add(wineCellar);
         this.levelOneRoomList.add(armoury);
-        this.levelOneRoomList.add(tortureRoom);
+        shop.setIsShop(true);
+        this.levelOneRoomList.add(shop);
         this.levelOneRoomList.add(jailRoom);
         this.levelOneRoomList.add(roomRoom);
         this.levelOneRoomList.add(stairRoom);
         this.levelTwoRoomList.add(wineCellar2);
         this.levelTwoRoomList.add(armoury2);
-        this.levelTwoRoomList.add(tortureRoom2);
+        shop2.setIsShop(true);
+        this.levelTwoRoomList.add(shop2);
         this.levelTwoRoomList.add(jailRoom2);
         this.levelTwoRoomList.add(roomRoom2);
         this.levelTwoRoomList.add(stairRoom3);
         this.levelThreeRoomList.add(wineCellar3);
         this.levelThreeRoomList.add(armoury3);
-        this.levelThreeRoomList.add(tortureRoom3);
+        shop3.setIsShop(true);
+        this.levelThreeRoomList.add(shop3);
         this.levelThreeRoomList.add(jailRoom3);
         this.levelThreeRoomList.add(roomRoom3);
         

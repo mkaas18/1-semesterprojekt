@@ -117,7 +117,7 @@ public class Game
 
         Room nextRoom = currentRoom.getExit(direction);
         if((int)(Math.floor(Math.random()*10)) > 7){
-            getRandomMonster().combatInitiate(questions, player);
+            new Monster(new MonsterGenerator().generateMonster(), 1).combatInitiate(questions, player);
         }
         if (nextRoom == null) {
             System.out.println("There is no door!");

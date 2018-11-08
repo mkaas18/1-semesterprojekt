@@ -28,7 +28,7 @@ public class RandomEvent {
         
         try {
             splitter = new Scanner(new File(filePath)).useDelimiter(";"); 
-            
+
         } catch (FileNotFoundException ex) {
             System.out.println("File not found");;
         }    

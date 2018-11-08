@@ -9,6 +9,15 @@ public class Room
 {
     private final String description;
     private final HashMap<String, Room> exits;
+    private boolean isShop = false;
+
+    public boolean isIsShop() {
+        return isShop;
+    }
+
+    public void setIsShop(boolean isShop) {
+        this.isShop = isShop;
+    }
 
     public Room(String description) 
     {
