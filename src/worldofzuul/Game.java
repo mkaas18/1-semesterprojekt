@@ -10,8 +10,10 @@ public class Game {
     private Question questions;
     private Player player;
     private MonsterDatabase monsterDatabase;
+    Scanner userName = new Scanner(System.in);
 
     public Game() {
+        player = new Player(userName.next());
         parser = new Parser();
         createWorld();
     }
@@ -21,7 +23,6 @@ public class Game {
         currentRoom = map.getStartingRoom();
         createItems();
         createMonsters();
-        player = new Player("Boii");
     }
 
     public void createItems() {
