@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Bruger/Dropbox/SDU/SourceTree/1%20semester%20projekt/src/worldofzuul/ItemGenerator.java</file>
-            <file>file:/C:/Users/Bruger/Dropbox/SDU/SourceTree/1%20semester%20projekt/src/worldofzuul/Starter.java</file>
-            <file>file:/C:/Users/Bruger/Dropbox/SDU/SourceTree/1%20semester%20projekt/src/worldofzuul/Stats.java</file>
-            <file>file:/C:/Users/Bruger/Dropbox/SDU/SourceTree/1%20semester%20projekt/src/worldofzuul/Item.java</file>
-            <file>file:/C:/Users/Bruger/Dropbox/SDU/SourceTree/1%20semester%20projekt/src/worldofzuul/Game.java</file>
-            <file>file:/C:/Users/Bruger/Dropbox/SDU/SourceTree/1%20semester%20projekt/src/worldofzuul/ItemDatabase.java</file>
+            <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/Parser.java</file>
+            <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/Map.java</file>
+            <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/Game.java</file>
+            <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/ItemDatabase.java</file>
+            <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/Player.java</file>
+            <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/Monster.java</file>
         </group>
     </open-files>
 </project-private>

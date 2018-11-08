@@ -3,15 +3,15 @@ package worldofzuul;
 import java.util.Scanner;
 
 public class Monster {
-    
+
     private String name;
     private int difficulty;
     private int damage;
     public String monsterName;
     private int hp;
     private String type;
-    
-    public Monster(String name, int difficulty){
+
+    public Monster(String name, int difficulty) {
         this.name = name;
         this.difficulty = difficulty;
         this.type = type;
@@ -21,27 +21,26 @@ public class Monster {
     public String getName() {
         return name;
     }
-    
-    
+
     public int getDamage() {
         return damage;
     }
-    
+
     public String getType() {
         return type;
     }
-    
+
     public int getHp() {
         return hp;
     }
-    
-    public void changeHp(int hp){
+
+    public void changeHp(int hp) {
         this.hp += hp;
     }
-    
-    int getDifficulty(){
+
+    int getDifficulty() {
         return this.difficulty;
-}
+    }
 //Level damage modifier
 //    public int getDamagelvl(){
 //        int temp = this.getDifficulty();
@@ -63,24 +62,24 @@ public class Monster {
     public void combat(QuestionResults results, Player player) {
         Scanner getAnswer = new Scanner(System.in);
         double answer;
-        
+
         System.out.println(results.getQuestion());
         answer = getAnswer.nextDouble();
         if (answer == results.getAnswer()) {
             System.out.println("Correct!");
             this.changeHp(-100);
-            
+
         } else {
             System.out.println("Wrong answer!");
-            player.addmaxHP(-35);
+            player.addHP(-35);
         }
 
     }
 
     public void combatInitiate(Question question, Player player) {
         System.out.println("A " + this.name + " approaches!");
-        while (player.getMaxHP()> 0 && this.getHp() > 0) {
-            switch ((int)Math.floor(Math.random()*4)) {
+        while (player.getHP() > 0 && this.getHp() > 0) {
+            switch ((int) Math.floor(Math.random() * 4)) {
                 case 0:
                     combat(question.addition(), player);
                     break;
@@ -95,10 +94,13 @@ public class Monster {
                     break;
             }
         }
-        if(player.getMaxHP()<0){
+        if (player.getHP() < 0) {
             System.out.println("Game over.");
-        }else {
+        } else {
+            Item droppedItem = new ItemGenerator().generateItem(1);
             System.out.println("The " + this.name + " perished.");
+            System.out.println("The " + this.name + " dropped " + droppedItem.getName() + " and you picked it up.");
+            player.pickupItem(droppedItem);
         }
     }
 }

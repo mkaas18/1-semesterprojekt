@@ -1,5 +1,6 @@
 package worldofzuul;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
@@ -20,12 +21,11 @@ public class Game {
         currentRoom = map.getStartingRoom();
         createItems();
         createMonsters();
-        player = new Player("Boii", 100, 7);
+        player = new Player("Boii");
     }
 
     public void createItems() {
 
-        ItemDatabase itemDatabase = new ItemDatabase();
         ItemGenerator itemGenerator = new ItemGenerator();
 
 //        for (int i = 0; i < 10; i++) {
@@ -64,7 +64,7 @@ public class Game {
 
     private void printWelcome() {
         System.out.println();
-        System.out.println("--  Welcome to the Wrath of the Mathknight  --\n");
+        System.out.println("--  Welcome to the Wrath of the Mathknight  --");
         System.out.println("Wrath of the Mathknight is a new, incredibly exciting adventure game.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
