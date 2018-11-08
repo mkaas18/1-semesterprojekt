@@ -6,6 +6,7 @@
 package worldofzuul;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -13,44 +14,66 @@ import java.util.Scanner;
  * @author fredd
  */
 public class Shop {
-    ArrayList<Item> buyable;
-    ItemGenerator itemGen;
-    Item dummyItem = new Item();
+
+    ArrayList<Item> buyable = new ArrayList<>();
+    ItemGenerator itemGen = new ItemGenerator();
     Scanner input = new Scanner(System.in);
-    
-    Shop(){
+
+    Shop() {
         buyable.add(itemGen.generateItem(1));
         buyable.add(itemGen.generateItem(1));
         buyable.add(itemGen.generateItem(1));
     }
-    
-    public void startShop(Player player){
-        System.out.println("You have arrived at a shop\n"
-                + "Would you like to take a look?\nYes/No");
-        while(true){
-            if(input.next().toLowerCase().equals("yes")){
-                System.out.println("Feel free to browse!");
-                while(true){
-                    int i = 1;
-                    for(Item item : buyable){
-                        System.out.println(item.getName() + "(" + i + ")");
-                        i++;
-                    }
-                    System.out.println("Please choose an item based on their numbering");
-                    try {
 
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                    }
-                }
-                
-                
-            } else if(input.next().toLowerCase().equals("no")){
-                System.out.println("Alright, have a good day!");
+    public void startShop(Player player) {
+        System.out.println("You have arrived at a shop!");
+        while (true) {
+            int i = 1;
+            for (Item item : buyable) {
+                System.out.println(item.getName() + "(" + i + ")");
+                i++;
+            }
+            System.out.println("Please choose an item based on their numbering");
+            String request = input.next();
+            if (request.equals("quit")) {
+                System.out.println("Thank you for shopping!");
                 break;
             } else {
-                System.out.println("What do you mean?");
+                try {
+                    i = (Integer.parseInt(request)-1);
+                } catch (NumberFormatException e) {
+                    System.out.println("What do you mean?");
+                    continue;
+                }
+                try {
+                    if (!buyable.get(i).getName().equals("Sold out!")) {
+                        System.out.println("You bought " + buyable.get(i).getName());
+                        player.pickupItem(buyable.get(i));
+                        buyable.set(i, new Item("Sold out!"));
+                        System.out.println("Thank you for your service. Anything else?");
+                        boolean buyMore = false;
+                        while(true){
+                            request = input.next();
+                            if(request.toLowerCase().equals("yes")){                 
+                                break;
+                            } else if(request.toLowerCase().equals("no")){
+                                buyMore = true;
+                                break;
+                            } else {
+                                System.out.println("Dont understand what you mean");
+                            }
+                        }
+                        if(buyMore){
+                            break;
+                        }
+                    } else {
+                        System.out.println("Item is sold out!");
+                    }
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("Dont have such item!");
+                }
             }
+
         }
     }
-    
 }

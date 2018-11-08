@@ -94,6 +94,10 @@ public class Game
             wantToQuit = quit(command);
         } else if (commandWord == CommandWord.SHOWSTATS){
             System.out.println(player);
+        } else if (commandWord == CommandWord.SHOP){
+            if(currentRoom.isShop()){
+                new Shop().startShop(player);;
+            }
         }
 
         return wantToQuit;
@@ -124,6 +128,9 @@ public class Game
         } else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
+            if(currentRoom.isShop()){
+                System.out.println("There is a shop here!");;
+            }
         }
     }
     private boolean pickDifficulty(){
@@ -147,9 +154,7 @@ public class Game
                 return false;
         }
     }
-    private Monster getRandomMonster(){  
-        return monsterDatabase.getMonster((int) Math.floor(Math.random() * 9.0));
-    }
+    
     private boolean quit(Command command) {
         if (command.hasSecondWord()) {
             System.out.println("Quit what?");

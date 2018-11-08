@@ -11,7 +11,7 @@ public class Room
     private final HashMap<String, Room> exits;
     private boolean isShop = false;
 
-    public boolean isIsShop() {
+    public boolean isShop() {
         return isShop;
     }
 

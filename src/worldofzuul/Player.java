@@ -7,12 +7,15 @@
 
 package worldofzuul;
 
+import java.util.ArrayList;
+
 public class Player {
 
     private String name;
     private int maxHP = 100;
     private int damagetaken = 0;
     private Stats stats;
+    private ArrayList<Item> inventory = new ArrayList(5);
 
     public Player(String name, int maxHP, int damagetaken) {
         this.name = name;
@@ -54,7 +57,7 @@ public class Player {
         return this.stats.getStrength();
     }
 
-    public void strength(int amount) {
+    public void addStrength(int amount) {
         this.stats.setStrength(this.stats.getStrength() + amount);
     }
 
@@ -82,6 +85,22 @@ public class Player {
         statSummary += "\n\tIntelligence: " + getIntelligence();
         statSummary += "\n\tEndurance: " + getEndurance();
         return statSummary;
+    }
+    
+     public void pickupItem(Item item) {
+        inventory.add(item);
+        addAgility(item.getStats().getAgility());
+        addStrength(item.getStats().getStrength());
+        addIntelligence(item.getStats().getIntelligence());
+        addEndurance(item.getStats().getEndurance());
+    }
+    
+    public void dropItem(Item item) {
+        inventory.remove(item);
+        addAgility(-item.getStats().getAgility());
+        addStrength(-item.getStats().getStrength());
+        addIntelligence(-item.getStats().getIntelligence());
+        addEndurance(-item.getStats().getEndurance());
     }
 
 }
