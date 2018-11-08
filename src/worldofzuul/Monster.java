@@ -76,7 +76,7 @@ public class Monster {
 
     }
 
-    public void combatInitiate(Question question, Player player) {
+    public boolean combatInitiate(Question question, Player player) {
         System.out.println("A " + this.name + " approaches!");
         while (player.getHP() > 0 && this.getHp() > 0) {
             switch ((int) Math.floor(Math.random() * 4)) {
@@ -95,12 +95,15 @@ public class Monster {
             }
         }
         if (player.getHP() < 0) {
+            System.out.println("You have no health left.");
             System.out.println("Game over.");
+            return true;
         } else {
             Item droppedItem = new ItemGenerator().generateItem(1);
             System.out.println("The " + this.name + " perished.");
             System.out.println("The " + this.name + " dropped " + droppedItem.getName() + " and you picked it up.");
             player.pickupItem(droppedItem);
+            return false;
         }
     }
 }

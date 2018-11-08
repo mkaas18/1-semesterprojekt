@@ -83,7 +83,7 @@ public class Game {
         if (commandWord == CommandWord.HELP) {
             printHelp();
         } else if (commandWord == CommandWord.GO) {
-            goRoom(command);
+            wantToQuit = goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         } else if (commandWord == CommandWord.SHOWSTATS) {
@@ -101,24 +101,24 @@ public class Game {
         parser.showCommands();
     }
 
-    private void goRoom(Command command) {
+    private boolean goRoom(Command command) {
+        boolean exitGame = false;
         if (!command.hasSecondWord()) {
             System.out.println("Go where?");
-            return;
+            return false;
         }
-
         String direction = command.getSecondWord();
-
         Room nextRoom = currentRoom.getExit(direction);
-        if ((int) (Math.floor(Math.random() * 10)) > 7) {
-            getRandomMonster().combatInitiate(questions, player);
-        }
         if (nextRoom == null) {
             System.out.println("There is no door!");
         } else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
+        if ((int) (Math.floor(Math.random() * 10)) > 7) {
+            exitGame = getRandomMonster().combatInitiate(questions, player);
+        }
+        return exitGame;
     }
 
     private boolean pickDifficulty() {
