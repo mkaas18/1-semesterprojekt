@@ -101,10 +101,11 @@ public class Game {
 
     private void printHelp() {
         System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("around at the Dungeon.");
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
+        
     }
 
     private boolean goRoom(Command command) {
