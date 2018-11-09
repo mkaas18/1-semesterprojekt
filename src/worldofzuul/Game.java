@@ -96,7 +96,7 @@ public class Game
             System.out.println(player);
         } else if (commandWord == CommandWord.SHOP){
             if(currentRoom.isShop()){
-                new Shop().startShop(player);;
+                currentRoom.getShop().startShop(player);
             }
         }
 

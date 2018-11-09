@@ -10,13 +10,17 @@ public class Room
     private final String description;
     private final HashMap<String, Room> exits;
     private boolean isShop = false;
+    private Shop shop;
 
     public boolean isShop() {
         return isShop;
     }
-
-    public void setIsShop(boolean isShop) {
+    public Shop getShop(){
+        return shop;
+    }
+    public void setShop(boolean isShop) {
         this.isShop = isShop;
+        shop = this.isShop ? new Shop() : null;
     }
 
     public Room(String description) 

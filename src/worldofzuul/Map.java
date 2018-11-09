@@ -32,21 +32,21 @@ public class Map {
 
         this.levelOneRoomList.add(wineCellar);
         this.levelOneRoomList.add(armoury);
-        shop.setIsShop(true);
+        shop.setShop(true);
         this.levelOneRoomList.add(shop);
         this.levelOneRoomList.add(jailRoom);
         this.levelOneRoomList.add(roomRoom);
         this.levelOneRoomList.add(stairRoom);
         this.levelTwoRoomList.add(wineCellar2);
         this.levelTwoRoomList.add(armoury2);
-        shop2.setIsShop(true);
+        shop2.setShop(true);
         this.levelTwoRoomList.add(shop2);
         this.levelTwoRoomList.add(jailRoom2);
         this.levelTwoRoomList.add(roomRoom2);
         this.levelTwoRoomList.add(stairRoom3);
         this.levelThreeRoomList.add(wineCellar3);
         this.levelThreeRoomList.add(armoury3);
-        shop3.setIsShop(true);
+        shop3.setShop(true);
         this.levelThreeRoomList.add(shop3);
         this.levelThreeRoomList.add(jailRoom3);
         this.levelThreeRoomList.add(roomRoom3);

@@ -27,20 +27,15 @@ public class Shop {
 
     public void startShop(Player player) {
         System.out.println("You have arrived at a shop!");
+        int i = printWares();
         while (true) {
-            int i = 1;
-            for (Item item : buyable) {
-                System.out.println(item.getName() + "(" + i + ")");
-                i++;
-            }
-            System.out.println("Please choose an item based on their numbering");
             String request = input.next();
             if (request.equals("quit")) {
                 System.out.println("Thank you for shopping!");
                 break;
             } else {
                 try {
-                    i = (Integer.parseInt(request)-1);
+                    i = (Integer.parseInt(request) - 1);
                 } catch (NumberFormatException e) {
                     System.out.println("What do you mean?");
                     continue;
@@ -52,18 +47,19 @@ public class Shop {
                         buyable.set(i, new Item("Sold out!"));
                         System.out.println("Thank you for your service. Anything else?");
                         boolean buyMore = false;
-                        while(true){
+                        while (true) {
                             request = input.next();
-                            if(request.toLowerCase().equals("yes")){                 
+                            if (request.toLowerCase().equals("yes")) {
+                                printWares();
                                 break;
-                            } else if(request.toLowerCase().equals("no")){
+                            } else if (request.toLowerCase().equals("no")) {
                                 buyMore = true;
                                 break;
                             } else {
                                 System.out.println("Dont understand what you mean");
                             }
                         }
-                        if(buyMore){
+                        if (buyMore) {
                             break;
                         }
                     } else {
@@ -75,5 +71,20 @@ public class Shop {
             }
 
         }
+    }
+
+    public int printWares() {
+        int i = 1;
+        for (Item item : buyable) {
+            if (!item.getName().equals("Sold out!")) {
+                System.out.println(item.getName() + "(" + i + ")");
+            } else {
+                System.out.println(item.getName());
+            }
+            i++;
+
+        }
+        System.out.println("Please choose an item based on their numbering");
+        return i;
     }
 }

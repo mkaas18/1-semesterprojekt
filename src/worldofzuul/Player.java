@@ -83,7 +83,10 @@ public class Player {
         statSummary += "\n\tAgility: " + getAgility();
         statSummary += "\n\tStrength: " + getStrength();
         statSummary += "\n\tIntelligence: " + getIntelligence();
-        statSummary += "\n\tEndurance: " + getEndurance();
+        statSummary += "\n\tEndurance: " + getEndurance() + "\n";
+        for(Item item : inventory){
+            statSummary += "\n" + item.getName();
+        }
         return statSummary;
     }
     
@@ -102,6 +105,7 @@ public class Player {
         addIntelligence(-item.getStats().getIntelligence());
         addEndurance(-item.getStats().getEndurance());
     }
+    
 
 }
 
