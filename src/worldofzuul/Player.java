@@ -58,6 +58,13 @@ public class Player {
         this.stats.setIntelligence(this.stats.getIntelligence() + amount);
     }
 
+    public void getInventory() {
+        for (Item item : inventory) {
+            System.out.println(item);
+            System.out.println(item.getStats());
+        }
+    }
+
     @Override
     public String toString() {
         String statSummary = getName() + "'s Stats:";

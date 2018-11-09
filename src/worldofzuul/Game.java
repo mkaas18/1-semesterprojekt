@@ -1,6 +1,7 @@
 package worldofzuul;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Game {
@@ -13,6 +14,8 @@ public class Game {
     Scanner userName = new Scanner(System.in);
 
     public Game() {
+        System.out.println("Hallo and Welcome to our textbased game.");
+        System.out.println("Type in your awesome player name:");
         player = new Player(userName.next());
         parser = new Parser();
         createWorld();
@@ -89,6 +92,8 @@ public class Game {
             wantToQuit = quit(command);
         } else if (commandWord == CommandWord.SHOWSTATS) {
             System.out.println(player);
+        } else if (commandWord == CommandWord.SHOWINVENTORY) {
+                player.getInventory();
         }
 
         return wantToQuit;
@@ -116,7 +121,7 @@ public class Game {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
-        if ((int) (Math.floor(Math.random() * 10)) > 7) {
+        if ((int) (Math.floor(Math.random() * 10)) > 3) {
             exitGame = getRandomMonster().combatInitiate(questions, player);
         }
         return exitGame;

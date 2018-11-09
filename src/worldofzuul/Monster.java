@@ -94,14 +94,14 @@ public class Monster {
                     break;
             }
         }
-        if (player.getHP() < 0) {
+        if (player.getHP() <= 0) {
             System.out.println("You have no health left.");
             System.out.println("Game over.");
             return true;
         } else {
             Item droppedItem = new ItemGenerator().generateItem(1);
-            System.out.println("The " + this.name + " perished.");
-            System.out.println("The " + this.name + " dropped " + droppedItem.getName() + " and you picked it up.");
+            System.out.println("The " + this.name + " perished and dropped " + droppedItem.getName());
+//            System.out.println("The " + this.name + " dropped " + droppedItem.getName() + " and you picked it up.");
             player.pickupItem(droppedItem);
             return false;
         }
