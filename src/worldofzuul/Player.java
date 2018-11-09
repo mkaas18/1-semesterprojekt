@@ -60,7 +60,8 @@ public class Player {
 
     public void getInventory() {
         for (Item item : inventory) {
-            System.out.println(item);
+            System.out.print(inventory.indexOf(item));
+            System.out.println(" " + item);
             System.out.println(item.getStats());
         }
     }
@@ -75,7 +76,7 @@ public class Player {
         statSummary += "\n\tEndurance: " + getEndurance();
         return statSummary;
     }
-    
+
     public void pickupItem(Item item) {
         inventory.add(item);
         addAgility(item.getStats().getAgility());
@@ -83,7 +84,7 @@ public class Player {
         addIntelligence(item.getStats().getIntelligence());
         addEndurance(item.getStats().getEndurance());
     }
-    
+
     public void dropItem(Item item) {
         inventory.remove(item);
         addAgility(-item.getStats().getAgility());
