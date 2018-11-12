@@ -11,7 +11,7 @@ public class Game
     private Question questions;
     private Player player;
     private MonsterDatabase monsterDatabase;
-
+    private Map map = new Map(7);
 
     public Game() 
     {
@@ -19,7 +19,6 @@ public class Game
         createWorld();
     }
     public void createWorld(){
-        Map map = new Map(7);
         currentRoom = map.getStartingRoom();
         createItems();
         createMonsters();
@@ -91,6 +90,8 @@ public class Game
             wantToQuit = quit(command);
         } else if (commandWord == CommandWord.SHOWSTATS){
             System.out.println(player);
+        } else if (commandWord == CommandWord.SHOWMAP){
+            map.printMap();
         }
 
         return wantToQuit;

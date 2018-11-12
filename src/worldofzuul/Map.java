@@ -1,6 +1,11 @@
 package worldofzuul;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Map {
 
@@ -27,80 +32,73 @@ public class Map {
     ArrayList<Room> levelOneRoomList = new ArrayList<>();
     ArrayList<Room> levelTwoRoomList = new ArrayList<>();
     ArrayList<Room> levelThreeRoomList = new ArrayList<>();
+    Room[][] levelOne;
+    Room[][] levelTwo;
+    Room[][] levelThree;
 
     public Map(int levelSize) {
 
-        this.levelOneRoomList.add(wineCellar);
-        this.levelOneRoomList.add(armoury);
-        this.levelOneRoomList.add(tortureRoom);
-        this.levelOneRoomList.add(jailRoom);
-        this.levelOneRoomList.add(roomRoom);
-        this.levelOneRoomList.add(stairRoom);
-        this.levelTwoRoomList.add(wineCellar2);
-        this.levelTwoRoomList.add(armoury2);
-        this.levelTwoRoomList.add(tortureRoom2);
-        this.levelTwoRoomList.add(jailRoom2);
-        this.levelTwoRoomList.add(roomRoom2);
-        this.levelTwoRoomList.add(stairRoom3);
-        this.levelThreeRoomList.add(wineCellar3);
-        this.levelThreeRoomList.add(armoury3);
-        this.levelThreeRoomList.add(tortureRoom3);
-        this.levelThreeRoomList.add(jailRoom3);
-        this.levelThreeRoomList.add(roomRoom3);
-        
-        Room[][] levelOne = new Room[levelSize][levelSize];
-        Room[][] levelTwo = new Room[levelSize][levelSize];
-        Room[][] levelThree = new Room[levelSize][levelSize];
+        //TODO relative pathing for files
+        File levelOneRooms = new File("E:\\Users\\Trux\\1-semesterprojekt\\levelOneRooms.txt");
+        File levelTwoRooms = new File("E:\\Users\\Trux\\1-semesterprojekt\\levelTwoRooms.txt");
+        File levelThreeRooms = new File("E:\\Users\\Trux\\1-semesterprojekt\\levelThreeRooms.txt");
+
+        try {
+            Scanner sc = new Scanner(levelOneRooms);
+            while (sc.hasNext()) {
+                levelOneRoomList.add(new Room(sc.nextLine()));
+            }
+            sc.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("File not found, shutting down");
+        }
+
+        try {
+            Scanner sc = new Scanner(levelTwoRooms);
+            while (sc.hasNext()) {
+                levelTwoRoomList.add(new Room(sc.nextLine()));
+            }
+            sc.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("File not found, shutting down");
+        }
+
+        try {
+            Scanner sc = new Scanner(levelThreeRooms);
+            while (sc.hasNext()) {
+                levelThreeRoomList.add(new Room(sc.nextLine()));
+            }
+            sc.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("File not found, shutting down");
+        }
+
+        this.levelOne = new Room[levelSize][levelSize];
+        this.levelTwo = new Room[levelSize][levelSize];
+        this.levelThree = new Room[levelSize][levelSize];
         System.out.println("Map Initialised");
 
         int startingRoomPos = levelSize / 2;
-        levelOne[startingRoomPos][startingRoomPos] = startingRoom;
-        levelTwo[startingRoomPos][startingRoomPos] = stairRoom2;
-        levelThree[startingRoomPos][startingRoomPos] = stairRoom4;
+        this.levelOne[startingRoomPos][startingRoomPos] = startingRoom;
+        this.levelTwo[startingRoomPos][startingRoomPos] = stairRoom2;
+        this.levelThree[startingRoomPos][startingRoomPos] = stairRoom4;
 
-        levelOne = genLevel(levelOne, levelOneRoomList);
-        levelTwo = genLevel(levelTwo, levelTwoRoomList);
-        levelThree = genLevel(levelThree, levelThreeRoomList);
+        this.levelOne = genLevel(this.levelOne, this.levelOneRoomList);
+        this.levelTwo = genLevel(this.levelTwo, this.levelTwoRoomList);
+        this.levelThree = genLevel(this.levelThree, this.levelThreeRoomList);
 
-        levelOne = genExits(levelOne);
-        levelTwo = genExits(levelTwo);
-        levelThree = genExits(levelThree);
-        
+        this.levelOne = genExits(this.levelOne);
+        this.levelTwo = genExits(this.levelTwo);
+        this.levelThree = genExits(this.levelThree);
+
         this.stairRoom.setExit("down", stairRoom2);
         this.stairRoom2.setExit("up", stairRoom);
         this.stairRoom3.setExit("down", stairRoom4);
         this.stairRoom4.setExit("up", stairRoom3);
-        
+
+        System.out.println("Map generated!");
         //Prints a visualisation of each layer in grid form
-        for (int y = 0; y < levelOne.length; y++) {
-            for (int x = 0; x < levelOne[y].length; x++) {
-                if (levelOne[y][x] != null) {
-                    System.out.print(" " + levelOne[y][x]);
-                }
-                System.out.print(" \t");
-            }
-            System.out.println("");
-        }
-
-        for (int y = 0; y < levelTwo.length; y++) {
-            for (int x = 0; x < levelTwo[y].length; x++) {
-                if (levelTwo[y][x] != null) {
-                    System.out.print(" " + levelTwo[y][x]);
-                }
-                System.out.print(" \t");
-            }
-            System.out.println("");
-        }
-
-        for (int y = 0; y < levelThree.length; y++) {
-            for (int x = 0; x < levelThree[y].length; x++) {
-                if (levelThree[y][x] != null) {
-                    System.out.print(" " + levelThree[y][x]);
-                }
-                System.out.print(" \t");
-            }
-            System.out.println("");
-        }
+        printMap();
     }
 
     public static Room[][] genNeighbours(Room[][] map, int x, int y, ArrayList<Room> roomList) {
@@ -182,6 +180,49 @@ public class Map {
             }
         }
         return level;
+    }
+
+    public void printMap() {
+        //Prints a visualisation of each layer in grid form
+        System.out.println("Level one:");
+        for (int y = 0; y < this.levelOne.length; y++) {
+            for (int x = 0; x < this.levelOne[y].length; x++) {
+                if (this.levelOne[y][x] != null) {
+                    if (this.levelOne[y][x].getShortDescription() == "in the starting area") {
+                        System.out.print(" ■");
+                    } else {
+                        System.out.print(" □");
+                    }
+                }
+            }
+            System.out.println("");
+        }
+        System.out.println("Level two:");
+        for (int y = 0; y < this.levelTwo.length; y++) {
+            for (int x = 0; x < this.levelTwo[y].length; x++) {
+                if (this.levelTwo[y][x] != null) {
+                    if (this.levelTwo[y][x].getShortDescription() == "in the starting area") {
+                        System.out.print(" ■");
+                    } else {
+                        System.out.print(" □");
+                    }
+                }
+            }
+            System.out.println("");
+        }
+        System.out.println("Level three");
+        for (int y = 0; y < this.levelThree.length; y++) {
+            for (int x = 0; x < this.levelThree[y].length; x++) {
+                if (this.levelThree[y][x] != null) {
+                    if (this.levelThree[y][x].getShortDescription() == "in the starting area") {
+                        System.out.print(" ■");
+                    } else {
+                        System.out.print(" □");
+                    }
+                }
+            }
+            System.out.println("");
+        }
     }
 
     public Room getStartingRoom() {
