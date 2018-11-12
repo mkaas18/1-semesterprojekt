@@ -10,23 +10,8 @@ import java.util.logging.Logger;
 public class Map {
 
     Room startingRoom = new Room("in the starting area");
-    Room wineCellar = new Room("1");
-    Room armoury = new Room("2");
-    Room tortureRoom = new Room("3");
-    Room jailRoom = new Room("4");
-    Room roomRoom = new Room("5");
     Room stairRoom = new Room("in a room with a winding staircase");
-    Room wineCellar2 = new Room("6");
-    Room armoury2 = new Room("7");
-    Room tortureRoom2 = new Room("8");
-    Room jailRoom2 = new Room("9");
-    Room roomRoom2 = new Room("10");
     Room stairRoom2 = new Room("in a room with a winding staircase");
-    Room wineCellar3 = new Room("11");
-    Room armoury3 = new Room("12");
-    Room tortureRoom3 = new Room("13");
-    Room jailRoom3 = new Room("14");
-    Room roomRoom3 = new Room("15");
     Room stairRoom3 = new Room("in a room with a winding staircase");
     Room stairRoom4 = new Room("in a room with a winding staircase");
     ArrayList<Room> levelOneRoomList = new ArrayList<>();
@@ -39,39 +24,13 @@ public class Map {
     public Map(int levelSize) {
 
         //TODO relative pathing for files
-        File levelOneRooms = new File("E:\\Users\\Trux\\1-semesterprojekt\\levelOneRooms.txt");
-        File levelTwoRooms = new File("E:\\Users\\Trux\\1-semesterprojekt\\levelTwoRooms.txt");
-        File levelThreeRooms = new File("E:\\Users\\Trux\\1-semesterprojekt\\levelThreeRooms.txt");
+        File levelOneRoomDescriptions = new File("E:\\Users\\Trux\\1-semesterprojekt\\levelOneRooms.txt");
+        File levelTwoRoomDescriptions = new File("E:\\Users\\Trux\\1-semesterprojekt\\levelTwoRooms.txt");
+        File levelThreeRoomDescriptions = new File("E:\\Users\\Trux\\1-semesterprojekt\\levelThreeRooms.txt");
 
-        try {
-            Scanner sc = new Scanner(levelOneRooms);
-            while (sc.hasNext()) {
-                levelOneRoomList.add(new Room(sc.nextLine()));
-            }
-            sc.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("File not found, shutting down");
-        }
-
-        try {
-            Scanner sc = new Scanner(levelTwoRooms);
-            while (sc.hasNext()) {
-                levelTwoRoomList.add(new Room(sc.nextLine()));
-            }
-            sc.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("File not found, shutting down");
-        }
-
-        try {
-            Scanner sc = new Scanner(levelThreeRooms);
-            while (sc.hasNext()) {
-                levelThreeRoomList.add(new Room(sc.nextLine()));
-            }
-            sc.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("File not found, shutting down");
-        }
+        importRooms(levelOneRoomDescriptions, levelOneRoomList);
+        importRooms(levelTwoRoomDescriptions, levelTwoRoomList);
+        importRooms(levelThreeRoomDescriptions, levelThreeRoomList);
 
         this.levelOne = new Room[levelSize][levelSize];
         this.levelTwo = new Room[levelSize][levelSize];
@@ -222,6 +181,18 @@ public class Map {
                 }
             }
             System.out.println("");
+        }
+    }
+
+    public static void importRooms(File roomFile, ArrayList<Room> levelRoomList) {
+        try {
+            Scanner sc = new Scanner(roomFile);
+            while (sc.hasNext()) {
+                levelRoomList.add(new Room(sc.nextLine()));
+            }
+            sc.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("File not found, shutting down");
         }
     }
 
