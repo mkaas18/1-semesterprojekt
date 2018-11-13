@@ -30,17 +30,18 @@ public class Game {
 
     public void createItems() {
 
+        ItemDatabase itemDatabase = new ItemDatabase();
         ItemGenerator itemGenerator = new ItemGenerator();
 
-//        for (int i = 0; i < 10; i++) {
-//
-//            Item item = itemGenerator.generateItem(1);
+        for (int i = 0; i < 10; i++) {
+
+            Item item = itemGenerator.generateItem(1);
 //            System.out.println(item.getName());
 //            System.out.println(item.getStats().toString());
 //            System.out.println();   
-//            itemDatabase.addItem(item);
-//        }
-    }
+            itemDatabase.addItem(item);
+        }
+//    }
 
     public void createMonsters() {
 
