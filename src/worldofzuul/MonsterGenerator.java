@@ -45,16 +45,16 @@ public class MonsterGenerator {
         bossWordtwo.add("the E-tivitet");
     }
 
-    public Monster generateMonster() {
-        Monster monster = new Monster();
+    public Monster generateMonster(int difficulty) {
+        Monster monster = new Monster(generateMonsterName(), difficulty);
         monster.setName(generateMonsterName());
-        currentRoom.getDifficulty();
+        return monster;
     }
 
     public Monster generateBoss() {
-        Monster boss = new Monster();
+        Monster boss = new Monster(generateBossName(), 4);
         boss.setName(generateBossName());
-        currentRoom.getDifficulty();
+        return boss;
     }
 
     public String generateMonsterName() {

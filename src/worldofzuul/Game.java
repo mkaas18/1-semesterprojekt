@@ -98,7 +98,7 @@ public class Game {
         String direction = command.getSecondWord();
         Room nextRoom = currentRoom.getExit(direction);
         if ((int) (Math.floor(Math.random() * 10)) > 7 && nextRoom != null) {
-            new Monster(new MonsterGenerator().generateMonster(), 1).combatInitiate(questions, player);
+           new MonsterGenerator().generateMonster(currentRoom.getDifficulty()).combatInitiate(questions, player);
         }
         if (nextRoom == null) {
             System.out.println("There is no door!");
