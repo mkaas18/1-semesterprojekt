@@ -1,11 +1,11 @@
 package worldofzuul;
 
-
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
+public class Game {
 
-public class Game 
-{
     private Parser parser;
     private Room currentRoom;
     private Question questions;
@@ -13,48 +13,19 @@ public class Game
     private MonsterDatabase monsterDatabase;
     private Map map = new Map(7);
 
-    public Game() 
-    {
+    public Game() {
+        System.out.println("Hallo and Welcome to our textbased game.");
+        System.out.println("Type in your awesome player name:");
+        Scanner userName = new Scanner(System.in);
+        player = new Player(userName.next());
+        userName.close();
         parser = new Parser();
-        createWorld();
-    }
-    public void createWorld(){
         currentRoom = map.getStartingRoom();
-        createItems();
-        createMonsters();
-        player = new Player("Boii", 100, 7);
     }
 
-    public void createItems() {
-
-        ItemDatabase itemDatabase = new ItemDatabase();
-        ItemGenerator itemGenerator = new ItemGenerator();
-
-        for (int i = 0; i < 10; i++) {
-
-            Item item = itemGenerator.generateItem(1);
-            System.out.println(item.getName());
-            System.out.println(item.getStats().toString());
-            System.out.println();   
-            itemDatabase.addItem(item);
-        }
-
-    }
-
-    public void createMonsters() {
-        
-        monsterDatabase = new MonsterDatabase();
-        MonsterGenerator monsterGenerator = new MonsterGenerator();
-        
-        for (int i = 0; i < 10; i++) {
-            
-            Monster monster = new Monster(monsterGenerator.generateMonster(), 1);
-            monsterDatabase.addMonster(monster);
-        }
-    }
-    
     public void play() {
-        while(!pickDifficulty()){}
+        while (!pickDifficulty()) {
+        }
         printWelcome();
         boolean finished = false;
         while (!finished) {
@@ -66,8 +37,8 @@ public class Game
 
     private void printWelcome() {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("--  Welcome to the Wrath of the Mathknight  --");
+        System.out.println("Wrath of the Mathknight is a new, incredibly exciting adventure game.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -85,13 +56,22 @@ public class Game
         if (commandWord == CommandWord.HELP) {
             printHelp();
         } else if (commandWord == CommandWord.GO) {
-            goRoom(command);
+            wantToQuit = goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
-        } else if (commandWord == CommandWord.SHOWSTATS){
-            System.out.println(player);
-        } else if (commandWord == CommandWord.SHOWMAP){
+        } else if (commandWord == CommandWord.SHOWMAP) {
             map.printMap();
+        } else if (commandWord == CommandWord.SHOWSTATS) {
+            System.out.println(player);
+        } else if (commandWord == CommandWord.SHOWINVENTORY) {
+            player.getInventory();
+        } else if (commandWord == commandWord.USEHEALING) {
+            if (player.getPotInventory().isEmpty()) {
+                System.out.println("You dont have any healing potions - Defeat math monsters to get more.");
+            } else {
+                player.useHealing();
+            }
+
         }
 
         return wantToQuit;
@@ -99,23 +79,22 @@ public class Game
 
     private void printHelp() {
         System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("around at the Dungeon.");
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
     }
 
-    private void goRoom(Command command) {
+    private boolean goRoom(Command command) {
+        boolean exitGame = false;
         if (!command.hasSecondWord()) {
             System.out.println("Go where?");
-            return;
+            return false;
         }
-
         String direction = command.getSecondWord();
-
         Room nextRoom = currentRoom.getExit(direction);
-        if((int)(Math.floor(Math.random()*10)) > 7){
-            getRandomMonster().combatInitiate(questions, player);
+
+        if ((int) (Math.floor(Math.random() * 10)) > 7 && nextRoom != null) {
         }
         if (nextRoom == null) {
             System.out.println("There is no door!");
@@ -123,11 +102,13 @@ public class Game
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
+        return exitGame;
     }
-    private boolean pickDifficulty(){
+
+    private boolean pickDifficulty() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Please pick a difficulty:\nEasy\nNormal\nHard");
-        switch(scan.next()){
+        switch (scan.next().toLowerCase()) {
             case "easy":
                 questions = new QuestionEasy();
                 System.out.println("You've picked 'Easy'");
@@ -145,9 +126,7 @@ public class Game
                 return false;
         }
     }
-    private Monster getRandomMonster(){  
-        return monsterDatabase.getMonster((int) Math.floor(Math.random() * 9.0));
-    }
+
     private boolean quit(Command command) {
         if (command.hasSecondWord()) {
             System.out.println("Quit what?");

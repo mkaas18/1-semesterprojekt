@@ -2,6 +2,11 @@ package worldofzuul;
 
 import java.util.ArrayList;
 
+/*
+Skal denne klasse bruges??
+Ellers sletter vi den bare, synes nemlig vi skal fokuser på andre ting før vi adder "nice to have" ting.
+*/
+
 public class ChestGenerator {
 
     ArrayList<Item> chestList = new ArrayList<>();

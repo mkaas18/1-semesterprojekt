@@ -1,15 +1,20 @@
 package worldofzuul;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+=======
+import java.util.ArrayList;
+>>>>>>> origin/Items
 
 public class Map {
 
     Room startingRoom = new Room("in the starting area");
+<<<<<<< HEAD
     Room stairRoom = new Room("in a room with a winding staircase");
     Room stairRoom2 = new Room("in a room with a winding staircase");
     Room stairRoom3 = new Room("in a room with a winding staircase");
@@ -52,14 +57,111 @@ public class Map {
         this.levelTwo = genExits(this.levelTwo);
         this.levelThree = genExits(this.levelThree);
 
+=======
+    Room wineCellar = new Room("1");
+    Room armoury = new Room("2");
+    Room tortureRoom = new Room("3");
+    Room jailRoom = new Room("4");
+    Room roomRoom = new Room("5");
+    Room stairRoom = new Room("in a room with a winding staircase that connects starting level to level 1 ");
+    Room wineCellar2 = new Room("6");
+    Room armoury2 = new Room("7");
+    Room tortureRoom2 = new Room("8");
+    Room jailRoom2 = new Room("9");
+    Room roomRoom2 = new Room("10");
+    Room stairRoom2 = new Room("in a room with a winding staircase that connect level 2 and 3");
+    Room wineCellar3 = new Room("11");
+    Room armoury3 = new Room("12");
+    Room tortureRoom3 = new Room("13");
+    Room jailRoom3 = new Room("14");
+    Room roomRoom3 = new Room("15");
+    Room stairRoom3 = new Room("in a room with a winding staircase that connects level 2 and 3");
+    Room stairRoom4 = new Room("in a room with a winding staircase that connects level 3 and Boss room");
+    ArrayList<Room> levelOneRoomList = new ArrayList<>();
+    ArrayList<Room> levelTwoRoomList = new ArrayList<>();
+    ArrayList<Room> levelThreeRoomList = new ArrayList<>();
+
+    public Map(int levelSize) {
+
+        this.levelOneRoomList.add(wineCellar);
+        this.levelOneRoomList.add(armoury);
+        this.levelOneRoomList.add(tortureRoom);
+        this.levelOneRoomList.add(jailRoom);
+        this.levelOneRoomList.add(roomRoom);
+        this.levelOneRoomList.add(stairRoom);
+        this.levelTwoRoomList.add(wineCellar2);
+        this.levelTwoRoomList.add(armoury2);
+        this.levelTwoRoomList.add(tortureRoom2);
+        this.levelTwoRoomList.add(jailRoom2);
+        this.levelTwoRoomList.add(roomRoom2);
+        this.levelTwoRoomList.add(stairRoom3);
+        this.levelThreeRoomList.add(wineCellar3);
+        this.levelThreeRoomList.add(armoury3);
+        this.levelThreeRoomList.add(tortureRoom3);
+        this.levelThreeRoomList.add(jailRoom3);
+        this.levelThreeRoomList.add(roomRoom3);
+        
+        Room[][] levelOne = new Room[levelSize][levelSize];
+        Room[][] levelTwo = new Room[levelSize][levelSize];
+        Room[][] levelThree = new Room[levelSize][levelSize];
+        System.out.println("Map Initialised");
+
+        int startingRoomPos = levelSize / 2;
+        levelOne[startingRoomPos][startingRoomPos] = startingRoom;
+        levelTwo[startingRoomPos][startingRoomPos] = stairRoom2;
+        levelThree[startingRoomPos][startingRoomPos] = stairRoom4;
+
+        levelOne = genLevel(levelOne, levelOneRoomList);
+        levelTwo = genLevel(levelTwo, levelTwoRoomList);
+        levelThree = genLevel(levelThree, levelThreeRoomList);
+
+        levelOne = genExits(levelOne);
+        levelTwo = genExits(levelTwo);
+        levelThree = genExits(levelThree);
+        
+>>>>>>> origin/Items
         this.stairRoom.setExit("down", stairRoom2);
         this.stairRoom2.setExit("up", stairRoom);
         this.stairRoom3.setExit("down", stairRoom4);
         this.stairRoom4.setExit("up", stairRoom3);
+<<<<<<< HEAD
 
         System.out.println("Map generated!");
         //Prints a visualisation of each layer in grid form
         printMap();
+=======
+        
+        //Prints a visualisation of each layer in grid form
+        for (int y = 0; y < levelOne.length; y++) {
+            for (int x = 0; x < levelOne[y].length; x++) {
+                if (levelOne[y][x] != null) {
+                    System.out.print(" " + levelOne[y][x]);
+                }
+                System.out.print(" \t");
+            }
+            System.out.println("");
+        }
+
+        for (int y = 0; y < levelTwo.length; y++) {
+            for (int x = 0; x < levelTwo[y].length; x++) {
+                if (levelTwo[y][x] != null) {
+                    System.out.print(" " + levelTwo[y][x]);
+                }
+                System.out.print(" \t");
+            }
+            System.out.println("");
+        }
+
+        for (int y = 0; y < levelThree.length; y++) {
+            for (int x = 0; x < levelThree[y].length; x++) {
+                if (levelThree[y][x] != null) {
+                    System.out.print(" " + levelThree[y][x]);
+                }
+                System.out.print(" \t");
+            }
+            System.out.println("");
+        }
+>>>>>>> origin/Items
     }
 
     public static Room[][] genNeighbours(Room[][] map, int x, int y, ArrayList<Room> roomList) {
@@ -143,6 +245,7 @@ public class Map {
         return level;
     }
 
+<<<<<<< HEAD
     public void printMap() {
         //Prints a visualisation of each layer in grid form
         System.out.println("Level one:");
@@ -198,6 +301,8 @@ public class Map {
         }
     }
 
+=======
+>>>>>>> origin/Items
     public Room getStartingRoom() {
         return this.startingRoom;
     }

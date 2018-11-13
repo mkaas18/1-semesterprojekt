@@ -8,8 +8,8 @@ public class Stats {
     private int endurance = 0;
     private int strength = 0;
     private int agility = 0;
+
     private int value = 0;
-    // andre?
 
     public Stats() {
     }

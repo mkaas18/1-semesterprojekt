@@ -19,7 +19,5 @@ public class MonsterDatabase {
     public Monster getMonster(int i) {
         return MonsterList.get(i);
     }
-
-
-
+    
 }
