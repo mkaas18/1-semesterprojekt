@@ -86,7 +86,14 @@ public class Game {
         System.out.println("around at the Dungeon.");
         System.out.println();
         System.out.println("Your command words are:");
-        parser.showCommands();
+//        parser.showCommands();
+        System.out.println("Help: \t\tShows your commands.");
+        System.out.println("Usehealing: \tUse healing potions");
+        System.out.println("Shop: \t\tIf there is a shop in your room, your can type shop to enter the shop");
+        System.out.println("Showmap: \tShows the map.");
+        System.out.println("Go: \t\tGo the direction you like.");
+        System.out.println("Quit: \t\tQuits the game.");
+        System.out.println("Showinventory: \tShows your inventory.");
     }
 
     private boolean goRoom(Command command) {
@@ -98,7 +105,7 @@ public class Game {
         String direction = command.getSecondWord();
         Room nextRoom = currentRoom.getExit(direction);
         if ((int) (Math.floor(Math.random() * 10)) > 7 && nextRoom != null) {
-           new MonsterGenerator().generateMonster(currentRoom.getDifficulty()).combatInitiate(questions, player);
+            new MonsterGenerator().generateMonster(currentRoom.getDifficulty()).combatInitiate(questions, player);
         }
         if (nextRoom == null) {
             System.out.println("There is no door!");
