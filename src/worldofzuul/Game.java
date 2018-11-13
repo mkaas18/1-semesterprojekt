@@ -55,7 +55,6 @@ public class Game {
         }
         if (commandWord == CommandWord.HELP) {
             printHelp();
-            events.triggerEvent();
         } else if (commandWord == CommandWord.GO) {
             wantToQuit = goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {
@@ -104,8 +103,10 @@ public class Game {
         }
         String direction = command.getSecondWord();
         Room nextRoom = currentRoom.getExit(direction);
-        if ((int) (Math.floor(Math.random() * 10)) > 7 && nextRoom != null) {
+        if ((int) (Math.floor(Math.random() * 100)+1) > 80 && nextRoom != null) {
             new MonsterGenerator().generateMonster(currentRoom.getDifficulty()).combatInitiate(questions, player);
+        } else if((int) (Math.floor(Math.random() * 100)+1) > 95 && nextRoom != null){
+            events.triggerEvent();
         }
         if (nextRoom == null) {
             System.out.println("There is no door!");

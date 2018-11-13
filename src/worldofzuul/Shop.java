@@ -71,6 +71,7 @@ public class Shop {
             }
 
         }
+        System.out.println("Thank you for your patronage!");
     }
 
     public int printWares() {
