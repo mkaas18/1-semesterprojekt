@@ -86,7 +86,6 @@ public class Game {
         System.out.println("around at the Dungeon.");
         System.out.println();
         System.out.println("Your command words are:");
-//        parser.showCommands();
         System.out.println("Help: \t\tShows your commands.");
         System.out.println("Usehealing: \tUse healing potions");
         System.out.println("Shop: \t\tIf there is a shop in your room, your can type shop to enter the shop");
@@ -94,6 +93,7 @@ public class Game {
         System.out.println("Go: \t\tGo the direction you like.");
         System.out.println("Quit: \t\tQuits the game.");
         System.out.println("Showinventory: \tShows your inventory.");
+        System.out.println("Showstats \tShows your stats.");
     }
 
     private boolean goRoom(Command command) {

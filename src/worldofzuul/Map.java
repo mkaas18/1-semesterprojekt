@@ -12,6 +12,9 @@ public class Map {
     Room stairRoom2 = new Room("in a room with a winding staircase", 0);
     Room stairRoom3 = new Room("in a room with a winding staircase", 0);
     Room stairRoom4 = new Room("in a room with a winding staircase", 0);
+    Room levelOneShop = new Room("dwarfs shopping room, you see a tiny dwarf standing behind the counter", 0);
+    Room levelTwoShop = new Room("high elfs shopping quarters, he looks unusually clean in comparison to the rest of the room", 0);
+    Room levelThreeShop = new Room("wyverns store, it pretty cold in here!", 0);
     ArrayList<Room> levelOneRoomList = new ArrayList<>();
     ArrayList<Room> levelTwoRoomList = new ArrayList<>();
     ArrayList<Room> levelThreeRoomList = new ArrayList<>();
@@ -30,7 +33,13 @@ public class Map {
         importRooms(levelTwoRoomDescriptions, levelTwoRoomList, 2);
         importRooms(levelThreeRoomDescriptions, levelThreeRoomList, 3);
 
-        //Add stair rooms
+        //Add stair & shop rooms
+        this.levelOneRoomList.add(levelOneShop);
+        this.levelOneShop.setShop(true);
+        this.levelTwoRoomList.add(levelTwoShop);
+        this.levelTwoShop.setShop(true);
+        this.levelThreeRoomList.add(levelThreeShop);
+        this.levelThreeShop.setShop(true);
         this.levelOneRoomList.add(stairRoom);
         this.levelTwoRoomList.add(stairRoom3);
 
