@@ -26,7 +26,7 @@ public class MonsterGenerator {
         firstWord.add("Gnome");
         firstWord.add("Thief");
         firstWord.add("Bandit");
-        
+
         bossWord.add("King");
         bossWord.add("Queen");
 
@@ -39,7 +39,7 @@ public class MonsterGenerator {
         lastWord.add("Math");
         lastWord.add("the Dragons");
         lastWord.add("the Windseers");
-        
+
         bossWordtwo.add("the Andees");
         bossWordtwo.add("the Mountains");
         bossWordtwo.add("the E-tivitet");
@@ -49,21 +49,21 @@ public class MonsterGenerator {
         Monster monster = new Monster();
         monster.setName(generateMonsterName());
         currentRoom.getDifficulty();
-}
+    }
 
-        public Monster generateBoss() {
+    public Monster generateBoss() {
         Monster boss = new Monster();
         boss.setName(generateBossName());
         currentRoom.getDifficulty();
-}
-    
+    }
+
     public String generateMonsterName() {
         int i = (int) Math.floor(Math.random() * firstWord.size());
         int k = (int) Math.floor(Math.random() * lastWord.size());
         String name = (firstWord.get(i) + " " + middleWord.get(0) + " " + lastWord.get(k));
         return name;
     }
-    
+
     public String generateBossName() {
         int i = (int) Math.floor(Math.random() * bossWord.size());
         int k = (int) Math.floor(Math.random() * bossWordtwo.size());

@@ -11,13 +11,10 @@ public class Monster {
     public String bossName;
     private int hp;
     private String type;
-    
-    
+
     public Monster() {
         this.hp = 100;
     }
-    
-    
 
     public Monster(String name, int difficulty) {
         this.name = name;
@@ -59,7 +56,7 @@ public class Monster {
     int getDifficulty() {
         return this.difficulty;
     }
-    
+
 //Monster QuestionResults
     public void combat(QuestionResults results, Player player) {
         Scanner getAnswer = new Scanner(System.in);
