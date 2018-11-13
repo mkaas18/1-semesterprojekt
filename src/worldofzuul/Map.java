@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 public class Map {
 
-    Room startingRoom = new Room("in the starting area");
-    Room stairRoom = new Room("in a room with a winding staircase");
-    Room stairRoom2 = new Room("in a room with a winding staircase");
-    Room stairRoom3 = new Room("in a room with a winding staircase");
-    Room stairRoom4 = new Room("in a room with a winding staircase");
+    Room startingRoom = new Room("in the starting area", 0);
+    Room stairRoom = new Room("in a room with a winding staircase", 0);
+    Room stairRoom2 = new Room("in a room with a winding staircase", 0);
+    Room stairRoom3 = new Room("in a room with a winding staircase", 0);
+    Room stairRoom4 = new Room("in a room with a winding staircase", 0);
     ArrayList<Room> levelOneRoomList = new ArrayList<>();
     ArrayList<Room> levelTwoRoomList = new ArrayList<>();
     ArrayList<Room> levelThreeRoomList = new ArrayList<>();
@@ -26,9 +26,9 @@ public class Map {
         File levelTwoRoomDescriptions = new File("levelTwoRooms.txt");
         File levelThreeRoomDescriptions = new File("levelThreeRooms.txt");
 
-        importRooms(levelOneRoomDescriptions, levelOneRoomList);
-        importRooms(levelTwoRoomDescriptions, levelTwoRoomList);
-        importRooms(levelThreeRoomDescriptions, levelThreeRoomList);
+        importRooms(levelOneRoomDescriptions, levelOneRoomList, 1);
+        importRooms(levelTwoRoomDescriptions, levelTwoRoomList, 2);
+        importRooms(levelThreeRoomDescriptions, levelThreeRoomList, 3);
 
         //Add stair rooms
         this.levelOneRoomList.add(stairRoom);
@@ -186,11 +186,11 @@ public class Map {
         }
     }
 
-    public static void importRooms(File roomFile, ArrayList<Room> levelRoomList) {
+    public static void importRooms(File roomFile, ArrayList<Room> levelRoomList, int difficulty) {
         try {
             Scanner sc = new Scanner(roomFile);
             while (sc.hasNext()) {
-                levelRoomList.add(new Room(sc.nextLine()));
+                levelRoomList.add(new Room(sc.nextLine(), difficulty));
             }
             sc.close();
         } catch (FileNotFoundException ex) {

@@ -7,18 +7,15 @@ public class MonsterGenerator {
     ArrayList<String> firstWord;
     ArrayList<String> middleWord;
     ArrayList<String> lastWord;
-/*    ArrayList<String> bossWord;
+    ArrayList<String> bossWord;
     ArrayList<String> bossWordtwo;
-    */
 
     public MonsterGenerator() {
         this.firstWord = new ArrayList<>();
         this.middleWord = new ArrayList<>();
         this.lastWord = new ArrayList<>();
-        /*
         this.bossWord = new ArrayList<>();
         this.bossWordtwo = new ArrayList<>();
-*/
 
         firstWord.add("Orc");
         firstWord.add("Undead");
@@ -29,10 +26,9 @@ public class MonsterGenerator {
         firstWord.add("Gnome");
         firstWord.add("Thief");
         firstWord.add("Bandit");
-        /*
+        
         bossWord.add("King");
         bossWord.add("Queen");
-*/
 
         middleWord.add("of");
 
@@ -44,18 +40,34 @@ public class MonsterGenerator {
         lastWord.add("the Dragons");
         lastWord.add("the Windseers");
         
-        /*
-        bossWordtwo.add("of the Andees");
-        bossWordtwo.add("of England");
-*/
+        bossWordtwo.add("the Andees");
+        bossWordtwo.add("the Mountains");
+        bossWordtwo.add("the E-tivitet");
     }
 
+    public Monster generateMonster() {
+        Monster monster = new Monster();
+        monster.setName(generateMonsterName());
+        currentRoom.getDifficulty();
+}
 
+        public Monster generateBoss() {
+        Monster boss = new Monster();
+        boss.setName(generateBossName());
+        currentRoom.getDifficulty();
+}
     
-    public String generateMonster() {
+    public String generateMonsterName() {
         int i = (int) Math.floor(Math.random() * firstWord.size());
         int k = (int) Math.floor(Math.random() * lastWord.size());
         String name = (firstWord.get(i) + " " + middleWord.get(0) + " " + lastWord.get(k));
+        return name;
+    }
+    
+    public String generateBossName() {
+        int i = (int) Math.floor(Math.random() * bossWord.size());
+        int k = (int) Math.floor(Math.random() * bossWordtwo.size());
+        String name = (bossWord.get(i) + " " + middleWord.get(0) + " " + bossWordtwo.get(k));
         return name;
     }
 }

@@ -10,6 +10,7 @@ public class Game {
     private Room currentRoom;
     private Question questions;
     private Player player;
+<<<<<<< HEAD
     private MonsterDatabase monsterDatabase;
     private Map map = new Map(7);
     private RandomEvent events = new RandomEvent();
@@ -23,6 +24,51 @@ public class Game {
         events.createEvents();
     }
 
+=======
+
+
+    public Game() 
+    {
+        parser = new Parser();
+        createWorld();
+    }
+    public void createWorld(){
+        Map map = new Map(7);
+        currentRoom = map.getStartingRoom();
+        createItems();
+        player = new Player("Boii", 4, 7, 5, 4);
+    }
+
+    public void createItems() {
+
+        ItemDatabase itemDatabase = new ItemDatabase();
+        ItemGenerator itemGenerator = new ItemGenerator();
+
+        for (int i = 0; i < 10; i++) {
+
+            Item item = itemGenerator.generateItem();
+//            System.out.println(item.getName());
+//            System.out.println(item.getStats().toString());
+//            System.out.println();   
+            itemDatabase.addItem(item);
+        }
+
+    }
+// Original createMonsters method.
+// Creates a series of monsters when the game launches, using the monsterGenerator name arraylist
+//    public void createMonsters() {
+//        
+//        monsterDatabase = new MonsterDatabase();
+//        MonsterGenerator monsterGenerator = new MonsterGenerator();
+//        
+//        for (int i = 0; i < 10; i++) {
+//            
+//            Monster monster = new Monster(monsterGenerator.generateMonster(), 1);
+//            monsterDatabase.addMonster(monster);
+//        }
+//    }
+//    
+>>>>>>> Monster2.0
     public void play() {
         while (!pickDifficulty()) {
         }
@@ -133,7 +179,11 @@ public class Game {
                 return false;
         }
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> Monster2.0
     private boolean quit(Command command) {
         if (command.hasSecondWord()) {
             System.out.println("Quit what?");
