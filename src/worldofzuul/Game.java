@@ -14,11 +14,11 @@ public class Game {
     private RandomEvent events = new RandomEvent();
 
     public Game() {
+        parser = new Parser();
         System.out.println("Hallo and Welcome to our textbased game.");
         System.out.println("Type in your awesome player name:");
         Scanner userName = new Scanner(System.in);
         player = new Player(userName.next());
-        userName.close();
         currentRoom = map.getStartingRoom();
         events.createEvents();
     }
