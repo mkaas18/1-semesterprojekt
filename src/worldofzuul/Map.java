@@ -24,9 +24,11 @@ public class Map {
     public Map(int levelSize) {
 
         //TODO relative pathing for files
-        File levelOneRoomDescriptions = new File("E:\\Users\\Trux\\1-semesterprojekt\\levelOneRooms.txt");
-        File levelTwoRoomDescriptions = new File("E:\\Users\\Trux\\1-semesterprojekt\\levelTwoRooms.txt");
-        File levelThreeRoomDescriptions = new File("E:\\Users\\Trux\\1-semesterprojekt\\levelThreeRooms.txt");
+        File levelOneRoomDescriptions = new File("levelOneRooms.txt");
+        File levelTwoRoomDescriptions = new File("levelTwoRooms.txt");
+        File levelThreeRoomDescriptions = new File("levelThreeRooms.txt");
+            String basePath = new File("").getAbsolutePath();
+    System.out.println(basePath);
 
         importRooms(levelOneRoomDescriptions, levelOneRoomList);
         importRooms(levelTwoRoomDescriptions, levelTwoRoomList);
