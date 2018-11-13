@@ -1,5 +1,7 @@
 package worldofzuul;
 
+import java.util.Random;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -25,9 +27,9 @@ public class QuestionHard extends Question{
 
     @Override
     public QuestionResults multiplication() {
-        number1 = (getRandomNumber()*10);
-        number2 = (int)getRandomNumber()/10;
-        question = "What is " + (int)number1 + " x " + number2 + "?";
+        number1 = getRandomNumber()*10;
+        number2 = getRandomNumber()/10;
+        question = "What is " + number1 + " x " + number2 + "?";
         answer = number1 * number2;
         return results = new QuestionResults(question, answer);
     }
@@ -37,11 +39,11 @@ public class QuestionHard extends Question{
         while(true){
             number1 = (getRandomNumber()*10);
             number2 = getRandomNumber()/10.0;
-            if(number1%number2==0 && number1 != 0 && number2 > 1){
+            if(number1%number2==0 && number2 > 1){
                 break;
             }
         } 
-        question = "What is " + (int)number1 + " / " + (int)number2 + "?";
+        question = "What is " + number1 + " / " + number2 + "?";
         answer = number1 / number2;
         return results = new QuestionResults(question, answer);
     }
@@ -57,7 +59,7 @@ public class QuestionHard extends Question{
 
     @Override
     public double getRandomNumber() {    
-        return ((int)(Math.random()*1000)/10.0);
+        return new Random().nextInt(100)+1;
     }
   
     

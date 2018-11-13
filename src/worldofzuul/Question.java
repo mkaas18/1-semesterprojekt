@@ -10,6 +10,7 @@ package worldofzuul;
  *
  * @author SteamyBlizzard
  */
+//Abstract class questions.
 public abstract class Question {
     String question;
     double answer;

@@ -1,5 +1,7 @@
 package worldofzuul;
 
+import java.util.Random;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,8 +21,8 @@ public class QuestionNormal extends Question{
 
     @Override
     public QuestionResults addition() {
-        number1 = (int)getRandomNumber();
-        number2 = (int)getRandomNumber();
+        number1 = getRandomNumber();
+        number2 = getRandomNumber();
         question = "What is " + number1 + " + " + number2 + "?";
         answer = number1 + number2;
         return results = new QuestionResults(question, answer);
@@ -28,8 +30,8 @@ public class QuestionNormal extends Question{
 
     @Override
     public QuestionResults multiplication() {
-        number1 = (int)getRandomNumber()/10;
-        number2 = (int)getRandomNumber();
+        number1 = getRandomNumber()/10;
+        number2 = getRandomNumber();
         question = "What is " + (int)number1 + " x " + number2 + "?";
         answer = number1 * number2;
         return results = new QuestionResults(question, answer);
@@ -38,8 +40,8 @@ public class QuestionNormal extends Question{
     @Override
     public QuestionResults division() {
         while(true){
-            number1 = (int)getRandomNumber();
-            number2 = (int)(getRandomNumber()/10.0);
+            number1 = getRandomNumber();
+            number2 = getRandomNumber()/10.0;
             if(number1%number2==0 && number1 != 0 && number2 > 1){
                 break;
             }
@@ -51,8 +53,8 @@ public class QuestionNormal extends Question{
 
     @Override
     public QuestionResults subtraction() {
-        number1 = (int)getRandomNumber();
-        number2 = (int)getRandomNumber();
+        number1 = getRandomNumber();
+        number2 = getRandomNumber();
         question = "What is " + number1 + " - " + number2 + "?";
         answer = number1 - number2;
         return results = new QuestionResults(question, answer);
@@ -60,7 +62,7 @@ public class QuestionNormal extends Question{
 
     @Override
     public double getRandomNumber() {
-        return Math.random()*100;
+        return new Random().nextInt(100)+1;
     }
 
    

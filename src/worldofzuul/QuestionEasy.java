@@ -1,5 +1,7 @@
 package worldofzuul;
 
+import java.util.Random;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -58,7 +60,7 @@ public class QuestionEasy extends Question{
 
     @Override
     public double getRandomNumber() {
-        return (int)(Math.random()*10);
+        return new Random().nextInt(10)+1;
     }
 
 
