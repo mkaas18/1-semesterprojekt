@@ -129,7 +129,7 @@ public class Game
         switch(scan.next()){
             case "easy":
                 questions = new QuestionEasy();
-                System.out.println("You've picked 'Easy'");
+                  System.out.println("You've picked 'Easy'");
                 return true;
             case "normal":
                 questions = new QuestionNormal();
