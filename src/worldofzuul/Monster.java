@@ -71,6 +71,7 @@ public class Monster {
 
         } else {
             System.out.println("Wrong answer!");
+            System.out.println(this.name + " hit you and you lost 35 hp");
             player.addHP(-35);
         }
 
@@ -99,10 +100,19 @@ public class Monster {
             System.out.println("Game over.");
             return true;
         } else {
+            // Makes a monster drop an item.
             Item droppedItem = new ItemGenerator().generateItem(1);
             System.out.println("The " + this.name + " perished and dropped " + droppedItem.getName());
-//            System.out.println("The " + this.name + " dropped " + droppedItem.getName() + " and you picked it up.");
+
+            // Makes a monster to drop a healing potion randomly.
+            if ((int) Math.floor(Math.random() * 10) > 1) {
+                Consumable healingPot = new Consumable(30);
+                player.pickupPot(healingPot);
+                System.out.println("The monster dropped a healing potion aswell!");
+            }
+
             player.pickupItem(droppedItem);
+
             return false;
         }
     }

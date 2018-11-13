@@ -8,8 +8,10 @@ public class Stats {
     private int endurance = 0;
     private int strength = 0;
     private int agility = 0;
+
+    private int healing = 0;
+
     private int value = 0;
-    // andre?
 
     public Stats() {
     }
@@ -20,6 +22,10 @@ public class Stats {
         this.strength = strength;
         this.agility = agility;
         this.value = value;
+    }
+
+    public Stats(int healing) {
+        this.healing = healing;
     }
 
     public int getIntelligence() {
@@ -52,6 +58,14 @@ public class Stats {
 
     public void setAgility(int agility) {
         this.agility = agility;
+    }
+
+    public int getHealing() {
+        return healing;
+    }
+
+    public void setHealing(int healing) {
+        this.healing = healing;
     }
 
     public int getValue() {

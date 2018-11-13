@@ -8,6 +8,7 @@ public class Player {
     private int HP = 100;
     private Stats stats;
     private ArrayList<Item> inventory = new ArrayList(5);
+    private ArrayList<Consumable> potInventory = new ArrayList(10);
 
     public Player(String name) {
         this.name = name;
@@ -59,11 +60,26 @@ public class Player {
     }
 
     public void getInventory() {
-        for (Item item : inventory) {
-            System.out.print(inventory.indexOf(item));
-            System.out.println(" " + item);
-            System.out.println(item.getStats());
+        if (inventory.isEmpty()) {
+            System.out.println("You haven't collected any items yet, go defeat math monster to get some");
+        } else {
+            for (Item item : inventory) {
+                System.out.print(inventory.indexOf(item));
+                System.out.println(" " + item);
+                System.out.println(item.getStats());
+            }
         }
+        if (potInventory.isEmpty()) {
+            System.out.println("You have 0 healing potions");
+        } else {
+            for (Consumable pot : potInventory) {
+                System.out.println("You have " + potInventory.size() + " healing potions");
+            }
+        }
+    }
+
+    public ArrayList<Consumable> getPotInventory() {
+        return potInventory;
     }
 
     @Override
@@ -85,6 +101,10 @@ public class Player {
         addEndurance(item.getStats().getEndurance());
     }
 
+    public void pickupPot(Consumable healingPot) {
+        potInventory.add(healingPot);
+    }
+
     public void dropItem(Item item) {
         inventory.remove(item);
         addAgility(-item.getStats().getAgility());
@@ -92,4 +112,12 @@ public class Player {
         addIntelligence(-item.getStats().getIntelligence());
         addEndurance(-item.getStats().getEndurance());
     }
+
+    public void useHealing() {
+        addHP(getPotInventory().get(0).getHealing());
+        System.out.println("You healed for 30 Hp");
+        System.out.println("Your current health is: " + getHP());
+        getPotInventory().remove(0);
+    }
+
 }

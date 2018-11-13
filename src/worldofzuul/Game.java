@@ -93,7 +93,13 @@ public class Game {
         } else if (commandWord == CommandWord.SHOWSTATS) {
             System.out.println(player);
         } else if (commandWord == CommandWord.SHOWINVENTORY) {
-                player.getInventory();
+            player.getInventory();
+        } else if (commandWord == commandWord.USEHEALING) {
+            if (player.getPotInventory().isEmpty()) {
+                System.out.println("You dont have any healing potions - Defeat math monsters to get more.");
+            } else {
+                player.useHealing();
+            }
         }
 
         return wantToQuit;
@@ -105,7 +111,6 @@ public class Game {
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
-        
     }
 
     private boolean goRoom(Command command) {
