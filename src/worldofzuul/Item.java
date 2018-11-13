@@ -7,8 +7,13 @@ public class Item {
     private Stats stats;
 
     public Item() {
+
     }
-    
+
+    public Item(String itemName) {
+        this.itemName = itemName;
+    }
+
     public Item(String itemName, Stats stats) {
         this.itemName = itemName;
         this.stats = stats;

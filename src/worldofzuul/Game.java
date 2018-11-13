@@ -12,6 +12,7 @@ public class Game {
     private Player player;
     private MonsterDatabase monsterDatabase;
     private Map map = new Map(7);
+    private RandomEvent events = new RandomEvent();
 
     public Game() {
         System.out.println("Hallo and Welcome to our textbased game.");
@@ -19,8 +20,7 @@ public class Game {
         Scanner userName = new Scanner(System.in);
         player = new Player(userName.next());
         userName.close();
-        parser = new Parser();
-        currentRoom = map.getStartingRoom();
+        events.createEvents();
     }
 
     public void play() {
@@ -55,6 +55,7 @@ public class Game {
         }
         if (commandWord == CommandWord.HELP) {
             printHelp();
+            events.triggerEvent();
         } else if (commandWord == CommandWord.GO) {
             wantToQuit = goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {
@@ -71,7 +72,10 @@ public class Game {
             } else {
                 player.useHealing();
             }
-
+        } else if (commandWord == CommandWord.SHOP) {
+            if (currentRoom.isShop()) {
+                currentRoom.getShop().startShop(player);
+            }
         }
 
         return wantToQuit;
@@ -93,14 +97,17 @@ public class Game {
         }
         String direction = command.getSecondWord();
         Room nextRoom = currentRoom.getExit(direction);
-
         if ((int) (Math.floor(Math.random() * 10)) > 7 && nextRoom != null) {
+            new Monster(new MonsterGenerator().generateMonster(), 1).combatInitiate(questions, player);
         }
         if (nextRoom == null) {
             System.out.println("There is no door!");
         } else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
+            if (currentRoom.isShop()) {
+                System.out.println("There is a shop here!");;
+            }
         }
         return exitGame;
     }
