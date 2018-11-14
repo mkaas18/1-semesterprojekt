@@ -1,4 +1,4 @@
-package worldofzuul;
+package worldofzuul.logic;
 
 import java.util.Set;
 import java.util.HashMap;

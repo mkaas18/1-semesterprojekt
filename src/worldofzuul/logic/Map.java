@@ -1,4 +1,4 @@
-package worldofzuul;
+package worldofzuul.logic;
 
 import java.io.File;
 import java.io.FileNotFoundException;

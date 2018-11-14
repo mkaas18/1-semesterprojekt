@@ -1,5 +1,5 @@
 
-package worldofzuul;
+package worldofzuul.logic;
 
 
 public class Consumable {
