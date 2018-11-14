@@ -54,7 +54,7 @@ public class Game {
             return false;
         }
         if (commandWord == CommandWord.HELP) {
-            events.triggerEvent();
+            
             printHelp();
         } else if (commandWord == CommandWord.GO) {
             wantToQuit = goRoom(command);
@@ -73,9 +73,10 @@ public class Game {
                 player.useHealing();
             }
         } else if (commandWord == CommandWord.SHOP) {
-            if (currentRoom.isShop()) {
-                currentRoom.getShop().startShop(player);
-            }
+//            if (currentRoom.isShop()) {
+//                currentRoom.getShop().startShop(player);
+//            }
+            new Shop().startShop(player);
         }
 
         return wantToQuit;
@@ -107,7 +108,7 @@ public class Game {
         if ((int) (Math.floor(Math.random() * 100)+1) > 80 && nextRoom != null) {
             new MonsterGenerator().generateMonster(currentRoom.getDifficulty()).combatInitiate(questions, player);
         } else if((int) (Math.floor(Math.random() * 100)+1) > 95 && nextRoom != null){
-            
+            events.triggerEvent();
         }
         if (nextRoom == null) {
             System.out.println("There is no door!");

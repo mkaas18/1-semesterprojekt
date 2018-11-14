@@ -18,6 +18,7 @@ public class Shop {
     ArrayList<Item> buyable = new ArrayList<>();
     ItemGenerator itemGen = new ItemGenerator();
     Scanner input = new Scanner(System.in);
+    String output;
 
     Shop() {
         buyable.add(itemGen.generateItem(1));
@@ -26,8 +27,10 @@ public class Shop {
     }
 
     public void startShop(Player player) {
-        System.out.println("You have arrived at a shop!");
-        int i = printWares();
+        output = "You have arrived at a shop!";
+        int i;
+        output = "\n" + printWares();
+        System.out.println(output);
         while (true) {
             String request = input.next();
             if (request.equals("quit")) {
@@ -50,7 +53,7 @@ public class Shop {
                         while (true) {
                             request = input.next();
                             if (request.toLowerCase().equals("yes")) {
-                                printWares();
+                                System.out.println(printWares());
                                 break;
                             } else if (request.toLowerCase().equals("no")) {
                                 buyMore = true;
@@ -74,18 +77,19 @@ public class Shop {
         System.out.println("Thank you for your patronage!");
     }
 
-    public int printWares() {
+    public String printWares() {
+        output = "";
         int i = 1;
         for (Item item : buyable) {
             if (!item.getName().equals("Sold out!")) {
-                System.out.println(item.getName() + "(" + i + ")");
+                output += item.getName() + "(" + i + ")\n";
             } else {
-                System.out.println(item.getName());
+                output += item.getName() + "\n";
             }
             i++;
-
         }
-        System.out.println("Please choose an item based on their numbering");
-        return i;
+        output += "Please choose an item based on their numbering";
+        return output;
     }
+    
 }
