@@ -1,9 +1,5 @@
 A shadowy figure beckons to you from the darkness and asks you what a triangle with three sides with exact same length is called;An equilateral triangle;A Isosceles triangle;An acute triangle;
-
 You find a hidden, circular mechanism that probably is hiding something. However you need to calculate the area of the circle to solve the puzzle. How do you do that?;The diameter of the circle times pi;The radius of the circle times pi;The diameter of the circle times pi twice;
-
 You walk around the room, observing the amount of spiders move in and out of the room. You count 160 spiders in a 20 minut timespam. What do you call that observation?;The frequency;The amount of spiders;The probability;
-
 You find an equation etched into the walls, with a small description "Order of operations is key". The equation is a follows. 24/3*4. Solve it.;The answer is 32;The answer is 2;The answer is 16;
-
 You find a piece of paper on which a cryptic text is written. Suddenly, a voice in your head asks you "What do you call a number that is only divisible by itself and one"?;A primenumber;A negative number;An irrational number

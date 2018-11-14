@@ -10,6 +10,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import worldofzuul.interfaces.IFileReader;
+import worldofzuul.persistence.FileReader;
 /**
  *
  * @author SteamyBlizzard
@@ -17,28 +19,24 @@ import java.util.Scanner;
 public class RandomEvent {
 
     ArrayList<QuestionResults> events = new ArrayList<>();
+    IFileReader file;
     Scanner splitter;
     String filePath;
 
     public RandomEvent() {
-        this.filePath = "randomEvent.csv";
+        this.file = new FileReader("randomEvent.txt");
     }
 
     public void createEvents() {
-        
-        try {
-            splitter = new Scanner(new File(filePath)).useDelimiter(";"); 
-
-        } catch (FileNotFoundException ex) {
-            System.out.println("File not found");;
-        }    
-        while(splitter.hasNext()){
-            String question = splitter.next();
-            String correctAnswer = splitter.next();
-            String answer2 = splitter.next();
-            String answer3 = splitter.next();
+        ArrayList<String> eventStrings = file.readFile();
+        for(String eventString : eventStrings){
+            String[] eventSplit = eventString.split(";");
+            String question = eventSplit[0];
+            String correctAnswer = eventSplit[1];
+            String answer2 = eventSplit[2];
+            String answer3 = eventSplit[3];
             events.add(new QuestionResults(question, correctAnswer, answer2, answer3));
-        }
+        }  
     }
 
     public void triggerEvent() {

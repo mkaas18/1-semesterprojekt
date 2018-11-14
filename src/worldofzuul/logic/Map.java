@@ -1,9 +1,7 @@
 package worldofzuul.logic;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.util.ArrayList;
+import worldofzuul.interfaces.IFileReader;
+import worldofzuul.persistence.FileReader;
 
 public class Map {
 
@@ -21,17 +19,17 @@ public class Map {
     Room[][] levelOne;
     Room[][] levelTwo;
     Room[][] levelThree;
+    IFileReader fileReader;
 
     public Map(int levelSize) {
 
         //Import rooms from txt files
-        File levelOneRoomDescriptions = new File("levelOneRooms.txt");
-        File levelTwoRoomDescriptions = new File("levelTwoRooms.txt");
-        File levelThreeRoomDescriptions = new File("levelThreeRooms.txt");
-
-        importRooms(levelOneRoomDescriptions, levelOneRoomList, 1);
-        importRooms(levelTwoRoomDescriptions, levelTwoRoomList, 2);
-        importRooms(levelThreeRoomDescriptions, levelThreeRoomList, 3);
+        fileReader = new FileReader("levelOneRooms.txt");
+        importRooms(fileReader.readFile(), levelOneRoomList, 1);
+        fileReader = new FileReader("levelTwoRooms.txt");
+        importRooms(fileReader.readFile(), levelTwoRoomList, 2);
+        fileReader = new FileReader("levelThreeRooms.txt");
+        importRooms(fileReader.readFile(), levelThreeRoomList, 3);
 
         //Add stair & shop rooms
         this.levelOneRoomList.add(levelOneShop);
@@ -195,15 +193,9 @@ public class Map {
         }
     }
 
-    public static void importRooms(File roomFile, ArrayList<Room> levelRoomList, int difficulty) {
-        try {
-            Scanner sc = new Scanner(roomFile);
-            while (sc.hasNext()) {
-                levelRoomList.add(new Room(sc.nextLine(), difficulty));
-            }
-            sc.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("File not found, shutting down");
+    public static void importRooms(ArrayList<String> stringArray, ArrayList<Room> levelRoomList, int difficulty) {
+        for (String string : stringArray) {
+            levelRoomList.add(new Room(string, difficulty));
         }
     }
 
