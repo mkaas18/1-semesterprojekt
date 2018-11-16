@@ -4,9 +4,13 @@ import java.util.ArrayList;
 
 public class Player {
 
+    //Here we define our attributes and make them private.
+    
     private String name;
     private int HP = 100;
     private Stats stats;
+    
+    //We make an ArrayList for the inventory of the player.
     private ArrayList<Item> inventory = new ArrayList(5);
     private ArrayList<Consumable> potInventory = new ArrayList(10);
 
@@ -14,7 +18,7 @@ public class Player {
         this.name = name;
         this.stats = new Stats();
     }
-
+// In this part we define our player methods and draft some methods that is called in our stats class.
     public String getName() {
         return this.name;
     }
@@ -58,7 +62,10 @@ public class Player {
     public void addIntelligence(int amount) {
         this.stats.setIntelligence(this.stats.getIntelligence() + amount);
     }
-
+/* Here we make a method where the player can access their inventory. If the inventory is empty it prints out the followinf string.
+    If the inventory have and item it will print out the following item and acces the stats thru a method in the stats class 
+    the same with healing portions.
+       */  
     public void getInventory() {
         if (inventory.isEmpty()) {
             System.out.println("You haven't collected any items yet, go defeat math monster to get some");
@@ -81,7 +88,7 @@ public class Player {
     public ArrayList<Consumable> getPotInventory() {
         return potInventory;
     }
-
+// Here we have a tostring method that prints out the stats of the player.
     @Override
     public String toString() {
         String statSummary = getName() + "'s Stats:";
@@ -100,7 +107,8 @@ public class Player {
         addIntelligence(item.getStats().getIntelligence());
         addEndurance(item.getStats().getEndurance());
     }
-
+// This is how we make the player pick, drop or use items. Right now you can only use healingportions as an item.
+  
     public void pickupPot(Consumable healingPot) {
         potInventory.add(healingPot);
     }
