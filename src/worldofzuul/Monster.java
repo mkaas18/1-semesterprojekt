@@ -102,8 +102,8 @@ public class Monster {
             System.out.println("The " + this.name + " perished and dropped " + droppedItem.getName());
             
             //Makes a monster to drop a healing potion randomly.
-            if ((int) Math.floor(Math.random() * 10) > 4) {
-                Consumable healingPot = new Consumable(30);
+            if ((int) Math.floor(Math.random() * 10) > 3) {
+                Consumable healingPot = new Consumable();
                 player.pickupPot(healingPot);
                 System.out.println("The monster dropped a healing potion aswell!");
             }

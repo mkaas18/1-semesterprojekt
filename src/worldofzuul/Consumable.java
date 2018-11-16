@@ -1,14 +1,11 @@
-
 package worldofzuul;
 
-
 public class Consumable {
-    
-    private String name;
-    private int healing;
 
-    public Consumable(int healing) {
-        this.healing = healing;
+    private String name;
+    private int healing = 30;
+
+    public Consumable() {
         this.name = "Healing potion";
     }
 
@@ -27,12 +24,11 @@ public class Consumable {
     public void setHealing(int healing) {
         this.healing = healing;
     }
-    
+
     @Override
     public String toString() {
         String toText = "Healing potion - heals for " + getHealing();
         return toText;
     }
-    
 
 }
