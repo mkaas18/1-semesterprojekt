@@ -15,7 +15,8 @@ public class Monster {
     public Monster() {
         this.hp = 100;
     }
-
+    
+//Monster properties, the if statement is currently not in use till we implement the boss which has the difficulty "4"
     public Monster(String name, int difficulty) {
         this.name = name;
         this.difficulty = difficulty;
@@ -25,7 +26,6 @@ public class Monster {
         } else {
             hp = 100;
         }
-
         this.hp = 100;
     }
 
@@ -65,16 +65,17 @@ public class Monster {
         System.out.println(results.getQuestion());
         answer = getAnswer.nextDouble();
         if (answer == results.getAnswer()) {
-            System.out.println("Correct!");
+            System.out.println("Correct!");//If the answer is correct, the monster is damaged for 50 Health Points
             this.changeHp(-50);
 
         } else {
-            System.out.println("Wrong answer!");
+            System.out.println("Wrong answer!");//If the answer is wrong, the player is damaged for xx(in this case 35) damage
             player.addHP(-35);
         }
 
     }
 
+//Combat initiation which asks 1 of 4 question cases.
     public void combatInitiate(Question question, Player player) {
         System.out.println("A " + this.name + " approaches!");
         while (player.getHP() > 0 && this.getHp() > 0) {
@@ -94,7 +95,7 @@ public class Monster {
             }
         }
         if (player.getHP() < 0) {
-            System.out.println("Game over.");
+            System.out.println("Game over.");//If the player has less than 0 health the player dies
         } else {
             System.out.println("The " + this.name + " perished.");
         }

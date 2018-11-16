@@ -10,6 +10,7 @@ public class MonsterGenerator {
     ArrayList<String> bossWord;
     ArrayList<String> bossWordtwo;
 
+//Creating of arraylists used in creating the different monster names
     public MonsterGenerator() {
         this.firstWord = new ArrayList<>();
         this.middleWord = new ArrayList<>();
@@ -45,18 +46,22 @@ public class MonsterGenerator {
         bossWordtwo.add("the E-tivitet");
     }
 
+//Generate monster using different methods
     public Monster generateMonster(int difficulty) {
         Monster monster = new Monster(generateMonsterName(), difficulty);
         monster.setName(generateMonsterName());
         return monster;
     }
 
+//Generate boss using different methods
     public Monster generateBoss() {
         Monster boss = new Monster(generateBossName(), 4);
         boss.setName(generateBossName());
         return boss;
     }
 
+    
+//Generate monster name from the above ArrayLists
     public String generateMonsterName() {
         int i = (int) Math.floor(Math.random() * firstWord.size());
         int k = (int) Math.floor(Math.random() * lastWord.size());
@@ -64,6 +69,7 @@ public class MonsterGenerator {
         return name;
     }
 
+//Generate boss name from the above ArrayLists
     public String generateBossName() {
         int i = (int) Math.floor(Math.random() * bossWord.size());
         int k = (int) Math.floor(Math.random() * bossWordtwo.size());
