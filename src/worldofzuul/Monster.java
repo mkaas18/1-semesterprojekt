@@ -53,7 +53,7 @@ public class Monster {
         this.hp += hp;
     }
 
-    int getDifficulty() {
+    public int getDifficulty() {
         return this.difficulty;
     }
 
