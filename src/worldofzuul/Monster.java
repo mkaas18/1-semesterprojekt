@@ -97,7 +97,19 @@ public class Monster {
         if (player.getHP() < 0) {
             System.out.println("Game over.");//If the player has less than 0 health the player dies
         } else {
-            System.out.println("The " + this.name + " perished.");
+            //Makes a monster drop an item.
+            Item droppedItem = new ItemGenerator().generateItem(1);
+            System.out.println("The " + this.name + " perished and dropped " + droppedItem.getName());
+            
+            //Makes a monster to drop a healing potion randomly.
+            if ((int) Math.floor(Math.random() * 10) > 4) {
+                Consumable healingPot = new Consumable(30);
+                player.pickupPot(healingPot);
+                System.out.println("The monster dropped a healing potion aswell!");
+            }
+            //Makes the player pick up the item dropped.
+            player.pickupItem(droppedItem);
+
         }
     }
 }
