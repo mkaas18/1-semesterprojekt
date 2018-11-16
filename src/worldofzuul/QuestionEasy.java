@@ -13,9 +13,27 @@ import java.util.Random;
  *
  * @author fredd
  */
+/*
+Syntax is basically the samme in all sub classes of Question. I refere to
+QuestionNormal for an in debth explaination.
+*/
 public class QuestionEasy extends Question{
     public QuestionEasy(){}
+    
+    @Override
+    public QuestionResults division() {
+        while(true){
+            number1 = getRandomNumber();
+            number2 = getRandomNumber();
+            if(number1%number2==0 && number1 != 0 && number2 > 1){
+                break;
+            }
+        } 
+        question = "What is " + number1 + " / " + number2 + "?";
+        answer = number1 / number2;
+        return results = new QuestionResults(question, answer);
 
+    }
     @Override
     public QuestionResults addition() {
         number1 = getRandomNumber();
@@ -34,20 +52,6 @@ public class QuestionEasy extends Question{
         return results = new QuestionResults(question, answer);
     }
 
-    @Override
-    public QuestionResults division() {
-        while(true){
-            number1 = getRandomNumber();
-            number2 = getRandomNumber();
-            if(number1%number2==0 && number1 != 0 && number2 > 1){
-                break;
-            }
-        } 
-        question = "What is " + number1 + " / " + number2 + "?";
-        answer = number1 / number2;
-        return results = new QuestionResults(question, answer);
-
-    }
 
     @Override
     public QuestionResults subtraction() {

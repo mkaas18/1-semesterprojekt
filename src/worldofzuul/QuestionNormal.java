@@ -18,16 +18,20 @@ public class QuestionNormal extends Question{
     public QuestionNormal(){
         
     }
-
+    //
     @Override
     public QuestionResults addition() {
+        //Gets two random numbers
         number1 = getRandomNumber();
-        number2 = getRandomNumber();
+        number2 = getRandomNumber();    
+        //Sets question to the question
         question = "What is " + number1 + " + " + number2 + "?";
+        //Solves the question and sets answer to said questions answer
         answer = number1 + number2;
+        //Creates an instance of QuestionResults and returns it with the question and answer
         return results = new QuestionResults(question, answer);
     }
-
+    //Same principle in the othwers except division
     @Override
     public QuestionResults multiplication() {
         number1 = getRandomNumber()/10;
@@ -42,6 +46,7 @@ public class QuestionNormal extends Question{
         while(true){
             number1 = getRandomNumber();
             number2 = getRandomNumber()/10.0;
+            //Checks if the two numbers have no rest, so the question can be solved in the head.
             if(number1%number2==0 && number1 != 0 && number2 > 1){
                 break;
             }
@@ -59,7 +64,7 @@ public class QuestionNormal extends Question{
         answer = number1 - number2;
         return results = new QuestionResults(question, answer);
     }
-
+    //Returns a random number
     @Override
     public double getRandomNumber() {
         return new Random().nextInt(100)+1;

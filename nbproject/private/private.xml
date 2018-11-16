@@ -2,27 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-<<<<<<< HEAD
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/Command.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/Game.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/Player.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/CommandWord.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/Room.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/CommandWords.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/MonsterGenerator.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/Map.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/Parser.java</file>
-            <file>file:/E:/Users/Trux/1-semesterprojekt/src/worldofzuul/Starter.java</file>
-=======
-            <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/Item.java</file>
-            <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/Consumable.java</file>
-            <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/Map.java</file>
->>>>>>> origin/Items
+            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/QuestionResults.java</file>
+            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/RandomEvent.java</file>
+            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/QuestionEasy.java</file>
+            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Player.java</file>
+            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/QuestionHard.java</file>
+            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/Question.java</file>
+            <file>file:/C:/Users/fredd/Documents/GitHub/1-semesterprojekt/src/worldofzuul/QuestionNormal.java</file>
         </group>
-=======
-        <group/>
->>>>>>> RandomEvents
     </open-files>
 </project-private>

@@ -10,17 +10,19 @@ package worldofzuul;
  *
  * @author SteamyBlizzard
  */
+//The class that pairs the question and answer and makes it easy to get both of them.
 public class QuestionResults {
     String question;
     String correctAnswer = null;
     String wrongAnswer1 = null;
     String wrongAnswer2 = null;
     double answer = 0;
-
+    //This constructer is for the normal questions created from the Question class
     public QuestionResults(String question, double answer) {
         this.question = question;
         this.answer = answer;
     }
+    //This constructor is for the RandomEvent class.
     public QuestionResults(String question, String correctAnswer, 
             String wrongAnswer1, String wrongAnswer2) {
         this.question = question;
@@ -28,7 +30,7 @@ public class QuestionResults {
         this.wrongAnswer1 = wrongAnswer1;
         this.wrongAnswer2 = wrongAnswer2;
     }
-
+    //Getters and Setters for the classes attributes
     public String getCorrectAnswer() {
         return correctAnswer;
     }
