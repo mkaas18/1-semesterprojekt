@@ -1,7 +1,5 @@
 package worldofzuul;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Game {
@@ -18,7 +16,11 @@ public class Game {
         System.out.println("Hallo and Welcome to our textbased game.");
         System.out.println("Type in your awesome player name:");
         Scanner userName = new Scanner(System.in);
-        player = new Player(userName.next());
+        
+        // Makes a players username first letter to upppercase
+        String uppperCaseUserName = userName.next();
+        player = new Player(uppperCaseUserName.substring(0, 1).toUpperCase() + uppperCaseUserName.substring(1));
+        
         currentRoom = map.getStartingRoom();
         events.createEvents();
     }
@@ -103,9 +105,9 @@ public class Game {
         }
         String direction = command.getSecondWord();
         Room nextRoom = currentRoom.getExit(direction);
-        if ((int) (Math.floor(Math.random() * 100)+1) > 80 && nextRoom != null) {
+        if ((int) (Math.floor(Math.random() * 100) + 1) > 80 && nextRoom != null) {
             new MonsterGenerator().generateMonster(currentRoom.getDifficulty()).combatInitiate(questions, player);
-        } else if((int) (Math.floor(Math.random() * 100)+1) > 95 && nextRoom != null){
+        } else if ((int) (Math.floor(Math.random() * 100) + 1) > 95 && nextRoom != null) {
             events.triggerEvent();
         }
         if (nextRoom == null) {
