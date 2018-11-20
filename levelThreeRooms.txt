@@ -1,0 +1,10 @@
+Sound-Room, This room eats all sounds. Nothing can be heard while within, and no sound can be made.
+Asymmetric-room,  The floor of this room is wildly uneven. Standing on one side one gets the impression that the other side is impossibly small, and vice versa.
+Claustrophobic-Room, This room makes everyone entering it feel claustrophobic. The walls feel like they are constantly closing in.
+Fire-Room, This room is a raging inferno of fire. It isn't magical, and it will hurt.
+Demon-Room, There is a golden statue of a terrifying demon in this room. The statue is much too big to be carried out, and the gold is fake.
+Carpet-Room, There are so many carpets of various kind on the floor of this room.
+Library-Room,This room is a library half for the books are burnt.
+Snake-Room, There are small cages in this room. In the cages are snakes.
+Glass-room, this room is a wall of clear glass.
+Mud-Room, This room is very muddy. There are several shovels and buckets in the mud.
