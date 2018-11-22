@@ -5,10 +5,12 @@
  */
 package worldofzuul.interfaces;
 
+import worldofzuul.logic.Item;
+
 /**
  *
  * @author SteamyBlizzard
  */
 public interface IItemGenerator {
-    
+    public Item generateItem(int difficulty);
 }

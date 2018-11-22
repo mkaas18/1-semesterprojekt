@@ -1,14 +1,15 @@
 package worldofzuul.logic;
 
 import java.util.ArrayList;
+import worldofzuul.interfaces.IItemGenerator;
 
-public class ItemGenerator {
+public class ItemGenerator implements IItemGenerator{
 
     ArrayList<String> firstWord;
     ArrayList<String> middleWord;
     ArrayList<String> lastWord;
 
-    public ItemGenerator() {
+    public ItemGenerator(){
         this.firstWord = new ArrayList<>();
         this.middleWord = new ArrayList<>();
         this.lastWord = new ArrayList<>();
@@ -45,6 +46,7 @@ public class ItemGenerator {
     }
 
     // Generate random item using diffent methods
+    @Override
     public Item generateItem(int difficulty) {
         Item item = new Item();
         item.setName(generateName());

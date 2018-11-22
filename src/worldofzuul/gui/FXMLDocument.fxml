@@ -30,7 +30,7 @@
       </ToolBar>
       <AnchorPane layoutX="508.0" layoutY="40.0" prefHeight="446.0" prefWidth="339.0">
          <children>
-            <ListView fx:id="inventory" prefHeight="270.0" prefWidth="339.0" />
+            <ListView fx:id="invList" prefHeight="270.0" prefWidth="339.0" />
          </children>
       </AnchorPane>
     </children>

@@ -35,6 +35,7 @@ public class Item implements IItem{
         this.itemName = itemName;
     }
 
+    @Override
     public Stats getStats() {
         return stats;
     }

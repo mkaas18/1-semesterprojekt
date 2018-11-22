@@ -13,8 +13,9 @@ import worldofzuul.logic.Item;
  * @author SteamyBlizzard
  */
 public interface IPlayer {
-    public ObservableList<Item> getInventory();
+    public ObservableList<IItem> getInventory();
     public void addHP(int amount);
     public int getHP();
-    public void pickupItem(Item item);
+    public void pickupItem(IItem item);
+    public void dropItem(IItem item);
 }

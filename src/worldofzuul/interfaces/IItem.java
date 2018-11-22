@@ -5,10 +5,12 @@
  */
 package worldofzuul.interfaces;
 
+import worldofzuul.logic.Stats;
+
 /**
  *
  * @author SteamyBlizzard
  */
 public interface IItem {
-    
+    public Stats getStats();
 }

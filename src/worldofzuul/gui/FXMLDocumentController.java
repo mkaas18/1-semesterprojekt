@@ -38,8 +38,7 @@ public class FXMLDocumentController implements Initializable {
     IGame game = new Game();
     IPlayer player = game.getPlayer();
     IItem item;
-    private final ObservableList<IItem> inventory = 
-            FXCollections.observableArrayList();
+    Inventory inventory = new Inventory(player);
     String output;
     @FXML
     private TextArea console;
@@ -72,7 +71,10 @@ public class FXMLDocumentController implements Initializable {
             }
         }
         if(event.getCode() == KeyCode.B){
-            player.pickupItem(game.giveItem());
+            inventory.addItem();
+        }
+        if(event.getCode() == KeyCode.C){
+            inventory.removeItem();
         }
     }
     
@@ -143,7 +145,6 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
         }
-        
     }
     
     @Override
@@ -155,21 +156,9 @@ public class FXMLDocumentController implements Initializable {
         exitMap.put("east", east);
         exitMap.put("down", down);
         exitMap.put("up", up);
-        for(Item item : player.getInventory()){
-            this.item = item;
-            inventory.add(this.item);
-            
-        }
-//        inventory.getPlayerInventory();
+        inventory.inventoryHandler(invList);
         setExits();
         focusButton.requestFocus();
-        invList.setItems(inventory);
-        invList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<IItem>() {
-            @Override
-            public void changed(ObservableValue<? extends IItem> observable, IItem oldValue, IItem newValue) {
-                System.out.println("hej");
-            }
-        });
         moveTimer.start();
     }
     
