@@ -15,6 +15,7 @@ public class Room {
     public Room(String description, int difficulty) {
         this.description = description;
         exits = new HashMap<String, Room>();
+        this.difficulty = difficulty;
     }
 
     public boolean isShop() {
@@ -27,7 +28,7 @@ public class Room {
 
     public void setShop(boolean isShop) {
         this.isShop = isShop;
-        shop = this.isShop ? new Shop() : null;
+        shop = this.isShop ? new Shop(difficulty) : null;
     }
 
     public void setExit(String direction, Room neighbor) {

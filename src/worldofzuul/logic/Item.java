@@ -27,6 +27,7 @@ public class Item implements IItem{
         this.itemDescription = itemDescription;
     }
 
+    @Override
     public String getName() {
         return itemName;
     }

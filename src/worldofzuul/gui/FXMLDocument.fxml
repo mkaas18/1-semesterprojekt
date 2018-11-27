@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,9 +9,59 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" onKeyPressed="#keyPressed" onKeyReleased="#keyReleased" prefHeight="487.0" prefWidth="847.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.gui.FXMLDocumentController">
+<AnchorPane id="AnchorPane" onKeyPressed="#keyPressed" onKeyReleased="#keyReleased" prefHeight="514.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.gui.FXMLDocumentController">
     <children>
-      <Pane fx:id="gameWindow" prefHeight="309.0" prefWidth="508.0">
+      <AnchorPane fx:id="inventoryPane" layoutX="508.0" layoutY="40.0" prefHeight="446.0" prefWidth="339.0">
+         <children>
+            <TabPane fx:id="shopMode1" prefHeight="311.0" prefWidth="399.0" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab fx:id="hello1" text="Items">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="280.0" prefWidth="339.0">
+                           <children>
+                              <ListView fx:id="playerItemList" prefHeight="281.0" prefWidth="399.0">
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                          <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                        <MenuItem fx:id="itemSell" mnemonicParsing="false" onAction="#sellItem" text="Sell" visible="false" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu></ListView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Consumables">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="playerConsumeList" prefHeight="283.0" prefWidth="399.0">
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#useConsumable" text="Use" />
+                                        <MenuItem fx:id="consumableSell" mnemonicParsing="false" onAction="#sellConsumable" text="Sell" visible="false" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu></ListView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+            <ProgressBar fx:id="hpBar" layoutX="228.0" layoutY="4.0" prefHeight="21.0" prefWidth="167.0" progress="0.0">
+               <tooltip>
+                  <Tooltip text="Heyyy" />
+               </tooltip>
+            </ProgressBar>
+            <TextArea fx:id="itemDescript" editable="false" focusTraversable="false" layoutY="310.0" prefHeight="163.0" prefWidth="399.0" />
+            <Label layoutX="286.0" layoutY="6.0" prefHeight="17.0" prefWidth="43.0" text="Health" />
+            <Label fx:id="goldCount" layoutX="133.0" layoutY="9.0" prefHeight="17.0" prefWidth="83.0" text="Gold" />
+         </children>
+      </AnchorPane>
+      <Pane fx:id="gameWindow" layoutY="40.0" prefHeight="311.0" prefWidth="508.0">
          <children>
             <Rectangle fx:id="up" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="24.0" layoutX="91.0" layoutY="143.0" stroke="BLACK" strokeType="INSIDE" width="24.0" />
             <Rectangle fx:id="down" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="24.0" layoutX="368.0" layoutY="143.0" stroke="BLACK" strokeType="INSIDE" width="24.0" />
@@ -19,18 +71,54 @@
             <Rectangle fx:id="east" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="56.0" layoutX="502.0" layoutY="127.0" stroke="BLACK" strokeType="INSIDE" width="9.0" />
             <Rectangle fx:id="north" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="11.0" layoutX="216.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
             <Rectangle fx:id="south" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="11.0" layoutX="216.0" layoutY="302.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+            <Rectangle fx:id="shop" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="24.0" layoutX="450.0" layoutY="25.0" stroke="BLACK" strokeType="INSIDE" width="24.0" />
+            <Circle fx:id="monster2" disable="true" fill="DODGERBLUE" layoutX="18.0" layoutY="18.0" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <Circle fx:id="monster1" disable="true" fill="DODGERBLUE" layoutX="18.0" layoutY="18.0" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
          </children>
       </Pane>
-      <TextArea fx:id="console" editable="false" focusTraversable="false" layoutY="309.0" prefHeight="176.0" prefWidth="508.0" />
-      <ToolBar layoutX="508.0" prefHeight="40.0" prefWidth="339.0">
+      <TextArea fx:id="console" editable="false" focusTraversable="false" layoutY="351.0" prefHeight="163.0" prefWidth="508.0" />
+      <ToolBar layoutX="508.0" prefHeight="40.0" prefWidth="399.0">
         <items>
-          <Button mnemonicParsing="false" text="Inventory" />
+          <Button fx:id="inventoryButton" mnemonicParsing="false" onAction="#inventoryToggle" text="Inventory" />
             <Button fx:id="focusButton" mnemonicParsing="false" text="Button" />
         </items>
       </ToolBar>
-      <AnchorPane layoutX="508.0" layoutY="40.0" prefHeight="446.0" prefWidth="339.0">
+      <AnchorPane fx:id="shopPane" layoutX="40.0" layoutY="28.0" prefHeight="260.0" prefWidth="418.0" visible="false">
          <children>
-            <ListView fx:id="invList" prefHeight="270.0" prefWidth="339.0" />
+            <TextArea fx:id="waresDescipt" editable="false" focusTraversable="false" layoutX="199.0" layoutY="41.0" prefHeight="219.0" prefWidth="219.0" />
+            <Button layoutX="217.0" layoutY="8.0" mnemonicParsing="false" onAction="#buyItem" text="Buy" />
+            <TabPane fx:id="shopMode" prefHeight="260.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab fx:id="hello" text="Items">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="waresList" prefHeight="232.0" prefWidth="200.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Consumables">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="consumableList" prefHeight="232.0" prefWidth="200.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="combatPane" prefHeight="351.0" prefWidth="508.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="351.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="508.0" />
+            <ProgressBar fx:id="combatMonsterHpBar" layoutX="286.0" layoutY="35.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="combatHpBar" layoutX="14.0" layoutY="311.0" prefWidth="200.0" progress="0.0" />
+            <Label fx:id="monsterName" layoutX="292.0" layoutY="14.0" prefHeight="17.0" prefWidth="188.0" text="Label" />
+            <TextField fx:id="combatInput" layoutX="286.0" layoutY="307.0" onAction="#combatInput" />
+            <ProgressBar fx:id="combatTimeLeft" layoutX="27.0" layoutY="35.0" prefWidth="200.0" progress="0.0" />
          </children>
       </AnchorPane>
     </children>

@@ -1,23 +1,35 @@
 package worldofzuul.logic;
 
-import java.util.ArrayList;
-import java.util.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import worldofzuul.interfaces.IConsumable;
 import worldofzuul.interfaces.IItem;
 import worldofzuul.interfaces.IPlayer;
 
 public class Player implements IPlayer{
 
     private String name;
-    private int HP = 100;
+    private int maxHp = 100;
+
+    private int hp;
     private Stats stats;
+    private int gold = 100;
     private ObservableList<IItem> inventory = FXCollections.observableArrayList();
-    private ObservableList<Consumable> potInventory = FXCollections.observableArrayList();
+    private ObservableList<IConsumable> potInventory = FXCollections.observableArrayList();
 
     public Player(String name) {
         this.name = name;
         this.stats = new Stats();
+        this.hp = maxHp;
+    }
+
+    @Override
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
     }
 
     public String getName() {
@@ -25,15 +37,24 @@ public class Player implements IPlayer{
     }
 
     @Override
-    public int getHP() {
-        return this.HP;
+    public int getHp() {
+        return this.hp;
     }
 
     @Override
-    public void addHP(int amount) {
-        this.HP += amount;
+    public void addHp(int amount) {
+        this.hp += amount;
+    }
+    
+    @Override
+    public int getMaxHp() {
+        return maxHp;
     }
 
+    @Override
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
     public int getEndurance() {
         return this.stats.getEndurance();
     }
@@ -89,14 +110,15 @@ public class Player implements IPlayer{
         return inventory;
     }
      
-    public ObservableList<Consumable> getPotInventory() {
+    @Override
+    public ObservableList<IConsumable> getPotInventory() {
         return potInventory;
     }
 
     @Override
     public String toString() {
         String statSummary = getName() + "'s Stats:";
-        statSummary += "\n\tHealth: " + getHP();
+        statSummary += "\n\tHealth: " + getHp();
         statSummary += "\n\tAgility: " + getAgility();
         statSummary += "\n\tStrength: " + getStrength();
         statSummary += "\n\tIntelligence: " + getIntelligence();
@@ -105,7 +127,7 @@ public class Player implements IPlayer{
     }
 
     @Override
-    public void pickupItem(IItem item) {
+    public void pickupItem(Item item) {
         inventory.add(item);
         addAgility(item.getStats().getAgility());
         addStrength(item.getStats().getStrength());
@@ -116,9 +138,12 @@ public class Player implements IPlayer{
     public void pickupPot(Consumable healingPot) {
         potInventory.add(healingPot);
     }
+    public void dropPot(Consumable healingPot) {
+        potInventory.remove(healingPot);
+    }
 
     @Override
-    public void dropItem(IItem item) {
+    public void dropItem(Item item) {
         inventory.remove(item);
         addAgility(-item.getStats().getAgility());
         addStrength(-item.getStats().getStrength());
@@ -126,11 +151,10 @@ public class Player implements IPlayer{
         addEndurance(-item.getStats().getEndurance());
     }
 
-    public void useHealing() {
-        addHP(getPotInventory().get(0).getHealing());
-        System.out.println("You healed for 30 Hp");
-        System.out.println("Your current health is: " + getHP());
-        getPotInventory().remove(0);
+    @Override
+    public void useHealing(Consumable pot) {
+        addHp(pot.getHealing());
+        getPotInventory().remove(pot);
     }
 
 }

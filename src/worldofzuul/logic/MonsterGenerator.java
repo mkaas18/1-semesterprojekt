@@ -1,8 +1,9 @@
 package worldofzuul.logic;
 
 import java.util.ArrayList;
+import worldofzuul.interfaces.IMonsterGenerator;
 
-public class MonsterGenerator {
+public class MonsterGenerator implements IMonsterGenerator{
 
     ArrayList<String> firstWord;
     ArrayList<String> middleWord;
@@ -10,7 +11,7 @@ public class MonsterGenerator {
     ArrayList<String> bossWord;
     ArrayList<String> bossWordtwo;
 
-    public MonsterGenerator() {
+    public MonsterGenerator(){
         this.firstWord = new ArrayList<>();
         this.middleWord = new ArrayList<>();
         this.lastWord = new ArrayList<>();
@@ -45,6 +46,7 @@ public class MonsterGenerator {
         bossWordtwo.add("the E-tivitet");
     }
 
+    @Override
     public Monster generateMonster(int difficulty) {
         Monster monster = new Monster(generateMonsterName(), difficulty);
         monster.setName(generateMonsterName());

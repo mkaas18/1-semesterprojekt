@@ -9,52 +9,71 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.animation.AnimationTimer;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import worldofzuul.interfaces.IGame;
 import worldofzuul.interfaces.IItem;
+import worldofzuul.interfaces.IMonster;
 import worldofzuul.interfaces.IPlayer;
 import worldofzuul.logic.Game;
-import worldofzuul.logic.Item;
 
 /**
  *
  * @author SteamyBlizzard
  */
 public class FXMLDocumentController implements Initializable {
-    
+
     IGame game = new Game();
     IPlayer player = game.getPlayer();
     IItem item;
-    Inventory inventory = new Inventory(player);
+    InventoryWindow inventoryWindow = new InventoryWindow(player);
+    ShopWindow shopWindow = new ShopWindow(game.getCurrentRoom().getShop(), player);
+    CombatWindow combatWindow = new CombatWindow();
+    MonsterAI monster1Ai = new MonsterAI();
+    MonsterAI monster2Ai = new MonsterAI();
     String output;
     @FXML
-    private TextArea console;
+    private AnchorPane inventoryPane, shopPane, combatPane;
     @FXML
-    private ListView<IItem> invList;
+    private Label goldCount, monsterName;
     @FXML
-    private Circle playerGui, playerHitbox;
+    private TextArea console, itemDescript, waresDescipt;
     @FXML
-    private Rectangle north, south, east, west, down, up;
+    private TextField combatInput;
+    @FXML
+    private ProgressBar hpBar, combatHpBar, combatMonsterHpBar, combatTimeLeft;
+    @FXML
+    private MenuItem itemSell, consumableSell;
+    @FXML
+    private TabPane shopMode;
+    @FXML
+    private ListView<IItem> playerItemList, playerConsumeList, waresList, consumableList;
+    @FXML
+    private Circle playerGui, playerHitbox, monster1, monster2, monsterCombat;
+    @FXML
+    private Rectangle north, south, east, west, down, up, shop;
     HashMap<String, Rectangle> exitMap = new HashMap<>();
     @FXML
     private Pane gameWindow;
     @FXML
     private Button focusButton;
     private Mover mover = new Mover();
-    
+
     @FXML
     private void keyPressed(KeyEvent event) {
         mover.keyPressed(event);
@@ -69,22 +88,111 @@ public class FXMLDocumentController implements Initializable {
                 output = game.goRoom("up");
                 console.appendText(output);
             }
+            if (shop.getBoundsInParent().intersects(playerHitbox.getBoundsInParent())
+                    && !shop.isDisabled()) {
+                shopToggle();
+
+            }
         }
-        if(event.getCode() == KeyCode.B){
-            inventory.addItem();
+        if (event.getCode() == KeyCode.B) {
+            player.addHp(-35);
         }
-        if(event.getCode() == KeyCode.C){
-            inventory.removeItem();
+        if (event.getCode() == KeyCode.C) {
+
+        }
+        if (event.getCode() == KeyCode.I) {
+
         }
     }
-    
+
     @FXML
     private void keyReleased(KeyEvent event) {
         mover.keyReleased(event);
-        System.out.println(game.getPlayer().getHP());
-        System.out.println(player.getHP());
+
+    }
+
+    @FXML
+    private void inventoryToggle(ActionEvent event) {
+        if (inventoryPane.isVisible()) {
+            inventoryPane.setVisible(false);
+            inventoryPane.setDisable(true);
+        } else {
+            inventoryPane.setVisible(true);
+            inventoryPane.setDisable(false);
+        }
+
+    }
+
+    @FXML
+    private void buyItem(ActionEvent event) {
+        if (shopMode.getTabs().get(0) == shopMode.getSelectionModel().getSelectedItem()) {
+            shopWindow.buyItem();
+        } else if (shopMode.getTabs().get(1) == shopMode.getSelectionModel().getSelectedItem()) {
+            shopWindow.buyConsumable();
+        }
+        goldCount.setText("Gold: " + player.getGold());
+
+    }
+
+    @FXML
+    private void sellItem(ActionEvent event) {
+        shopWindow.sellItem(inventoryWindow);
+        goldCount.setText("Gold: " + player.getGold());
+    }
+
+    @FXML
+    private void sellConsumable(ActionEvent event) {
+        shopWindow.sellConsumable(inventoryWindow);
+        goldCount.setText("Gold: " + player.getGold());
+    }
+
+    @FXML
+    private void useConsumable(ActionEvent event) {
+        inventoryWindow.useConsumable();
+    }
+
+    @FXML
+    private void combatInput(ActionEvent event) {
+        if(combatWindow.getCombatState()){
+            combatWindow.playerTurn(combatInput, player, console);
+        } else {
+            combatWindow.endCombat(combatPane);
+            if(monsterCombat.equals(monster1)){
+                monster1Ai.monsterReset(monster1);
+                monster2Ai.startMonsterMovement();
+            } else {
+                monster2Ai.monsterReset(monster2);
+                monster1Ai.startMonsterMovement();
+            }
+            combatWindow.resetCombat(true);
+            console.clear();
+            console.appendText(game.getCurrentRoom().getLongDescription());
+            moveTimer.start();
+        }
         
     }
+
+    @FXML
+    private void shopToggle() {
+        if (shopPane.isVisible()) {
+            shopPane.setVisible(false);
+            shopPane.setDisable(true);
+            itemSell.setVisible(false);
+            consumableSell.setVisible(false);
+            shopWindow.stopShopHandler(waresList, consumableList);
+            moveTimer.start();
+        } else {
+            shopPane.setVisible(true);
+            shopPane.setDisable(false);
+            itemSell.setVisible(true);
+            consumableSell.setVisible(true);
+            shopWindow = new ShopWindow(game.getCurrentRoom().getShop(), player);
+            shopWindow.shopHandler(waresList, consumableList, waresDescipt);
+            moveTimer.stop();
+
+        }
+    }
+
     private AnimationTimer moveTimer = new AnimationTimer() {
         @Override
         public void handle(long now) {
@@ -93,10 +201,12 @@ public class FXMLDocumentController implements Initializable {
                 playerGui.setCenterY(mover.getPlayerY());
                 checkExits();
             }
-            
+            updateHealth();
+            combatStart();
+
         }
     };
-    
+
     private void checkExits() {
         for (Rectangle exit : exitMap.values()) {
             if (exit.getBoundsInParent().intersects(playerHitbox.getBoundsInParent())
@@ -127,10 +237,12 @@ public class FXMLDocumentController implements Initializable {
                     playerHitbox.setCenterX(mover.getPlayerXCheck());
                 }
                 setExits();
+                setShops();
+                monsterSpawner();
             }
         }
     }
-    
+
     private void setExits() {
         for (String guiExits : exitMap.keySet()) {
             for (String exits : game.getCurrentRoom().getExits()) {
@@ -143,10 +255,59 @@ public class FXMLDocumentController implements Initializable {
                     exitMap.get(guiExits).setDisable(true);
                     exitMap.get(guiExits).setVisible(false);
                 }
+
             }
         }
     }
-    
+
+    private void setShops() {
+        if (game.getCurrentRoom().isShop()) {
+            shop.setVisible(true);
+            shop.setDisable(false);
+        } else {
+            shop.setVisible(false);
+            shop.setDisable(true);
+        }
+    }
+
+    private void monsterSpawner() {
+        monster1Ai.monsterReset(monster1);
+        monster2Ai.monsterReset(monster2);
+        if (monster1Ai.monsterSpawn(monster1, gameWindow)) {
+            monster1Ai.startMonsterMovement();
+        }
+        if (monster2Ai.monsterSpawn(monster2, gameWindow)) {
+            monster2Ai.startMonsterMovement();
+        }
+    }
+
+    //sets the progressbar with the health percentage
+    private void updateHealth() {
+        double percentage = (double) player.getHp() / (double) player.getMaxHp();
+        if (percentage < 0) {
+            percentage = 0;
+        }
+        hpBar.setProgress(percentage);
+        combatHpBar.setProgress(percentage);
+
+    }
+
+    private void combatStart() {
+        if (monster1Ai.combatCheck()) {
+            moveTimer.stop();
+            combatWindow.startCombat(console, combatMonsterHpBar, combatPane, game.getCurrentRoom().getDifficulty());
+//            hpBar.setVisible(false);
+            monster2Ai.pauseMonsterMovement();
+            monsterCombat = monster1;
+        } else if(monster2Ai.combatCheck()){
+            moveTimer.stop();
+            combatWindow.startCombat(console, combatMonsterHpBar, combatPane, game.getCurrentRoom().getDifficulty());
+//            hpBar.setVisible(false);
+            monster1Ai.pauseMonsterMovement();
+            monsterCombat = monster2;
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         console.appendText(game.printWelcome());
@@ -156,10 +317,15 @@ public class FXMLDocumentController implements Initializable {
         exitMap.put("east", east);
         exitMap.put("down", down);
         exitMap.put("up", up);
-        inventory.inventoryHandler(invList);
+        inventoryWindow.inventoryHandler(playerItemList, playerConsumeList, itemDescript);
         setExits();
+        setShops();
+        updateHealth();
         focusButton.requestFocus();
         moveTimer.start();
+        goldCount.setText("Gold: " + player.getGold());
+        monster1Ai.startMonsterMovement(monster1, playerGui);
+        monster2Ai.startMonsterMovement(monster2, playerGui);
     }
-    
+
 }

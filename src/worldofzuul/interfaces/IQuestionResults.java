@@ -5,13 +5,11 @@
  */
 package worldofzuul.interfaces;
 
-import worldofzuul.logic.Stats;
-
 /**
  *
- * @author SteamyBlizzard
+ * @author fredd
  */
-public interface IItem {
-    public Stats getStats();
-    public String getName();
+public interface IQuestionResults {
+    public String getQuestion();
+    public double getAnswer();
 }

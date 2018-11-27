@@ -9,7 +9,6 @@ public class Game implements IGame{
 
 //    private Parser parser;
     private Room currentRoom;
-    private Question questions;
     private Player player;
     private Map map = new Map(7);
     private RandomEvent events = new RandomEvent();
@@ -105,9 +104,7 @@ public class Game implements IGame{
     public String goRoom(String direction) {
         String output = "";
         Room nextRoom = currentRoom.getExit(direction);
-//        if ((int) (Math.floor(Math.random() * 100)+1) > 80 && nextRoom != null) {
-//            new MonsterGenerator().generateMonster(currentRoom.getDifficulty()).combatInitiate(questions, player);
-//        } else if((int) (Math.floor(Math.random() * 100)+1) > 95 && nextRoom != null){
+//        if((int) (Math.floor(Math.random() * 100)+1) > 95 && nextRoom != null){
 //            events.triggerEvent();
 //        }
         if (nextRoom == null) {

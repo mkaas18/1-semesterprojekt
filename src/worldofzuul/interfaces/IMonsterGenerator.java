@@ -5,13 +5,12 @@
  */
 package worldofzuul.interfaces;
 
-import worldofzuul.logic.Stats;
+import worldofzuul.logic.Monster;
 
 /**
  *
- * @author SteamyBlizzard
+ * @author fredd
  */
-public interface IItem {
-    public Stats getStats();
-    public String getName();
+public interface IMonsterGenerator {
+    public Monster generateMonster(int difficulty);
 }

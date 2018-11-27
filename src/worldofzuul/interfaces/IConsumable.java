@@ -5,13 +5,13 @@
  */
 package worldofzuul.interfaces;
 
-import worldofzuul.logic.Stats;
-
 /**
  *
  * @author SteamyBlizzard
  */
-public interface IItem {
-    public Stats getStats();
+public interface IConsumable {
     public String getName();
+    public String getDescription();
+    public int getHealing();
+    public int getValue();
 }

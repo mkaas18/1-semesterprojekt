@@ -1,5 +1,7 @@
 package worldofzuul.logic;
 
+import worldofzuul.interfaces.IQuestionResults;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,7 +12,7 @@ package worldofzuul.logic;
  *
  * @author SteamyBlizzard
  */
-public class QuestionResults {
+public class QuestionResults implements IQuestionResults{
     String question;
     String correctAnswer = null;
     String wrongAnswer1 = null;
@@ -53,6 +55,7 @@ public class QuestionResults {
         this.wrongAnswer2 = wrongAnswer2;
     }
 
+    @Override
     public String getQuestion() {
         return question;
     }
@@ -61,6 +64,7 @@ public class QuestionResults {
         this.question = question;
     }
 
+    @Override
     public double getAnswer() {
         return answer;
     }
