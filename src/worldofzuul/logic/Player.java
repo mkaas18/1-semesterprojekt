@@ -6,7 +6,7 @@ import worldofzuul.interfaces.IConsumable;
 import worldofzuul.interfaces.IItem;
 import worldofzuul.interfaces.IPlayer;
 
-public class Player implements IPlayer{
+public class Player implements IPlayer {
 
     private String name;
     private int maxHp = 100;
@@ -16,11 +16,33 @@ public class Player implements IPlayer{
     private int gold = 100;
     private ObservableList<IItem> inventory = FXCollections.observableArrayList();
     private ObservableList<IConsumable> potInventory = FXCollections.observableArrayList();
+    private int killCounter;
+    private int questionsCorrectAnswered;
 
     public Player(String name) {
         this.name = name;
         this.stats = new Stats();
         this.hp = maxHp;
+        this.killCounter = 0;
+        this.questionsCorrectAnswered = 0;
+    }
+
+    public int getKillCounter() {
+        return killCounter;
+    }
+
+    @Override
+    public void setKillCounter(int count) {
+        this.killCounter += count;
+    }
+
+    public int getQuestionsCorrectAnswered() {
+        return questionsCorrectAnswered;
+    }
+
+    @Override
+    public void setQuestionsCorrectAnswered(int count) {
+        this.questionsCorrectAnswered += count;
     }
 
     @Override
@@ -45,7 +67,7 @@ public class Player implements IPlayer{
     public void addHp(int amount) {
         this.hp += amount;
     }
-    
+
     @Override
     public int getMaxHp() {
         return maxHp;
@@ -55,6 +77,7 @@ public class Player implements IPlayer{
     public void setMaxHp(int maxHp) {
         this.maxHp = maxHp;
     }
+
     public int getEndurance() {
         return this.stats.getEndurance();
     }
@@ -109,7 +132,7 @@ public class Player implements IPlayer{
     public ObservableList<IItem> getInventory() {
         return inventory;
     }
-     
+
     @Override
     public ObservableList<IConsumable> getPotInventory() {
         return potInventory;
@@ -138,6 +161,7 @@ public class Player implements IPlayer{
     public void pickupPot(Consumable healingPot) {
         potInventory.add(healingPot);
     }
+
     public void dropPot(Consumable healingPot) {
         potInventory.remove(healingPot);
     }

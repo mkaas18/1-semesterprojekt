@@ -15,31 +15,30 @@ import worldofzuul.interfaces.IFileReader;
  *
  * @author SteamyBlizzard
  */
-public class FileReader implements IFileReader{
+public class FileReader implements IFileReader {
+
     File file;
     String path;
     String[] strings;
-    public FileReader(String path){
+
+    public FileReader(String path) {
         this.path = path;
     }
+
     @Override
-    public ArrayList<String> readFile()
-    {
+    public ArrayList<String> readFile() {
         ArrayList<String> result = new ArrayList<>();
-        try{
+        try {
             File f = new File(path);
             Scanner s = new Scanner(f);
-            while(s.hasNextLine())
-            {
+            while (s.hasNextLine()) {
                 result.add(s.nextLine());
             }
             s.close();
-        }
-        catch(FileNotFoundException ex)
-        {
+        } catch (FileNotFoundException ex) {
             System.out.println("Nothing found. Returning empty result.");
         }
         return result;
     }
-    
+
 }

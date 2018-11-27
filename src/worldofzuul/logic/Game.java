@@ -5,20 +5,22 @@ import java.util.Arrays;
 import java.util.Scanner;
 import worldofzuul.interfaces.IGame;
 
-public class Game implements IGame{
+public class Game implements IGame {
 
 //    private Parser parser;
     private Room currentRoom;
     private Player player;
     private Map map = new Map(7);
     private RandomEvent events = new RandomEvent();
+    private Highscore highscore;
 
     public Game() {
 //        parser = new Parser();
 //        System.out.println("Hallo and Welcome to our textbased game.");
 //        System.out.println("Type in your awesome player name:");
 //        Scanner userName = new Scanner(System.in);
-        player = new Player("Hej");
+        player = new Player("Morten5");
+        highscore = new Highscore(player.getName());
         currentRoom = map.getStartingRoom();
         events.createEvents();
     }
@@ -34,7 +36,6 @@ public class Game implements IGame{
 //        }
 //        System.out.println("Thank you for playing.  Good bye.");
 //    }
-
     @Override
     public String printWelcome() {
         String output = "";
@@ -82,7 +83,6 @@ public class Game implements IGame{
 //
 //        return wantToQuit;
 //    }
-
     @Override
     public String printHelp() {
         String output = "";
@@ -118,16 +118,24 @@ public class Game implements IGame{
         }
         return output;
     }
+
     @Override
     public Room getCurrentRoom() {
         return this.currentRoom;
     }
+
     @Override
-    public Player getPlayer(){
+    public Player getPlayer() {
         return this.player;
     }
+
     @Override
-    public Item giveItem(){
+    public Highscore getHighscore() {
+        return this.highscore;
+    }
+
+    @Override
+    public Item giveItem() {
         System.out.println("hej");
         return new ItemGenerator().generateItem(1);
     }
@@ -153,7 +161,6 @@ public class Game implements IGame{
 //                return false;
 //        }
 //    }
-
 //    private boolean quit(Command command) {
 //        if (command.hasSecondWord()) {
 //            System.out.println("Quit what?");
@@ -162,8 +169,4 @@ public class Game implements IGame{
 //            return true;
 //        }
 //    }
-
-    
-
-    
 }

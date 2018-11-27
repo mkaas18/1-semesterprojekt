@@ -87,6 +87,7 @@ public class Monster implements IMonster {
     public String answerChecker(QuestionResults results, double input, Player player) {
         if (input == results.getAnswer()) {
             changeHp(-35);
+            player.setQuestionsCorrectAnswered(1);
             return "\nYou answered correct!\nThe monster takes 35 damage!\n";
         } else {
             player.addHp(-35);
