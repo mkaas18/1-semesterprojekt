@@ -101,10 +101,11 @@ public class FXMLDocumentController implements Initializable {
             player.addHp(-35);
         }
         if (event.getCode() == KeyCode.C) {
-            highscore.saveScore();
+            highscore.writeHighscoreList();
+
         }
         if (event.getCode() == KeyCode.I) {
-            System.out.println(highscore.getSavedScore());
+            System.out.println(highscore.readHighscoreList());
 
         }
     }

@@ -5,6 +5,7 @@ import worldofzuul.logic.Highscore;
 
 public interface IFileWriter {
 
-    public void writeFile(Highscore hs);
+    public void writeFile(String input);
+    public void writeFile(ArrayList<String> highscoreList);
 }
 

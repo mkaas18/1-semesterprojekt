@@ -2,6 +2,7 @@ package worldofzuul.logic;
 
 import java.io.File;
 import java.io.Serializable;
+import java.util.ArrayList;
 import worldofzuul.interfaces.IFileReader;
 import worldofzuul.interfaces.IFileWriter;
 import worldofzuul.interfaces.IHighscore;
@@ -14,10 +15,12 @@ public class Highscore implements Serializable, IHighscore {
     private String name;
     IFileWriter fw = new FileWriter("highscore.txt");
     IFileReader fr = new FileReader("highscore.txt");
+    ArrayList<String> highscoreList = new ArrayList<String>();
 
     public Highscore(String name) {
         this.name = name;
         this.score = 0;
+        loadHighscoreList();
     }
 
     public int getScore() {
@@ -42,18 +45,24 @@ public class Highscore implements Serializable, IHighscore {
         return getName() + " " + getScore();
     }
 
-    @Override
-    public void saveScore() {
-        fw.writeFile(this);
-    }
-    
-    @Override
-    public void addScore(int score) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
-    public String getSavedScore() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String readHighscoreList() {
+        String highscore = "";
+        for (String highscoreString : highscoreList) {
+            highscore += highscoreString + "\n";
+        }
+        return highscore;
+    }
+
+    public void loadHighscoreList() {
+        for (String highscoreString : fr.readFile()) {
+            highscoreList.add(highscoreString);
+        }
+    }
+    @Override
+    public void writeHighscoreList(){
+        highscoreList.add(this.toString());
+        fw.writeFile(highscoreList);
     }
 }

@@ -1,7 +1,9 @@
 package worldofzuul.logic;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import worldofzuul.interfaces.IGame;
 
@@ -19,6 +21,7 @@ public class Game implements IGame {
 //        System.out.println("Hallo and Welcome to our textbased game.");
 //        System.out.println("Type in your awesome player name:");
 //        Scanner userName = new Scanner(System.in);
+
         player = new Player("Morten5");
         highscore = new Highscore(player.getName());
         currentRoom = map.getStartingRoom();
