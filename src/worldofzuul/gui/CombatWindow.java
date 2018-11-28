@@ -10,10 +10,14 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import worldofzuul.interfaces.IItem;
+import worldofzuul.interfaces.IItemGenerator;
 import worldofzuul.interfaces.IMonster;
 import worldofzuul.interfaces.IMonsterGenerator;
 import worldofzuul.interfaces.IPlayer;
 import worldofzuul.interfaces.IQuestionResults;
+import worldofzuul.logic.Item;
+import worldofzuul.logic.ItemGenerator;
 import worldofzuul.logic.MonsterGenerator;
 import worldofzuul.logic.Player;
 import worldofzuul.logic.QuestionResults;
@@ -24,6 +28,8 @@ import worldofzuul.logic.QuestionResults;
  */
 public class CombatWindow {
 
+    IItemGenerator itemGen = new ItemGenerator();
+    Item item;
     IMonsterGenerator monsterGen = new MonsterGenerator();
     IMonster monster;
     IQuestionResults questionResults;
@@ -31,8 +37,9 @@ public class CombatWindow {
     private AnimationTimer combatTimer;
     boolean playerTurn = false;
 
-    public void startCombat(TextArea textarea, ProgressBar monsterHealth, AnchorPane combatPane, int difficulty) {
+    public void startCombat(TextArea textarea, ProgressBar monsterHealth, AnchorPane combatPane, int difficulty, IPlayer player) {
         monster = monsterGen.generateMonster(difficulty);
+        item = itemGen.generateItem(difficulty);
         playerTurn = false;
         combatWindowToggle(combatPane);
         textarea.clear();
@@ -46,7 +53,9 @@ public class CombatWindow {
                 if (monster.getHp() < 0) {
                     combatInitialized = false;
                     textarea.clear();
+                    player.pickupItem(item);
                     textarea.appendText("You win! Press 'ENTER' to exit combat");
+                    textarea.appendText("\nThe monster dropped '" + item + "'");
                 }
             }
 
