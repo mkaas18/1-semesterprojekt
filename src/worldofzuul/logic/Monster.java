@@ -38,6 +38,7 @@ public class Monster implements IMonster {
         this.type = type;
         this.hp = 100;
         this.MAX_HP = hp;
+        this.damage = 35;
     }
     
     public String getName() {
@@ -86,11 +87,11 @@ public class Monster implements IMonster {
     @Override
     public String answerChecker(QuestionResults results, double input, Player player) {
         if (input == results.getAnswer()) {
-            changeHp(-35);
-            return "\nYou answered correct!\nThe monster takes 35 damage!\n";
+            changeHp(-(player.getDamage() -player.getStrength()));
+            return "\nYou answered correct!\nThe monster takes " + (damage + player.getStrength())+ " damage" + "\n";
         } else {
-            player.addHp(-35);
-            return "\nYou answered incorrect!\nYou take 35 damage!\n"; 
+            player.addHp(-(damage - player.getEndurance()));
+            return "\nYou answered incorrect!\nYou take damage! " + (-(damage - player.getEndurance())) + "\n";
         }
         
     }

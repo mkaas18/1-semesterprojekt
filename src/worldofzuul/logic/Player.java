@@ -6,11 +6,11 @@ import worldofzuul.interfaces.IConsumable;
 import worldofzuul.interfaces.IItem;
 import worldofzuul.interfaces.IPlayer;
 
-public class Player implements IPlayer{
+public class Player implements IPlayer {
 
     private String name;
     private int maxHp = 100;
-
+    private int damage;
     private int hp;
     private Stats stats;
     private int gold = 100;
@@ -21,6 +21,20 @@ public class Player implements IPlayer{
         this.name = name;
         this.stats = new Stats();
         this.hp = maxHp;
+        this.damage = 35;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = (int) (damage + (getStrength() * 1.01));
+    }
+
+    public void setEndurance(int damage) {
+        this.damage = (int) (-damage + (getEndurance() * 1.01));
+
     }
 
     @Override
@@ -45,7 +59,7 @@ public class Player implements IPlayer{
     public void addHp(int amount) {
         this.hp += amount;
     }
-    
+
     @Override
     public int getMaxHp() {
         return maxHp;
@@ -55,6 +69,7 @@ public class Player implements IPlayer{
     public void setMaxHp(int maxHp) {
         this.maxHp = maxHp;
     }
+
     public int getEndurance() {
         return this.stats.getEndurance();
     }
@@ -109,7 +124,7 @@ public class Player implements IPlayer{
     public ObservableList<IItem> getInventory() {
         return inventory;
     }
-     
+
     @Override
     public ObservableList<IConsumable> getPotInventory() {
         return potInventory;
@@ -138,6 +153,7 @@ public class Player implements IPlayer{
     public void pickupPot(Consumable healingPot) {
         potInventory.add(healingPot);
     }
+
     public void dropPot(Consumable healingPot) {
         potInventory.remove(healingPot);
     }

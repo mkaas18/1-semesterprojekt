@@ -30,8 +30,8 @@ public class Stats {
         this.intelligence = intelligence;
     }
 
-    public int getEndurance() {
-        return endurance;
+     public int getEndurance() {
+        return (int) (endurance * 1.01);
     }
 
     public void setEndurance(int endurance) {
