@@ -29,9 +29,12 @@ import javafx.scene.shape.Rectangle;
 import worldofzuul.interfaces.IGame;
 import worldofzuul.interfaces.IHighscore;
 import worldofzuul.interfaces.IItem;
+import worldofzuul.interfaces.IItemGenerator;
 import worldofzuul.interfaces.IMonster;
 import worldofzuul.interfaces.IPlayer;
 import worldofzuul.logic.Game;
+import worldofzuul.logic.Item;
+import worldofzuul.logic.ItemGenerator;
 import worldofzuul.logic.Player;
 
 /**
@@ -50,6 +53,8 @@ public class FXMLDocumentController implements Initializable {
     MonsterAI monster1Ai = new MonsterAI();
     MonsterAI monster2Ai = new MonsterAI();
     String output;
+    IItemGenerator itemGen = new ItemGenerator();
+    Item droppedItem;
     @FXML
     private AnchorPane inventoryPane, shopPane, combatPane;
     @FXML
@@ -171,6 +176,8 @@ public class FXMLDocumentController implements Initializable {
             }
             combatWindow.resetCombat(true);
             player.setKillCounter(1);
+            droppedItem = itemGen.generateItem(1);
+            player.pickupItem(droppedItem);
             console.clear();
             console.appendText(game.getCurrentRoom().getLongDescription());
             moveTimer.start();
