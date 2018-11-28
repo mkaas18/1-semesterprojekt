@@ -3,6 +3,7 @@ package worldofzuul.logic;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import worldofzuul.interfaces.IFileReader;
 import worldofzuul.interfaces.IFileWriter;
 import worldofzuul.interfaces.IHighscore;
@@ -42,9 +43,8 @@ public class Highscore implements Serializable, IHighscore {
 
     @Override
     public String toString() {
-        return getName() + " " + getScore();
+        return getName() + ":" + getScore();
     }
-
 
     @Override
     public String readHighscoreList() {
@@ -60,9 +60,16 @@ public class Highscore implements Serializable, IHighscore {
             highscoreList.add(highscoreString);
         }
     }
+
     @Override
-    public void writeHighscoreList(){
+    public void writeHighscoreList() {
         highscoreList.add(this.toString());
+        sort();
         fw.writeFile(highscoreList);
+    }
+
+    private void sort() {
+        ScoreComparator comparator = new ScoreComparator();
+        Collections.sort(highscoreList, comparator);
     }
 }
