@@ -87,7 +87,7 @@ public class Monster implements IMonster {
     @Override
     public String answerChecker(QuestionResults results, double input, Player player) {
         if (input == results.getAnswer()) {
-            changeHp(-(player.getDamage() -player.getStrength()));
+            changeHp((-(player.getDamage()) +(-player.getStrength())));
             return "\nYou answered correct!\nThe monster takes " + (damage + player.getStrength())+ " damage" + "\n";
         } else {
             player.addHp(-(damage - player.getEndurance()));
