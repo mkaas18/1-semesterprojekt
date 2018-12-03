@@ -15,6 +15,7 @@ public class Monster implements IMonster {
     private final int MAX_HP;
     private int hp;
     private String type;
+    private int nochange;
     
     public Monster() {
         this.hp = 100;
@@ -39,6 +40,7 @@ public class Monster implements IMonster {
         this.hp = 100;
         this.MAX_HP = hp;
         this.damage = 35;
+        this.nochange = 0;
     }
     
     public String getName() {
@@ -75,6 +77,7 @@ public class Monster implements IMonster {
         return this.difficulty;
     }
     
+    
     @Override
     public boolean monsterSpawnDiceroll() {
         if (new Random().nextInt(100) + 1 > 80) {
@@ -90,11 +93,22 @@ public class Monster implements IMonster {
             changeHp((-(player.getDamage()) +(-player.getStrength())));
             return "\nYou answered correct!\nThe monster takes " + (damage + player.getStrength())+ " damage" + "\n";
         } else {
-            player.addHp(-(damage - player.getEndurance()));
+            if(player.getAgility() == 0){player.addHp(-(damage - player.getEndurance()));
             return "\nYou answered incorrect!\nYou take damage! " + (-(damage - player.getEndurance())) + "\n";
+            } else { if(new Random().nextInt(100) + (player.getAgility())
+                      > 20) {
+            player.addHp((nochange));
+            return "\nYou answered incorret!\nRolling dice of agility --> jAckpot and you lost no hp! attack the monster again " +"\n";
+                    } else {
+                    player.addHp(-(damage - player.getEndurance()));
+            return "\nYou answered incorrect!\nYou lost dice of agility. You take damage! " + (-(damage - player.getEndurance())) + "\n";
         }
-        
-    }
+               }     
+                
+                
+                    }
+       }
+    
     
     @Override
     public QuestionResults questionPicker() {
