@@ -96,7 +96,7 @@ public class Monster implements IMonster {
             if(player.getAgility() == 0){player.addHp(-(damage - player.getEndurance()));
             return "\nYou answered incorrect!\nYou take damage! " + (-(damage - player.getEndurance())) + "\n";
             } else { if(new Random().nextInt(100) + (player.getAgility())
-                      > 20) {
+                      > 99) {
             player.addHp((nochange));
             return "\nYou answered incorret!\nRolling dice of agility --> jAckpot and you lost no hp! attack the monster again " +"\n";
                     } else {
