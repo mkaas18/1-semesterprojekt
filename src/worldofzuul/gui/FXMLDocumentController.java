@@ -309,13 +309,13 @@ public class FXMLDocumentController implements Initializable {
     private void combatStart() {
         if (monster1Ai.combatCheck()) {
             moveTimer.stop();
-            combatWindow.startCombat(console, combatMonsterHpBar, combatPane, game.getCurrentRoom().getDifficulty(), player);
+            combatWindow.startCombat(console, combatMonsterHpBar, combatPane, game.getCurrentRoom().getDifficulty(), player, monsterName);
 //            hpBar.setVisible(false);
             monster2Ai.pauseMonsterMovement();
             monsterCombat = monster1;
         } else if (monster2Ai.combatCheck()) {
             moveTimer.stop();
-            combatWindow.startCombat(console, combatMonsterHpBar, combatPane, game.getCurrentRoom().getDifficulty(), player);
+            combatWindow.startCombat(console, combatMonsterHpBar, combatPane, game.getCurrentRoom().getDifficulty(), player, monsterName);
 //            hpBar.setVisible(false);
             monster1Ai.pauseMonsterMovement();
             monsterCombat = monster2;

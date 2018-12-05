@@ -6,6 +6,7 @@
 package worldofzuul.gui;
 
 import javafx.animation.AnimationTimer;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -31,8 +32,9 @@ public class CombatWindow {
     private AnimationTimer combatTimer;
     boolean playerTurn = false;
 
-    public void startCombat(TextArea textarea, ProgressBar monsterHealth, AnchorPane combatPane, int difficulty, IPlayer player) {
+    public void startCombat(TextArea textarea, ProgressBar monsterHealth, AnchorPane combatPane, int difficulty, IPlayer player, Label monsterNameLabel) {
         monster = monsterGen.generateMonster(difficulty);
+        monsterNameLabel.setText(monster.getName());
         playerTurn = false;
         combatWindowToggle(combatPane);
         textarea.clear();
