@@ -18,4 +18,5 @@ public interface IMonster {
     public String answerChecker(QuestionResults results, double input, Player player);
     public int getMAX_HP();
     public int getHp();
+    public String getName();
 }
