@@ -3,32 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/logic/Stats.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/logic/Player.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/interfaces/IPlayer.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/interfaces/IQuestionResults.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/gui/InventoryWindow.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/logic/QuestionResults.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/interfaces/IConsumable.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/logic/Item.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/gui/CombatWindow.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/logic/Map.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/gui/WorldofzuulGui.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/interfaces/IShop.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/logic/ItemGenerator.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/logic/Game.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/logic/Consumable.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/logic/MonsterGenerator.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/gui/FXMLDocumentController.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/gui/Mover.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/interfaces/IMonsterGenerator.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/logic/Shop.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/gui/ShopWindow.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/logic/Monster.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/interfaces/IMonster.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/interfaces/IItem.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/gui/MonsterAI.java</file>
-            <file>file:/C:/Users/fredd/Documents/GitHub/worldofzuul.gui/src/worldofzuul/interfaces/IItemGenerator.java</file>
+            <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/gui/FXMLDocumentController.java</file>
+            <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/logic/Monster.java</file>
+            <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/gui/CombatWindow.java</file>
         </group>
     </open-files>
 </project-private>

@@ -5,6 +5,7 @@
  */
 package worldofzuul.interfaces;
 
+import worldofzuul.logic.Highscore;
 import worldofzuul.logic.Item;
 import worldofzuul.logic.Player;
 import worldofzuul.logic.Room;
@@ -19,5 +20,6 @@ public interface IGame {
     public String goRoom(String direction);
     public Room getCurrentRoom();
     public Player getPlayer();
+    public Highscore getHighscore();
     public Item giveItem();
 }

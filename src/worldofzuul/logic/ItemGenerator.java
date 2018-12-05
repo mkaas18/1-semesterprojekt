@@ -5,9 +5,9 @@ import worldofzuul.interfaces.IItemGenerator;
 
 public class ItemGenerator implements IItemGenerator{
 
-    ArrayList<String> firstWord;
-    ArrayList<String> middleWord;
-    ArrayList<String> lastWord;
+    private ArrayList<String> firstWord;
+    private ArrayList<String> middleWord;
+    private ArrayList<String> lastWord;
 
     public ItemGenerator(){
         this.firstWord = new ArrayList<>();

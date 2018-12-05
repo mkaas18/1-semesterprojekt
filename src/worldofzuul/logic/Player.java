@@ -16,12 +16,16 @@ public class Player implements IPlayer {
     private int gold = 100;
     private ObservableList<IItem> inventory = FXCollections.observableArrayList();
     private ObservableList<IConsumable> potInventory = FXCollections.observableArrayList();
+    private int killCounter;
+    private int questionsCorrectAnswered;
 
     public Player(String name) {
         this.name = name;
         this.stats = new Stats();
         this.hp = maxHp;
         this.damage = 35;
+        this.killCounter = 0;
+        this.questionsCorrectAnswered = 0;
     }
 
     public int getDamage() {
@@ -34,7 +38,24 @@ public class Player implements IPlayer {
 
     public void setEndurance(int damage) {
         this.damage = (int) (-damage + (getEndurance() * 1.01));
+    }
 
+    public int getKillCounter() {
+        return killCounter;
+    }
+
+    @Override
+    public void setKillCounter(int count) {
+        this.killCounter += count;
+    }
+
+    public int getQuestionsCorrectAnswered() {
+        return questionsCorrectAnswered;
+    }
+
+    @Override
+    public void setQuestionsCorrectAnswered(int count) {
+        this.questionsCorrectAnswered += count;
     }
 
     @Override

@@ -31,7 +31,7 @@ public class CombatWindow {
     private AnimationTimer combatTimer;
     boolean playerTurn = false;
 
-    public void startCombat(TextArea textarea, ProgressBar monsterHealth, AnchorPane combatPane, int difficulty) {
+    public void startCombat(TextArea textarea, ProgressBar monsterHealth, AnchorPane combatPane, int difficulty, IPlayer player) {
         monster = monsterGen.generateMonster(difficulty);
         playerTurn = false;
         combatWindowToggle(combatPane);
@@ -46,6 +46,7 @@ public class CombatWindow {
                 if (monster.getHp() < 0) {
                     combatInitialized = false;
                     textarea.clear();
+                    textarea.appendText("The monster dropped an item\n");
                     textarea.appendText("You win! Press 'ENTER' to exit combat");
                 }
             }
