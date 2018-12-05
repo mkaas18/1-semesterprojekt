@@ -1,6 +1,8 @@
 package worldofzuul.logic;
 
 import java.util.ArrayList;
+import java.util.Random;
+
 
 public class Stats {
 
@@ -45,9 +47,9 @@ public class Stats {
     public void setStrength(int strength) {
         this.strength = strength;
     }
-
+     
     public int getAgility() {
-        return agility;
+        return (int) (agility * 1.01);
     }
 
     public void setAgility(int agility) {
