@@ -92,7 +92,8 @@ public class Monster implements IMonster {
         if (input == results.getAnswer()) {
             changeHp((-(player.getDamage()) +(-player.getStrength())));
             return "\nYou answered correct!\nThe monster takes " + (damage + player.getStrength())+ " damage" + "\n";
-            player.setQuestionsCorrectAnswered(1);
+            //Unreachable statement, fix by Mikkel at some point?
+            //player.setQuestionsCorrectAnswered(1);
         } else {
             if(player.getAgility() == 0){player.addHp(-(damage - player.getEndurance()));
             return "\nYou answered incorrect!\nYou take damage! " + (-(damage - player.getEndurance())) + "\n";
