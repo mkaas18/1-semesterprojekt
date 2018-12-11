@@ -91,7 +91,7 @@ public class Monster implements IMonster {
     public String answerChecker(QuestionResults results, double input, Player player) {
         QuestionTimer timer1 = new QuestionTimer(player); 
         timer1.start();
-        timer1.stopTimer();
+        
         if (input == results.getAnswer()) {
             changeHp((-(player.getDamage()) +(-player.getStrength())));
             player.setQuestionsCorrectAnswered(1);
