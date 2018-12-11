@@ -89,6 +89,9 @@ public class Monster implements IMonster {
 //Monster QuestionResults
     @Override
     public String answerChecker(QuestionResults results, double input, Player player) {
+        QuestionTimer timer1 = new QuestionTimer(player); 
+        timer1.start();
+        timer1.stopTimer();
         if (input == results.getAnswer()) {
             changeHp((-(player.getDamage()) +(-player.getStrength())));
             player.setQuestionsCorrectAnswered(1);
@@ -105,10 +108,12 @@ public class Monster implements IMonster {
             return "\nYou answered incorrect!\nYou lost dice of agility. You take damage! " + (-(damage - player.getEndurance())) + "\n";
         }
                }     
-                
+              
                 
                     }
-       }
+       
+    
+    }
     
     
     @Override
@@ -127,3 +132,4 @@ public class Monster implements IMonster {
         }
     }
 }
+
