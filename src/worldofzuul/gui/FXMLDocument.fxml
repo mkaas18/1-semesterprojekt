@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.canvas.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.shape.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane id="AnchorPane" onKeyPressed="#keyPressed" onKeyReleased="#keyReleased" prefHeight="514.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.gui.FXMLDocumentController">
+<AnchorPane id="AnchorPane" onKeyPressed="#keyPressed" onKeyReleased="#keyReleased" prefHeight="514.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.gui.FXMLDocumentController">
     <children>
       <AnchorPane fx:id="inventoryPane" layoutX="508.0" layoutY="40.0" prefHeight="446.0" prefWidth="339.0">
          <children>
@@ -74,6 +84,11 @@
             <Rectangle fx:id="shop" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="24.0" layoutX="450.0" layoutY="25.0" stroke="BLACK" strokeType="INSIDE" width="24.0" />
             <Circle fx:id="monster2" disable="true" fill="DODGERBLUE" layoutX="18.0" layoutY="18.0" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
             <Circle fx:id="monster1" disable="true" fill="DODGERBLUE" layoutX="18.0" layoutY="18.0" radius="18.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+            <ImageView fx:id="kirbysprite" fitHeight="40.0" fitWidth="42.0" layoutX="224.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Kirbysmallbob.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <TextArea fx:id="console" editable="false" focusTraversable="false" layoutY="351.0" prefHeight="163.0" prefWidth="508.0" />

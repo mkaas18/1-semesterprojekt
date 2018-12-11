@@ -20,6 +20,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -47,6 +48,9 @@ public class FXMLDocumentController implements Initializable {
     MonsterAI monster1Ai = new MonsterAI();
     MonsterAI monster2Ai = new MonsterAI();
     String output;
+    MovementAnimation movementAni = new MovementAnimation();
+    @FXML
+    private ImageView kirbysprite;
     @FXML
     private AnchorPane inventoryPane, shopPane, combatPane;
     @FXML
@@ -77,6 +81,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void keyPressed(KeyEvent event) {
         mover.keyPressed(event);
+        movementAni.AnimationStart();
         if (event.getCode() == KeyCode.E) {
             if (exitMap.get("down").getBoundsInParent().intersects(playerHitbox.getBoundsInParent())
                     && !exitMap.get("down").isDisabled()) {
@@ -108,6 +113,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void keyReleased(KeyEvent event) {
         mover.keyReleased(event);
+        movementAni.AnimationStop();
 
     }
 
@@ -199,6 +205,8 @@ public class FXMLDocumentController implements Initializable {
             if (!mover.checkBorders(playerGui, playerHitbox, gameWindow)) {
                 playerGui.setCenterX(mover.getPlayerX());
                 playerGui.setCenterY(mover.getPlayerY());
+                kirbysprite.setX(playerGui.getCenterX());
+                kirbysprite.setY(playerGui.getCenterY());
                 checkExits();
             }
             updateHealth();
@@ -326,6 +334,7 @@ public class FXMLDocumentController implements Initializable {
         goldCount.setText("Gold: " + player.getGold());
         monster1Ai.startMonsterMovement(monster1, playerGui);
         monster2Ai.startMonsterMovement(monster2, playerGui);
+        movementAni.MovementAnimation(playerGui, kirbysprite);
     }
 
 }
