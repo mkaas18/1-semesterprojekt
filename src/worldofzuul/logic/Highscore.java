@@ -14,8 +14,8 @@ public class Highscore implements Serializable, IHighscore {
 
     private int score;
     private String name;
-    IFileWriter fw = new FileWriter("highscore.txt");
-    IFileReader fr = new FileReader("highscore.txt");
+    IFileWriter fileW = new FileWriter("highscore.txt");
+    IFileReader fileR = new FileReader("highscore.txt");
     ArrayList<String> highscoreList = new ArrayList<String>();
 
     public Highscore(String name) {
@@ -29,16 +29,16 @@ public class Highscore implements Serializable, IHighscore {
     }
 
     @Override
-    public void setScore(Player p1) {
-        this.score = p1.getKillCounter() * p1.getQuestionsCorrectAnswered();
+    public void setScore(Player player) {
+        this.score = player.getKillCounter() * player.calculateStats();
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(Player p1) {
-        this.name = p1.getName();
+    public void setName(Player player) {
+        this.name = player.getName();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Highscore implements Serializable, IHighscore {
     }
 
     public void loadHighscoreList() {
-        for (String highscoreString : fr.readFile()) {
+        for (String highscoreString : fileR.readFile()) {
             highscoreList.add(highscoreString);
         }
     }
@@ -65,7 +65,7 @@ public class Highscore implements Serializable, IHighscore {
     public void writeHighscoreList() {
         highscoreList.add(this.toString());
         sort();
-        fw.writeFile(highscoreList);
+        fileW.writeFile(highscoreList);
     }
 
     private void sort() {
