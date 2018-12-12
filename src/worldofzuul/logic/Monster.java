@@ -3,6 +3,8 @@ package worldofzuul.logic;
 import java.util.Random;
 import java.util.Scanner;
 import worldofzuul.interfaces.IMonster;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Monster implements IMonster {
     
@@ -90,32 +92,33 @@ public class Monster implements IMonster {
     @Override
     public String answerChecker(QuestionResults results, double input, Player player) {
         QuestionTimer timer1 = new QuestionTimer(player); 
-        timer1.start();
-        
-        if (input == results.getAnswer()) {
-            changeHp((-(player.getDamage()) +(-player.getStrength())));
-            player.setQuestionsCorrectAnswered(1);
-            return "\nYou answered correct!\nThe monster takes " + (damage + player.getStrength())+ " damage" + "\n";
-        } else {
-            if(player.getAgility() == 0){player.addHp(-(damage - player.getEndurance()));
-            return "\nYou answered incorrect!\nYou take damage! " + (-(damage - player.getEndurance())) + "\n";
-            } else { if(new Random().nextInt(100) + (player.getAgility())
-                      > 99) {
-            player.addHp((nochange));
-            return "\nYou answered incorret!\nRolling dice of agility --> jAckpot and you lost no hp! attack the monster again " +"\n";
-                    } else {
+        timer1.run();
+        if (QuestionTimer.activeCount()==1) {
+            timer1.stopTimer();
+                player.addHp(-(player.getEndurance() - damage));
+                return "\n You lost time and take damage " + (-(damage - player.getEndurance())) + "\n";
+        } else{
+            if (input == results.getAnswer()) {
+                changeHp((-(player.getDamage()) +(-player.getStrength())));
+                player.setQuestionsCorrectAnswered(1);
+                return "\nYou answered correct!\nThe monster takes " + (damage + player.getStrength())+ " damage" + "\n";
+            } else {
+                if(player.getAgility() == 0){player.addHp(-(damage - player.getEndurance()));
+                return "\nYou answered incorrect!\nYou take damage! " + (-(damage - player.getEndurance())) + "\n";
+                } else { if(new Random().nextInt(100) + (player.getAgility())
+                        > 99) {
+                    player.addHp((nochange));
+                    return "\nYou answered incorret!\nRolling dice of agility --> jAckpot and you lost no hp! attack the monster again " +"\n";
+                } else {
                     player.addHp(-(damage - player.getEndurance()));
-            return "\nYou answered incorrect!\nYou lost dice of agility. You take damage! " + (-(damage - player.getEndurance())) + "\n";
-        }
-               }     
-              
+                    return "\nYou answered incorrect!\nYou lost dice of agility. You take damage! " + (-(damage - player.getEndurance())) + "\n";
+                }
+                }
                 
-                    }
+            }
+        }
        
-    
     }
-    
-    
     @Override
     public QuestionResults questionPicker() {
         switch ((int) Math.floor(Math.random() * 4)) {

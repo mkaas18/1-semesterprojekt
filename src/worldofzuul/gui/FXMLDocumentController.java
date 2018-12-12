@@ -36,6 +36,10 @@ import worldofzuul.logic.Game;
 import worldofzuul.logic.Item;
 import worldofzuul.logic.ItemGenerator;
 import worldofzuul.logic.Player;
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.scene.control.Tab;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -56,7 +60,7 @@ public class FXMLDocumentController implements Initializable {
     IItemGenerator itemGen = new ItemGenerator();
     Item droppedItem;
     @FXML
-    private AnchorPane inventoryPane, shopPane, combatPane;
+    private AnchorPane inventoryPane, shopPane, combatPane, MathbookPane;
     @FXML
     private Label goldCount, monsterName;
     @FXML
@@ -72,7 +76,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ListView<IItem> playerItemList, playerConsumeList, waresList, consumableList;
     @FXML
-    private Circle playerGui, playerHitbox, monster1, monster2, monsterCombat;
+    private Circle playerGui;
+    private Circle playerHitbox, monster1, monster2, monsterCombat;
     @FXML
     private Rectangle north, south, east, west, down, up, shop;
     HashMap<String, Rectangle> exitMap = new HashMap<>();
@@ -81,6 +86,22 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button focusButton;
     private Mover mover = new Mover();
+    @FXML
+    private TabPane shopMode1;
+    @FXML
+    private Tab hello1;
+    @FXML
+    private Button inventoryButton;
+    @FXML
+    private Tab hello;
+    @FXML
+    private ImageView playerSprite;
+    @FXML
+    private ImageView monsterSprite;
+    @FXML
+    private Label playerMaxHPLabel;
+    @FXML
+    private Label playerMinHPLabel;
 
     @FXML
     private void keyPressed(KeyEvent event) {
@@ -113,7 +134,10 @@ public class FXMLDocumentController implements Initializable {
             System.out.println(highscore.readHighscoreList());
 
         }
-    }
+
+            
+        }
+    
 
     @FXML
     private void keyReleased(KeyEvent event) {
@@ -130,8 +154,24 @@ public class FXMLDocumentController implements Initializable {
             inventoryPane.setVisible(true);
             inventoryPane.setDisable(false);
         }
+        
+        }
+    @FXML
+    private void MathbookToggle(ActionEvent event){
+    if (MathbookPane.isVisible()) {
+            MathbookPane.setVisible(false);
+            MathbookPane.setDisable(true);
+        } else {
+            MathbookPane.setVisible(true);
+            MathbookPane.setDisable(false);
+        }
+    
+        
+        }
+    
+    
 
-    }
+    
 
     @FXML
     private void buyItem(ActionEvent event) {
@@ -185,7 +225,6 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    @FXML
     private void shopToggle() {
         if (shopPane.isVisible()) {
             shopPane.setVisible(false);
@@ -313,6 +352,7 @@ public class FXMLDocumentController implements Initializable {
 //            hpBar.setVisible(false);
             monster2Ai.pauseMonsterMovement();
             monsterCombat = monster1;
+            
         } else if (monster2Ai.combatCheck()) {
             moveTimer.stop();
             combatWindow.startCombat(console, combatMonsterHpBar, combatPane, game.getCurrentRoom().getDifficulty(), player, monsterName);

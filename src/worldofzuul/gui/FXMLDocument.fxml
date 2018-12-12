@@ -19,7 +19,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane id="AnchorPane" onKeyPressed="#keyPressed" onKeyReleased="#keyReleased" prefHeight="514.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.gui.FXMLDocumentController">
+<AnchorPane id="AnchorPane" onKeyPressed="#keyPressed" onKeyReleased="#keyReleased" prefHeight="514.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.gui.FXMLDocumentController">
     <children>
       <AnchorPane fx:id="inventoryPane" layoutX="508.0" layoutY="40.0" prefHeight="446.0" prefWidth="339.0">
          <children>
@@ -89,7 +89,8 @@
       <ToolBar layoutX="508.0" prefHeight="40.0" prefWidth="399.0">
         <items>
           <Button fx:id="inventoryButton" mnemonicParsing="false" onAction="#inventoryToggle" text="Inventory" />
-            <Button fx:id="focusButton" mnemonicParsing="false" text="Button" />
+            <Button mnemonicParsing="false" text="Button" />
+            <Button fx:id="Mathbook" mnemonicParsing="false" onAction="#showMathbook" text="Mathbook" />
         </items>
       </ToolBar>
       <AnchorPane fx:id="shopPane" layoutX="40.0" layoutY="28.0" prefHeight="260.0" prefWidth="418.0" visible="false">
