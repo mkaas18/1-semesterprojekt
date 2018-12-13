@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import worldofzuul.interfaces.IFileReader;
 import worldofzuul.interfaces.IFileWriter;
 import worldofzuul.interfaces.IHighscore;
@@ -17,6 +20,7 @@ public class Highscore implements Serializable, IHighscore {
     IFileWriter fileW = new FileWriter("highscore.txt");
     IFileReader fileR = new FileReader("highscore.txt");
     ArrayList<String> highscoreList = new ArrayList<String>();
+    private ObservableList<String> ObsHighscoreList = FXCollections.observableArrayList();
 
     public Highscore(String name) {
         this.name = name;
@@ -58,6 +62,10 @@ public class Highscore implements Serializable, IHighscore {
     public void loadHighscoreList() {
         for (String highscoreString : fileR.readFile()) {
             highscoreList.add(highscoreString);
+            String formattedHighscore = "";
+            String[] splittedString = highscoreString.split(":");
+            formattedHighscore = splittedString[0] + "\t" + splittedString[1];
+            ObsHighscoreList.add(formattedHighscore);
         }
     }
 
@@ -71,5 +79,9 @@ public class Highscore implements Serializable, IHighscore {
     private void sort() {
         ScoreComparator comparator = new ScoreComparator();
         Collections.sort(highscoreList, comparator);
+    }
+    
+    public ObservableList<String> getObsHighscoreList() {
+        return ObsHighscoreList;
     }
 }

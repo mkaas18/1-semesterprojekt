@@ -26,4 +26,5 @@ public interface IPlayer {
     public void useHealing(Consumable pot);
     public void setKillCounter();
     public void setGold(int difficulty);
+    public void setName(String name);
 }

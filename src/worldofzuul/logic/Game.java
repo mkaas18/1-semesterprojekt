@@ -16,13 +16,12 @@ public class Game implements IGame {
     private RandomEvent events = new RandomEvent();
     private Highscore highscore;
 
-    public Game(String playerName) {
+    public Game() {
 //        parser = new Parser();
 //        System.out.println("Hallo and Welcome to our textbased game.");
 //        System.out.println("Type in your awesome player name:");
 //        Scanner userName = new Scanner(System.in);
-
-        player = new Player(playerName);
+        player = new Player("peter");
         highscore = new Highscore(player.getName());
         currentRoom = map.getStartingRoom();
         events.createEvents();

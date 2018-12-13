@@ -18,6 +18,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" onKeyPressed="#keyPressed" onKeyReleased="#keyReleased" prefHeight="514.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.gui.FXMLDocumentController">
     <children>
@@ -169,5 +170,10 @@
             <Label layoutX="212.0" layoutY="292.0" text="The Mathknight" />
          </children>
       </AnchorPane>
+      <Label fx:id="showPlayerName" layoutX="106.0" layoutY="417.0" text="Label">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

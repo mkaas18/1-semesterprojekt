@@ -48,7 +48,7 @@ public class FXMLDocumentController implements Initializable {
     private IGame game = new Game();
     private IPlayer player = game.getPlayer();
     private IItem item;
-    private IHighscore highscore = game.getHighscore();
+    private IHighscore highscore;
     private InventoryWindow inventoryWindow = new InventoryWindow(player);
     private ShopWindow shopWindow = new ShopWindow(game.getCurrentRoom().getShop(), player);
     private CombatWindow combatWindow = new CombatWindow();
@@ -78,7 +78,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Circle playerGui;
     @FXML
-    private Circle playerHitbox, monster1, monster2, monsterCombat;
+    private Circle playerHitbox;
+    @FXML
+    private Circle monster1, monster2, monsterCombat;
     @FXML
     private Rectangle north, south, east, west, down, up, shop;
     @FXML
@@ -101,6 +103,17 @@ public class FXMLDocumentController implements Initializable {
     private Label playerMaxHPLabel;
     @FXML
     private Label playerMinHPLabel;
+    @FXML
+    private Label showPlayerName;
+    
+    public void setPlayerName(String playerName) {
+        player.setName(playerName);
+        System.out.println(player.toString());
+        this.showPlayerName.setText(playerName);
+        highscore = game.getHighscore();
+        highscore.setName((Player)player);
+//        System.out.println(game.getPlayer().getName());
+    }
 
     @FXML
     private void keyPressed(KeyEvent event) {

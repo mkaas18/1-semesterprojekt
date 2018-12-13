@@ -26,6 +26,10 @@ public class Player implements IPlayer {
         this.killCounter = 0;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getDamage() {
         return damage;
     }
@@ -54,7 +58,7 @@ public class Player implements IPlayer {
 
     @Override
     public void setGold(int difficulty) {
-        this.gold += (20 * difficulty);
+        this.gold = this.gold + (20 * difficulty);
     }
 
     public String getName() {
