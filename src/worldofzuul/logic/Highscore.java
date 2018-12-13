@@ -72,4 +72,6 @@ public class Highscore implements Serializable, IHighscore {
         ScoreComparator comparator = new ScoreComparator();
         Collections.sort(highscoreList, comparator);
     }
+    
+    
 }

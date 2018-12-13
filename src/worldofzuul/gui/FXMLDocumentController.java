@@ -56,9 +56,9 @@ public class FXMLDocumentController implements Initializable {
     IItemGenerator itemGen = new ItemGenerator();
     Item droppedItem;
     @FXML
-    private AnchorPane inventoryPane, shopPane, combatPane;
+    private AnchorPane inventoryPane, shopPane, combatPane, lostPane;
     @FXML
-    private Label goldCount, monsterName;
+    private Label goldCount, monsterName, highscoreLabel;
     @FXML
     private TextArea console, itemDescript, waresDescipt;
     @FXML
@@ -161,6 +161,7 @@ public class FXMLDocumentController implements Initializable {
         inventoryWindow.useConsumable();
     }
 
+    //This method is executed everytime you submit an answer during combat
     @FXML
     private void combatInput(ActionEvent event) {
         if (combatWindow.getCombatState()) {
@@ -180,7 +181,14 @@ public class FXMLDocumentController implements Initializable {
             player.pickupItem(droppedItem);
             console.clear();
             console.appendText(game.getCurrentRoom().getLongDescription());
-            moveTimer.start();
+            System.out.println(player.getHp());
+            if (player.getHp() < 0) {
+                highscoreLabel.setText(highscore.toString());
+                highscore.writeHighscoreList();
+            } else {
+                moveTimer.start();
+            }
+
         }
 
     }
@@ -305,20 +313,19 @@ public class FXMLDocumentController implements Initializable {
             percentage = 0;
         }
         hpBar.setProgress(percentage);
-        combatHpBar.setProgress(percentage);
 
     }
 
     private void combatStart() {
         if (monster1Ai.combatCheck()) {
             moveTimer.stop();
-            combatWindow.startCombat(console, combatMonsterHpBar, combatPane, game.getCurrentRoom().getDifficulty(), player, monsterName);
+            combatWindow.startCombat(console, combatMonsterHpBar, combatHpBar, combatPane, game.getCurrentRoom().getDifficulty(), player, monsterName, lostPane);
 //            hpBar.setVisible(false);
             monster2Ai.pauseMonsterMovement();
             monsterCombat = monster1;
         } else if (monster2Ai.combatCheck()) {
             moveTimer.stop();
-            combatWindow.startCombat(console, combatMonsterHpBar, combatPane, game.getCurrentRoom().getDifficulty(), player, monsterName);
+            combatWindow.startCombat(console, combatMonsterHpBar, combatHpBar, combatPane, game.getCurrentRoom().getDifficulty(), player, monsterName, lostPane);
 //            hpBar.setVisible(false);
             monster1Ai.pauseMonsterMovement();
             monsterCombat = monster2;

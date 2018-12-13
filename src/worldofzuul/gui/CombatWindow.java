@@ -32,7 +32,7 @@ public class CombatWindow {
     private AnimationTimer combatTimer;
     boolean playerTurn = false;
 
-    public void startCombat(TextArea textarea, ProgressBar monsterHealth, AnchorPane combatPane, int difficulty, IPlayer player, Label monsterNameLabel) {
+    public void startCombat(TextArea textarea, ProgressBar monsterHealth, ProgressBar playerHealth, AnchorPane combatPane, int difficulty, IPlayer player, Label monsterNameLabel, AnchorPane lostPane) {
         monster = monsterGen.generateMonster(difficulty);
         monsterNameLabel.setText(monster.getName());
         playerTurn = false;
@@ -44,19 +44,26 @@ public class CombatWindow {
                 if (!playerTurn) {
                     monsterTurn(textarea);
                 }
+                updatePlayerHealth(player, playerHealth);
                 updateMonsterHealth(monsterHealth);
                 if (monster.getHp() < 0) {
                     combatInitialized = false;
                     textarea.clear();
                     textarea.appendText("The monster dropped an item\n");
                     textarea.appendText("You win! Press 'ENTER' to exit combat");
+                } else if (player.getHp()< 0){
+                    lostPane.setVisible(true);
+                    lostPane.setDisable(false);
+                    combatInitialized = false;
                 }
             }
 
         };
         combatTimer.start();
     }
-
+    public void combat(){
+        
+    }
     public void monsterTurn(TextArea textarea) {
         questionResults = monster.questionPicker();
         textarea.appendText(questionResults.getQuestion());
@@ -75,6 +82,7 @@ public class CombatWindow {
             }
             if (noException) {
                 textArea.appendText(monster.answerChecker((QuestionResults) questionResults, input, (Player) player));
+                System.out.println(player.getHp());
                 combatInput.clear();
                 playerTurn = false;
             }
@@ -88,6 +96,13 @@ public class CombatWindow {
             percentage = 0;
         }
         monsterHealth.setProgress(percentage);
+    }
+    public void updatePlayerHealth(IPlayer player, ProgressBar playerHealth) {
+        double percentage = (double) player.getHp() / (double) player.getMaxHp();
+        if (percentage < 0) {
+            percentage = 0;
+        }
+        playerHealth.setProgress(percentage);
     }
 
     public void combatWindowToggle(AnchorPane combatPane) {
