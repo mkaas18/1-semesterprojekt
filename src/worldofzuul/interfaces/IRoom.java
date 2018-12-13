@@ -13,5 +13,6 @@ import java.util.Set;
  */
 public interface IRoom {
     public Set<String> getExits();
+    public int getKillRequirement();
     
 }

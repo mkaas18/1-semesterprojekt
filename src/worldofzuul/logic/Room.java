@@ -65,6 +65,10 @@ public class Room {
     public int getDifficulty() {
         return this.difficulty;
     }
+    
+    public int getKillRequirement(){
+        return killRequirement;
+    }
 
     @Override
     public String toString() {
