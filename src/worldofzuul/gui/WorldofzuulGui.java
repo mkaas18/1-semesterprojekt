@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import worldofzuul.logic.MusicPlayer;
 
 /**
  *
@@ -25,8 +26,14 @@ public class WorldofzuulGui extends Application {
         
         stage.setScene(scene);
         stage.show();
+        
+         String filepath = "epic.wav";
+        
+        MusicPlayer musicObject = new MusicPlayer();
+        musicObject.playMusic(filepath);
     }
 
+    
     /**
      * @param args the command line arguments
      */
