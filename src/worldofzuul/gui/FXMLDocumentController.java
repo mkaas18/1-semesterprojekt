@@ -59,6 +59,7 @@ public class FXMLDocumentController implements Initializable {
     private Item droppedItem;
     private Mover mover = new Mover();
     private HashMap<String, Rectangle> exitMap = new HashMap<>();
+    private HashMap<String, ImageView> exitGuiMap = new HashMap<>();
     @FXML
     private AnchorPane inventoryPane, shopPane, combatPane, lostPane;
     @FXML
@@ -103,6 +104,22 @@ public class FXMLDocumentController implements Initializable {
     private Label playerMaxHPLabel;
     @FXML
     private Label playerMinHPLabel;
+    @FXML
+    private ImageView stairUpImg;
+    @FXML
+    private ImageView stairDownImg;
+    @FXML
+    private ImageView doorWest;
+    @FXML
+    private ImageView doorEast;
+    @FXML
+    private ImageView doorSouth;
+    @FXML
+    private ImageView doorNorth;
+    @FXML
+    private ImageView shopImg;
+    @FXML
+    private ImageView playerImg;
     
     public void setPlayerName(String playerName) {
         player.setName(playerName);
@@ -114,7 +131,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void keyPressed(KeyEvent event) {
-        mover.keyPressed(event);
+        mover.keyPressed(event, playerImg);
         if (event.getCode() == KeyCode.E) {
             if (exitMap.get("down").getBoundsInParent().intersects(playerHitbox.getBoundsInParent())
                     && !exitMap.get("down").isDisabled() && player.getKillCounter() >= game.getCurrentRoom().getKillRequirement()) {
@@ -249,7 +266,9 @@ public class FXMLDocumentController implements Initializable {
         public void handle(long now) {
             if (!mover.checkBorders(playerGui, playerHitbox, gameWindow)) {
                 playerGui.setCenterX(mover.getPlayerX());
+                playerImg.setX(mover.getPlayerX());
                 playerGui.setCenterY(mover.getPlayerY());
+                playerImg.setY(mover.getPlayerY());
                 checkExits();
             }
             updateHealth();
@@ -303,12 +322,12 @@ public class FXMLDocumentController implements Initializable {
             for (String exits : game.getCurrentRoom().getExits()) {
                 if (guiExits.equals(exits)) {
                     exitMap.get(guiExits).setDisable(false);
-                    exitMap.get(guiExits).setVisible(true);
+                    exitGuiMap.get(guiExits).setVisible(true);
                     game.getCurrentRoom().getExit(exits);
                     break;
                 } else {
                     exitMap.get(guiExits).setDisable(true);
-                    exitMap.get(guiExits).setVisible(false);
+                    exitGuiMap.get(guiExits).setVisible(false);
                 }
 
             }
@@ -317,10 +336,10 @@ public class FXMLDocumentController implements Initializable {
 
     private void setShops() {
         if (game.getCurrentRoom().isShop()) {
-            shop.setVisible(true);
+            shopImg.setVisible(true);
             shop.setDisable(false);
         } else {
-            shop.setVisible(false);
+            shopImg.setVisible(false);
             shop.setDisable(true);
         }
     }
@@ -371,6 +390,12 @@ public class FXMLDocumentController implements Initializable {
         exitMap.put("east", east);
         exitMap.put("down", down);
         exitMap.put("up", up);
+        exitGuiMap.put("north", doorNorth);
+        exitGuiMap.put("south", doorSouth);
+        exitGuiMap.put("west", doorWest);
+        exitGuiMap.put("east", doorEast);
+        exitGuiMap.put("down", stairDownImg);
+        exitGuiMap.put("up", stairUpImg);
         inventoryWindow.inventoryHandler(playerItemList, playerConsumeList, itemDescript);
         setExits();
         setShops();
