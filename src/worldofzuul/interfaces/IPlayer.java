@@ -24,6 +24,7 @@ public interface IPlayer {
     public void dropItem(Item item);
     public int getGold();
     public void useHealing(Consumable pot);
-    public void setQuestionsCorrectAnswered(int count);
-    public void setKillCounter(int count);
+    public void setKillCounter();
+    public void setGold(int difficulty);
+    public void setName(String name);
 }

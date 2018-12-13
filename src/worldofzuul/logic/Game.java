@@ -21,8 +21,7 @@ public class Game implements IGame {
 //        System.out.println("Hallo and Welcome to our textbased game.");
 //        System.out.println("Type in your awesome player name:");
 //        Scanner userName = new Scanner(System.in);
-
-        player = new Player("Morten5");
+        player = new Player("peter");
         highscore = new Highscore(player.getName());
         currentRoom = map.getStartingRoom();
         events.createEvents();

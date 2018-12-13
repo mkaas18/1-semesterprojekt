@@ -17,7 +17,6 @@ public class Player implements IPlayer {
     private ObservableList<IItem> inventory = FXCollections.observableArrayList();
     private ObservableList<IConsumable> potInventory = FXCollections.observableArrayList();
     private int killCounter;
-    private int questionsCorrectAnswered;
 
     public Player(String name) {
         this.name = name;
@@ -25,7 +24,10 @@ public class Player implements IPlayer {
         this.hp = maxHp;
         this.damage = 35;
         this.killCounter = 0;
-        this.questionsCorrectAnswered = 0;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getDamage() {
@@ -45,17 +47,8 @@ public class Player implements IPlayer {
     }
 
     @Override
-    public void setKillCounter(int count) {
-        this.killCounter += count;
-    }
-
-    public int getQuestionsCorrectAnswered() {
-        return questionsCorrectAnswered;
-    }
-
-    @Override
-    public void setQuestionsCorrectAnswered(int count) {
-        this.questionsCorrectAnswered += count;
+    public void setKillCounter() {
+        this.killCounter += 1;
     }
 
     @Override
@@ -63,8 +56,9 @@ public class Player implements IPlayer {
         return gold;
     }
 
-    public void setGold(int gold) {
-        this.gold = gold;
+    @Override
+    public void setGold(int difficulty) {
+        this.gold = this.gold + (20 * difficulty);
     }
 
     public String getName() {
@@ -192,6 +186,12 @@ public class Player implements IPlayer {
     public void useHealing(Consumable pot) {
         addHp(pot.getHealing());
         getPotInventory().remove(pot);
+    }
+
+    public int calculateStats() {
+        int statsSummaryScore = 0;
+        statsSummaryScore += getAgility() + getEndurance() + getIntelligence() + getStrength();
+        return statsSummaryScore;
     }
 
 }

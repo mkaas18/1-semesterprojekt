@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import worldofzuul.interfaces.IFileReader;
 import worldofzuul.interfaces.IFileWriter;
 import worldofzuul.interfaces.IHighscore;
@@ -14,9 +17,10 @@ public class Highscore implements Serializable, IHighscore {
 
     private int score;
     private String name;
-    IFileWriter fw = new FileWriter("highscore.txt");
-    IFileReader fr = new FileReader("highscore.txt");
+    IFileWriter fileW = new FileWriter("highscore.txt");
+    IFileReader fileR = new FileReader("highscore.txt");
     ArrayList<String> highscoreList = new ArrayList<String>();
+    private ObservableList<String> ObsHighscoreList = FXCollections.observableArrayList();
 
     public Highscore(String name) {
         this.name = name;
@@ -29,16 +33,16 @@ public class Highscore implements Serializable, IHighscore {
     }
 
     @Override
-    public void setScore(Player p1) {
-        this.score = p1.getKillCounter() * p1.getQuestionsCorrectAnswered();
+    public void setScore(Player player) {
+        this.score = player.getKillCounter() * player.calculateStats();
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(Player p1) {
-        this.name = p1.getName();
+    public void setName(Player player) {
+        this.name = player.getName();
     }
 
     @Override
@@ -56,8 +60,12 @@ public class Highscore implements Serializable, IHighscore {
     }
 
     public void loadHighscoreList() {
-        for (String highscoreString : fr.readFile()) {
+        for (String highscoreString : fileR.readFile()) {
             highscoreList.add(highscoreString);
+            String formattedHighscore = "";
+            String[] splittedString = highscoreString.split(":");
+            formattedHighscore = splittedString[0] + "\t" + splittedString[1];
+            ObsHighscoreList.add(formattedHighscore);
         }
     }
 
@@ -65,13 +73,15 @@ public class Highscore implements Serializable, IHighscore {
     public void writeHighscoreList() {
         highscoreList.add(this.toString());
         sort();
-        fw.writeFile(highscoreList);
+        fileW.writeFile(highscoreList);
     }
 
     private void sort() {
         ScoreComparator comparator = new ScoreComparator();
         Collections.sort(highscoreList, comparator);
     }
-    
-    
+
+    public ObservableList<String> getObsHighscoreList() {
+        return ObsHighscoreList;
+    }
 }

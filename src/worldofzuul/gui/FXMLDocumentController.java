@@ -17,9 +17,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -43,18 +45,20 @@ import worldofzuul.logic.Player;
  */
 public class FXMLDocumentController implements Initializable {
 
-    IGame game = new Game();
-    IPlayer player = game.getPlayer();
-    IItem item;
-    IHighscore highscore = game.getHighscore();
-    InventoryWindow inventoryWindow = new InventoryWindow(player);
-    ShopWindow shopWindow = new ShopWindow(game.getCurrentRoom().getShop(), player);
-    CombatWindow combatWindow = new CombatWindow();
-    MonsterAI monster1Ai = new MonsterAI();
-    MonsterAI monster2Ai = new MonsterAI();
-    String output;
-    IItemGenerator itemGen = new ItemGenerator();
-    Item droppedItem;
+    private IGame game = new Game();
+    private IPlayer player = game.getPlayer();
+    private IItem item;
+    private IHighscore highscore;
+    private InventoryWindow inventoryWindow = new InventoryWindow(player);
+    private ShopWindow shopWindow = new ShopWindow(game.getCurrentRoom().getShop(), player);
+    private CombatWindow combatWindow = new CombatWindow();
+    private MonsterAI monster1Ai = new MonsterAI();
+    private MonsterAI monster2Ai = new MonsterAI();
+    private String output;
+    private IItemGenerator itemGen = new ItemGenerator();
+    private Item droppedItem;
+    private Mover mover = new Mover();
+    private HashMap<String, Rectangle> exitMap = new HashMap<>();
     @FXML
     private AnchorPane inventoryPane, shopPane, combatPane, lostPane;
     @FXML
@@ -72,15 +76,44 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ListView<IItem> playerItemList, playerConsumeList, waresList, consumableList;
     @FXML
-    private Circle playerGui, playerHitbox, monster1, monster2, monsterCombat;
+    private Circle playerGui;
+    @FXML
+    private Circle playerHitbox;
+    @FXML
+    private Circle monster1, monster2, monsterCombat;
     @FXML
     private Rectangle north, south, east, west, down, up, shop;
-    HashMap<String, Rectangle> exitMap = new HashMap<>();
     @FXML
     private Pane gameWindow;
     @FXML
     private Button focusButton;
-    private Mover mover = new Mover();
+    @FXML
+    private TabPane shopMode1;
+    @FXML
+    private Tab hello1;
+    @FXML
+    private Button inventoryButton;
+    @FXML
+    private Tab hello;
+    @FXML
+    private ImageView playerSprite;
+    @FXML
+    private ImageView monsterSprite;
+    @FXML
+    private Label playerMaxHPLabel;
+    @FXML
+    private Label playerMinHPLabel;
+    @FXML
+    private Label showPlayerName;
+    
+    public void setPlayerName(String playerName) {
+        player.setName(playerName);
+        System.out.println(player.toString());
+        this.showPlayerName.setText(playerName);
+        highscore = game.getHighscore();
+        highscore.setName((Player)player);
+//        System.out.println(game.getPlayer().getName());
+    }
 
     @FXML
     private void keyPressed(KeyEvent event) {
@@ -176,9 +209,10 @@ public class FXMLDocumentController implements Initializable {
                 monster1Ai.startMonsterMovement();
             }
             combatWindow.resetCombat(true);
-            player.setKillCounter(1);
-            droppedItem = itemGen.generateItem(1);
+            player.setKillCounter();
+            droppedItem = itemGen.generateItem(game.getCurrentRoom().getDifficulty());
             player.pickupItem(droppedItem);
+            player.setGold(game.getCurrentRoom().getDifficulty());
             console.clear();
             console.appendText(game.getCurrentRoom().getLongDescription());
             System.out.println(player.getHp());
@@ -193,7 +227,6 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    @FXML
     private void shopToggle() {
         if (shopPane.isVisible()) {
             shopPane.setVisible(false);
