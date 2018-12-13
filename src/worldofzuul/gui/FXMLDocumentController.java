@@ -228,31 +228,34 @@ public class FXMLDocumentController implements Initializable {
                 if (exit.equals(north)) {
                     output = game.goRoom("north");
                     console.appendText(output);
-                    mover.setPlayerY(gameWindow.getHeight() / 2 - 20);
+                    mover.setPlayerY(gameWindow.getHeight() / 2 - 25);
                     playerGui.setCenterY(mover.getPlayerY());
                     playerHitbox.setCenterY(mover.getPlayerYCheck());
+                    monsterSpawner();
                 } else if (exit.equals(south)) {
                     output = game.goRoom("south");
                     console.appendText(output);
-                    mover.setPlayerY(-gameWindow.getHeight() / 2 + 20);
+                    mover.setPlayerY(-gameWindow.getHeight() / 2 + 25);
                     playerGui.setCenterY(mover.getPlayerY());
                     playerHitbox.setCenterY(mover.getPlayerYCheck());
+                    monsterSpawner();
                 } else if (exit.equals(west)) {
                     output = game.goRoom("west");
                     console.appendText(output);
-                    mover.setPlayerX(gameWindow.getWidth() / 2 - 20);
+                    mover.setPlayerX(gameWindow.getWidth() / 2 - 25);
                     playerGui.setCenterX(mover.getPlayerX());
                     playerHitbox.setCenterX(mover.getPlayerXCheck());
+                    monsterSpawner();
                 } else if (exit.equals(east)) {
                     output = game.goRoom("east");
                     console.appendText(output);
-                    mover.setPlayerX(-gameWindow.getWidth() / 2 + 20);
+                    mover.setPlayerX(-gameWindow.getWidth() / 2 + 25);
                     playerGui.setCenterX(mover.getPlayerX());
                     playerHitbox.setCenterX(mover.getPlayerXCheck());
+                    monsterSpawner();
                 }
                 setExits();
                 setShops();
-                monsterSpawner();
             }
         }
     }
