@@ -10,9 +10,11 @@ public class Map {
     Room stairRoom2 = new Room("in a room with a winding staircase", 0);
     Room stairRoom3 = new Room("in a room with a winding staircase", 0);
     Room stairRoom4 = new Room("in a room with a winding staircase", 0);
+    Room stairRoom5 = new Room("stair room", 0);
     Room levelOneShop = new Room("dwarfs shopping room, you see a tiny dwarf standing behind the counter", 1);
     Room levelTwoShop = new Room("high elfs shopping quarters, he looks unusually clean in comparison to the rest of the room", 2);
     Room levelThreeShop = new Room("wyverns store, it pretty cold in here!", 3);
+    Room bossRoom = new Room("boss room OwO", 4);
     ArrayList<Room> levelOneRoomList = new ArrayList<>();
     ArrayList<Room> levelTwoRoomList = new ArrayList<>();
     ArrayList<Room> levelThreeRoomList = new ArrayList<>();
@@ -40,6 +42,7 @@ public class Map {
         this.levelThreeShop.setShop(true);
         this.levelOneRoomList.add(stairRoom);
         this.levelTwoRoomList.add(stairRoom3);
+        this.levelThreeRoomList.add(stairRoom5);
 
         //Set grid size to desired map size
         this.levelOne = new Room[levelSize][levelSize];
@@ -67,6 +70,7 @@ public class Map {
         this.stairRoom2.setExit("up", stairRoom);
         this.stairRoom3.setExit("down", stairRoom4);
         this.stairRoom4.setExit("up", stairRoom3);
+        this.stairRoom5.setExit("down", bossRoom);
     }
 
     public static Room[][] genNeighbours(Room[][] map, int x, int y, ArrayList<Room> roomList) {
