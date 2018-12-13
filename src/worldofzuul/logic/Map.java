@@ -1,20 +1,21 @@
 package worldofzuul.logic;
+
 import java.util.ArrayList;
 import worldofzuul.interfaces.IFileReader;
 import worldofzuul.persistence.FileReader;
 
 public class Map {
 
-    Room startingRoom = new Room("in the starting area", 0);
-    Room stairRoom = new Room("in a room with a winding staircase", 0);
-    Room stairRoom2 = new Room("in a room with a winding staircase", 0);
-    Room stairRoom3 = new Room("in a room with a winding staircase", 0);
-    Room stairRoom4 = new Room("in a room with a winding staircase", 0);
-    Room stairRoom5 = new Room("stair room", 0);
-    Room levelOneShop = new Room("dwarfs shopping room, you see a tiny dwarf standing behind the counter", 1);
-    Room levelTwoShop = new Room("high elfs shopping quarters, he looks unusually clean in comparison to the rest of the room", 2);
-    Room levelThreeShop = new Room("wyverns store, it pretty cold in here!", 3);
-    Room bossRoom = new Room("boss room OwO", 4);
+    Room startingRoom = new Room("in the starting area", 0, 0);
+    Room stairRoom = new Room("in a room with a winding staircase", 0, 10);
+    Room stairRoom2 = new Room("in a room with a winding staircase", 0, 0);
+    Room stairRoom3 = new Room("in a room with a winding staircase", 0, 20);
+    Room stairRoom4 = new Room("in a room with a winding staircase", 0, 0);
+    Room stairRoom5 = new Room("stair room", 0, 30);
+    Room levelOneShop = new Room("dwarfs shopping room, you see a tiny dwarf standing behind the counter", 1, 0);
+    Room levelTwoShop = new Room("high elfs shopping quarters, he looks unusually clean in comparison to the rest of the room", 2, 0);
+    Room levelThreeShop = new Room("wyverns store, it pretty cold in here!", 3, 0);
+    Room bossRoom = new Room("boss room OwO", 4, 0);
     ArrayList<Room> levelOneRoomList = new ArrayList<>();
     ArrayList<Room> levelTwoRoomList = new ArrayList<>();
     ArrayList<Room> levelThreeRoomList = new ArrayList<>();
@@ -27,11 +28,11 @@ public class Map {
 
         //Import rooms from txt files
         fileReader = new FileReader("levelOneRooms.txt");
-        importRooms(fileReader.readFile(), levelOneRoomList, 1);
+        importRooms(fileReader.readFile(), levelOneRoomList, 1, 0);
         fileReader = new FileReader("levelTwoRooms.txt");
-        importRooms(fileReader.readFile(), levelTwoRoomList, 2);
+        importRooms(fileReader.readFile(), levelTwoRoomList, 2, 0);
         fileReader = new FileReader("levelThreeRooms.txt");
-        importRooms(fileReader.readFile(), levelThreeRoomList, 3);
+        importRooms(fileReader.readFile(), levelThreeRoomList, 3, 0);
 
         //Add stair & shop rooms
         this.levelOneRoomList.add(levelOneShop);
@@ -197,9 +198,9 @@ public class Map {
         }
     }
 
-    public static void importRooms(ArrayList<String> stringArray, ArrayList<Room> levelRoomList, int difficulty) {
+    public static void importRooms(ArrayList<String> stringArray, ArrayList<Room> levelRoomList, int difficulty, int killRequirement) {
         for (String string : stringArray) {
-            levelRoomList.add(new Room(string, difficulty));
+            levelRoomList.add(new Room(string, difficulty, killRequirement));
         }
     }
 

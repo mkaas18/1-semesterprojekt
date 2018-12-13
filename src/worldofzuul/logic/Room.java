@@ -11,9 +11,11 @@ public class Room {
     private final HashMap<String, Room> exits;
     private boolean isShop = false;
     private Shop shop;
+    private int killRequirement;
 
-    public Room(String description, int difficulty) {
+    public Room(String description, int difficulty, int killRequirement) {
         this.description = description;
+        this.killRequirement = killRequirement;
         exits = new HashMap<String, Room>();
         this.difficulty = difficulty;
     }

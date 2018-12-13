@@ -103,13 +103,10 @@ public class FXMLDocumentController implements Initializable {
     private Label playerMaxHPLabel;
     @FXML
     private Label playerMinHPLabel;
-    @FXML
-    private Label showPlayerName;
     
     public void setPlayerName(String playerName) {
         player.setName(playerName);
         System.out.println(player.toString());
-        this.showPlayerName.setText(playerName);
         highscore = game.getHighscore();
         highscore.setName((Player)player);
 //        System.out.println(game.getPlayer().getName());
@@ -120,7 +117,7 @@ public class FXMLDocumentController implements Initializable {
         mover.keyPressed(event);
         if (event.getCode() == KeyCode.E) {
             if (exitMap.get("down").getBoundsInParent().intersects(playerHitbox.getBoundsInParent())
-                    && !exitMap.get("down").isDisabled()) {
+                    && !exitMap.get("down").isDisabled() && player.getKillCounter() >= game.getCurrentRoom().getKillRequirement()) {
                 output = game.goRoom("down");
                 console.appendText(output);
             }
