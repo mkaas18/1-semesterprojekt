@@ -90,7 +90,7 @@
         <items>
           <Button fx:id="inventoryButton" mnemonicParsing="false" onAction="#inventoryToggle" text="Inventory" />
             <Button mnemonicParsing="false" text="Button" />
-            <Button fx:id="Mathbook" mnemonicParsing="false" onAction="#showMathbook" text="Mathbook" />
+            <Button fx:id="Mathbook" mnemonicParsing="false" onAction="#MathbookToggle" text="Mathbook" />
         </items>
       </ToolBar>
       <AnchorPane fx:id="shopPane" layoutX="40.0" layoutY="28.0" prefHeight="260.0" prefWidth="418.0" visible="false">
