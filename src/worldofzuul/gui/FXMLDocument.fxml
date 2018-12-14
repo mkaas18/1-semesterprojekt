@@ -27,7 +27,6 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" onKeyPressed="#keyPressed" onKeyReleased="#keyReleased" prefHeight="514.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.gui.FXMLDocumentController">
-
     <children>
       <ImageView fitHeight="311.0" fitWidth="508.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -77,16 +76,27 @@
                         </AnchorPane>
                      </content>
                   </Tab>
+                  <Tab text="Math Book">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button layoutX="14.0" layoutY="241.0" mnemonicParsing="false" text="Addition" />
+                              <Button layoutX="89.0" layoutY="241.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" text="Subtraction" />
+                              <Button layoutX="188.0" layoutY="241.0" mnemonicParsing="false" text="Multiplication" />
+                              <Button layoutX="291.0" layoutY="241.0" mnemonicParsing="false" text="Division" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
                </tabs>
             </TabPane>
-            <ProgressBar fx:id="hpBar" layoutX="228.0" layoutY="4.0" prefHeight="21.0" prefWidth="167.0" progress="0.0">
+            <ProgressBar fx:id="hpBar" layoutX="255.0" layoutY="4.0" prefHeight="26.0" prefWidth="142.0" progress="0.0">
                <tooltip>
                   <Tooltip text="Heyyy" />
                </tooltip>
             </ProgressBar>
             <TextArea fx:id="itemDescript" editable="false" focusTraversable="false" layoutY="310.0" prefHeight="163.0" prefWidth="399.0" />
             <Label layoutX="286.0" layoutY="6.0" prefHeight="17.0" prefWidth="43.0" text="Health" />
-            <Label fx:id="goldCount" layoutX="133.0" layoutY="9.0" prefHeight="17.0" prefWidth="83.0" text="Gold" />
          </children>
       </AnchorPane>
       <Pane fx:id="gameWindow" layoutY="110.0" prefHeight="241.0" prefWidth="508.0">
@@ -143,6 +153,7 @@
         <items>
           <Button fx:id="inventoryButton" mnemonicParsing="false" onAction="#inventoryToggle" text="Inventory" />
             <Button fx:id="focusButton" mnemonicParsing="false" text="Button" />
+            <Label fx:id="goldCount" prefHeight="17.0" prefWidth="83.0" text="Gold" />
         </items>
       </ToolBar>
       <AnchorPane fx:id="shopPane" layoutX="40.0" layoutY="28.0" prefHeight="260.0" prefWidth="418.0" visible="false">
@@ -185,7 +196,6 @@
                   <Image url="@../../MessageBoxesCombat.png" />
                </image>
             </ImageView>
-            <ProgressBar fx:id="combatTimeLeft" layoutX="43.0" layoutY="103.0" prefWidth="200.0" progress="0.0" visible="false" />
             <ProgressBar fx:id="combatMonsterHpBar" layoutX="80.0" layoutY="176.0" prefHeight="18.0" prefWidth="157.0" progress="0.0" />
             <Label fx:id="monsterName" layoutX="49.0" layoutY="159.0" prefHeight="17.0" prefWidth="188.0" text="Label" />
             <TextField fx:id="combatInput" layoutX="345.0" layoutY="466.0" onAction="#combatInput" />
