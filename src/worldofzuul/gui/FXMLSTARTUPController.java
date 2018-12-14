@@ -26,7 +26,11 @@ import worldofzuul.logic.Highscore;
 public class FXMLSTARTUPController implements Initializable {
 
     private String playerName;
+    private Highscore highscore = new Highscore(playerName);
+    private ObservableList<String> obsHighscoreList;
 
+    @FXML
+    private ListView<String> listViewTable;
     @FXML
     private TextField playernameTxtField;
     @FXML
@@ -42,11 +46,9 @@ public class FXMLSTARTUPController implements Initializable {
     @FXML
     private AnchorPane highscorePane;
     @FXML
-    private ListView<String> listViewTable;
-
-    ObservableList<String> obsHighscoreList;
-    
-    private Highscore highscore = new Highscore(playerName);
+    private Button introMainMenuBTN;
+    @FXML
+    private Button introExitBTN;
 
     public String getPlayerName() {
         return playerName;
@@ -57,7 +59,8 @@ public class FXMLSTARTUPController implements Initializable {
         // TODO
 
     }
-
+    
+    // When Play button is pressed it loads the game and hide the first window
     @FXML
     public void handlePlayBtn(ActionEvent event) throws IOException {
 
@@ -84,11 +87,13 @@ public class FXMLSTARTUPController implements Initializable {
         gameController.setPlayerName(playerName);
     }
 
+    // When Exit button on main menu is pressed it closes the application
     @FXML
     public void handleExitBtn(ActionEvent event) {
         System.exit(1);
     }
 
+    // This method make you able to press "enter" when you typed in your Playername and starts the game, instead of pressing the play button
     @FXML
     private void handleTxtFieldPlayGame(KeyEvent e) throws IOException {
         if (e.getCode() == KeyCode.ENTER) {
@@ -116,9 +121,10 @@ public class FXMLSTARTUPController implements Initializable {
         }
     }
 
+    // Makes you see the highscores that have been made in the game
     @FXML
     private void handleHighscoreBTN(ActionEvent event) {
-        
+
         obsHighscoreList = highscore.getObsHighscoreList();
         listViewTable.setItems(obsHighscoreList);
 
@@ -130,6 +136,7 @@ public class FXMLSTARTUPController implements Initializable {
 
     }
 
+    // Back button from the highscore view
     @FXML
     private void handleBackBTN(ActionEvent event) {
         mainMenuPane.setVisible(true);
@@ -138,5 +145,17 @@ public class FXMLSTARTUPController implements Initializable {
         highscorePane.setVisible(false);
         highscorePane.setDisable(true);
 
+    }
+
+    // Makes you head into the main menu after the intro
+    @FXML
+    private void handleintroMainMenuBTN(ActionEvent event) {
+        // TODO
+    }
+
+    // Makes you able to exit the application on the intro scene.
+    @FXML
+    private void handleIntroExitBTN(ActionEvent event) {
+        // TODO
     }
 }
