@@ -37,6 +37,7 @@ import worldofzuul.interfaces.IPlayer;
 import worldofzuul.logic.Game;
 import worldofzuul.logic.Item;
 import worldofzuul.logic.ItemGenerator;
+import worldofzuul.logic.MusicPlayer;
 import worldofzuul.logic.Player;
 
 /**
@@ -128,7 +129,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ImageView playerImg;
 
-    //Grabs the playername submitted in the Startup document controller and sets the player name to that string submitted
+    String filepath = "epic.wav";
+
+    MusicPlayer musicObject = new MusicPlayer();
+
+    //Grabs the playername submitted in the Startup document controller and sets the player name to that string submitted    
     public void setPlayerName(String playerName) {
         player.setName(playerName);
         System.out.println(player.toString());
@@ -360,7 +365,6 @@ public class FXMLDocumentController implements Initializable {
     private void monsterSpawner() {
         monster1Ai.monsterReset(monster1);
         monster2Ai.monsterReset(monster2);
-
         if (monster1Ai.monsterSpawn(monster1, gameWindow) && game.getCurrentRoom().getDifficulty() > 0) {
             monster1Ai.startMonsterMovement();
         }
@@ -440,6 +444,7 @@ public class FXMLDocumentController implements Initializable {
         goldCount.setText("Gold: " + player.getGold());
         monster1Ai.startMonsterMovement(monster1, playerGui);
         monster2Ai.startMonsterMovement(monster2, playerGui);
+        musicObject.playMusic(filepath);
     }
 
 }

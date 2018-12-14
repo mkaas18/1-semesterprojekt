@@ -21,10 +21,7 @@ import worldofzuul.logic.Player;
 import worldofzuul.logic.QuestionResults;
 import worldofzuul.logic.QuestionTimer;
 
-/**
- *
- * @author fredd
- */
+
 public class CombatWindow {
 
     IMonsterGenerator monsterGen = new MonsterGenerator();
