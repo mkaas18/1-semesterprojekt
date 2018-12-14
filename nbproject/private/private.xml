@@ -2,66 +2,19 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-
         <group/>
-
         <group>
             <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/gui/FXMLDocumentController.java</file>
             <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/logic/Monster.java</file>
             <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/gui/CombatWindow.java</file>
         </group>
         <group name="CodeAcadademy OOP">
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/interfaces/IGame.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/gui/ShopWindow.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/gui/CombatWindow.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/interfaces/IShop.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/interfaces/IMonster.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/gui/WorldofzuulGui.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/interfaces/IRoom.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/Consumable.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/questionFieldPlate.png</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/ChestGenerator.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/interfaces/IQuestionResults.java</file>
             <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/gui/FXMLDocumentController.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/playerSprite.png</file>
             <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/playerNamePlate.png</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/Monster.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/QuestionNormal.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/namePlate.png</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/QuestionHard.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/monsterSprite.png</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/Stats.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/playerSword.png</file>
             <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/interfaces/IMonsterGenerator.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/ItemGenerator.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/gui/Mover.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/interfaces/IFileReader.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/interfaces/IItemGenerator.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/MusicPlayer.java</file>
             <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/interfaces/IItem.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/battleCircle.png</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/ScoreComparator.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/persistence/FileWriter.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/Highscore.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/monsterNamePlate.png</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/QuestionResults.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/QuestionTimer.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/gui/MonsterAI.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/interfaces/IHighscore.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/Map.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/Shop.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/Room.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/MonsterGenerator.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/Question.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/gui/InventoryWindow.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/Player.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/persistence/FileReader.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/interfaces/IFileWriter.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/interfaces/IPlayer.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/interfaces/IConsumable.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/QuestionEasy.java</file>
-            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/RandomEvent.java</file>
+            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/gui/CombatWindow.java</file>
+            <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/gui/FXMLDocument.fxml</file>
         </group>
-
     </open-files>
 </project-private>
