@@ -50,7 +50,7 @@ public class Monster implements IMonster {
         this.name = name;
         this.difficulty = difficulty;
 
-        questions = new QuestionHard();
+        questions = new QuestionBoss();
 
         this.type = type;
         this.hp = 300;

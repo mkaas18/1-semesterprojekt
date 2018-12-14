@@ -53,7 +53,6 @@ public class CombatWindow {
                 }
                 updatePlayerHealth(player, playerHealth);
                 updateMonsterHealth(monsterHealth);
-                System.out.println(questionTimer.getTime());
                 updateTimeLeft(combatTimeLeft);
                 checkTimeLeft(questionTimer.getTime(), textarea, player);
                 if (monster.getHp() < 0) {
