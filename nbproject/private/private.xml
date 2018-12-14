@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+
+        <group/>
+
+        <group>
+            <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/gui/FXMLDocumentController.java</file>
+            <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/logic/Monster.java</file>
+            <file>file:/C:/Users/Bruger/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/gui/CombatWindow.java</file>
+        </group>
         <group name="CodeAcadademy OOP">
             <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/interfaces/IGame.java</file>
             <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/gui/ShopWindow.java</file>
@@ -54,13 +62,6 @@
             <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/QuestionEasy.java</file>
             <file>file:/C:/Users/Karla/Desktop/Software%20Engineering/1.%20Semester/Github/Semesterprojektet/1-semesterprojekt/src/worldofzuul/logic/RandomEvent.java</file>
         </group>
-        <group>
-            <file>file:/C:/Users/krute/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/gui/WorldofzuulGui.java</file>
-            <file>file:/C:/Users/krute/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/gui/FXMLSTARTUP.fxml</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/krute/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/gui/WorldofzuulGui.java</file>
-            <file>file:/C:/Users/krute/Dropbox/SDU/OOP/1-semesterprojekt/src/worldofzuul/gui/FXMLSTARTUP.fxml</file>
-        </group>
+
     </open-files>
 </project-private>

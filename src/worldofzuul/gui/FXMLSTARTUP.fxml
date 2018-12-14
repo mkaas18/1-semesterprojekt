@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="299.0" prefWidth="384.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.gui.FXMLSTARTUPController">
    <children>
-      <AnchorPane fx:id="mainMenuPane" disable="true" prefHeight="299.0" prefWidth="384.0" visible="false">
+      <AnchorPane fx:id="mainMenuPane" prefHeight="299.0" prefWidth="384.0">
          <children>
             <Label layoutX="11.0" layoutY="1.0" prefHeight="49.0" prefWidth="362.0" text="Wrath of the Mathknight">
                <font>
@@ -49,26 +49,6 @@
                   <Font name="Baskerville Old Face" size="46.0" />
                </font>
             </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="299.0" prefWidth="384.0">
-         <children>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="220.0" fitWidth="384.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../sideWayScroll_V2.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <Label layoutX="11.0" layoutY="1.0" prefHeight="49.0" prefWidth="362.0" text="Wrath of the Mathknight">
-               <font>
-                  <Font name="Lucida Handwriting Italic" size="25.0" />
-               </font>
-            </Label>
-            <Button fx:id="introMainMenuBTN" layoutX="10.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleintroMainMenuBTN" text="Main Menu" />
-            <Button fx:id="introExitBTN" layoutX="323.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleIntroExitBTN" prefHeight="25.0" prefWidth="50.0" text="Exit" />
          </children>
       </AnchorPane>
    </children>
