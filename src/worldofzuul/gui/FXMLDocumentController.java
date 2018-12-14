@@ -28,6 +28,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import worldofzuul.interfaces.IBoss;
 import worldofzuul.interfaces.IGame;
 import worldofzuul.interfaces.IHighscore;
 import worldofzuul.interfaces.IItem;
@@ -89,7 +90,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Circle monster1, monster2, monsterCombat;
     @FXML
-    private Rectangle north, south, east, west, down, up, shop;
+    private Rectangle north, south, east, west, down, up, shop, bossGui;
     @FXML
     private Pane gameWindow;
     @FXML
@@ -132,8 +133,9 @@ public class FXMLDocumentController implements Initializable {
         player.setName(playerName);
         System.out.println(player.toString());
         highscore = game.getHighscore();
-        highscore.setName((Player)player);
+        highscore.setName((Player) player);
     }
+
     //Takes the player input and executes methods
     @FXML
     private void keyPressed(KeyEvent event) {
@@ -143,9 +145,15 @@ public class FXMLDocumentController implements Initializable {
         if (event.getCode() == KeyCode.E) {
             if (exitMap.get("down").getBoundsInParent().intersects(playerHitbox.getBoundsInParent())
                     && !exitMap.get("down").isDisabled() && player.getKillCounter() >= game.getCurrentRoom().getKillRequirement()) {
-                System.out.println("hej");
                 output = game.goRoom("down");
                 console.appendText(output);
+                if (game.getCurrentRoom().getDifficulty() == 4) {
+                    bossGui.setVisible(true);
+                    bossGui.setDisable(false);
+                    monster1Ai.monsterReset(monster1);
+                    monster2Ai.monsterReset(monster2);
+                    initializeBossRoom();
+                }
             }
             if (exitMap.get("up").getBoundsInParent().intersects(playerHitbox.getBoundsInParent())
                     && !exitMap.get("up").isDisabled()) {
@@ -159,13 +167,13 @@ public class FXMLDocumentController implements Initializable {
             }
         }
     }
-    
+
     @FXML
     private void keyReleased(KeyEvent event) {
         mover.keyReleased(event);
 
     }
-    
+
     @FXML
     private void inventoryToggle(ActionEvent event) {
         if (inventoryPane.isVisible()) {
@@ -177,7 +185,7 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-    
+
     @FXML
     private void buyItem(ActionEvent event) {
         //Checks if tab is for consumable or item
@@ -230,7 +238,7 @@ public class FXMLDocumentController implements Initializable {
             console.clear();
             console.appendText(game.getCurrentRoom().getLongDescription());
             System.out.println(player.getHp());
-            if (player.getHp() < 0) {
+            if (player.getHp() < 0 || game.getCurrentRoom().getDifficulty() == 4) {
                 highscoreLabel.setText(highscore.toString());
                 highscore.writeHighscoreList();
             } else {
@@ -240,6 +248,7 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
+
     //Shows or hides the shop window depending on the current state
     private void shopToggle() {
         if (shopPane.isVisible()) {
@@ -277,6 +286,7 @@ public class FXMLDocumentController implements Initializable {
 
         }
     };
+
     //Checks which exit is the player is moving into
     private void checkExits() {
         //The exits is in a hashmap that contains a string name and the javafx node that is represents the exit.
@@ -288,28 +298,28 @@ public class FXMLDocumentController implements Initializable {
                 if (exit.equals(north)) {
                     output = game.goRoom("north");
                     console.appendText(output);
-                    mover.setPlayerY(gameWindow.getHeight() / 2 - 25);
+                    mover.setPlayerY(gameWindow.getHeight() / 2 - 30);
                     playerGui.setCenterY(mover.getPlayerY());
                     playerHitbox.setCenterY(mover.getPlayerYCheck());
                     monsterSpawner();
                 } else if (exit.equals(south)) {
                     output = game.goRoom("south");
                     console.appendText(output);
-                    mover.setPlayerY(-gameWindow.getHeight() / 2 + 25);
+                    mover.setPlayerY(-gameWindow.getHeight() / 2 + 30);
                     playerGui.setCenterY(mover.getPlayerY());
                     playerHitbox.setCenterY(mover.getPlayerYCheck());
                     monsterSpawner();
                 } else if (exit.equals(west)) {
                     output = game.goRoom("west");
                     console.appendText(output);
-                    mover.setPlayerX(gameWindow.getWidth() / 2 - 25);
+                    mover.setPlayerX(gameWindow.getWidth() / 2 - 30);
                     playerGui.setCenterX(mover.getPlayerX());
                     playerHitbox.setCenterX(mover.getPlayerXCheck());
                     monsterSpawner();
                 } else if (exit.equals(east)) {
                     output = game.goRoom("east");
                     console.appendText(output);
-                    mover.setPlayerX(-gameWindow.getWidth() / 2 + 25);
+                    mover.setPlayerX(-gameWindow.getWidth() / 2 + 30);
                     playerGui.setCenterX(mover.getPlayerX());
                     playerHitbox.setCenterX(mover.getPlayerXCheck());
                     monsterSpawner();
@@ -350,14 +360,16 @@ public class FXMLDocumentController implements Initializable {
     private void monsterSpawner() {
         monster1Ai.monsterReset(monster1);
         monster2Ai.monsterReset(monster2);
+
         if (monster1Ai.monsterSpawn(monster1, gameWindow) && game.getCurrentRoom().getDifficulty() > 0) {
             monster1Ai.startMonsterMovement();
         }
         if (monster2Ai.monsterSpawn(monster2, gameWindow) && game.getCurrentRoom().getDifficulty() > 0) {
             monster2Ai.startMonsterMovement();
         }
+
     }
-    
+
     //sets the progressbar with the health percentage
     private void updateHealth() {
         double percentage = (double) player.getHp() / (double) player.getMaxHp();
@@ -381,7 +393,27 @@ public class FXMLDocumentController implements Initializable {
 //            hpBar.setVisible(false);
             monster1Ai.pauseMonsterMovement();
             monsterCombat = monster2;
+        } else if (checkMonsterCombat(playerGui, bossGui)) {
+            moveTimer.stop();
+            combatWindow.startCombat(console, combatMonsterHpBar, combatHpBar, combatTimeLeft, combatPane, game.getCurrentRoom().getDifficulty(), player, monsterName, lostPane);
+        };
+    }
+
+    private void initializeBossRoom() {
+        for (Rectangle exits : exitMap.values()) {
+            exits.setDisable(true);
+            exits.setVisible(false);
         }
+        for (ImageView sprites : exitGuiMap.values()) {
+            sprites.setVisible(false);
+        }
+    }
+
+    private boolean checkMonsterCombat(Circle playerGui, Rectangle bossGui) {
+        if (playerGui.getBoundsInParent().intersects(bossGui.getBoundsInParent()) && !bossGui.isDisabled()) {
+            return true;
+        }
+        return false;
     }
 
     @Override

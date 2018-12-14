@@ -22,7 +22,7 @@ public class Mover {
     private double playerX = 0, playerY = 0;
     private double playerDX = 0, playerDY = 0;
     private double playerDAngle = 0;
-    private final int MOVESPEED = 5;
+    private final int MOVESPEED = 3;
     
     private Image playerSouth = new Image("PlayerSouth.png");
     private Image playerNorth = new Image("PlayerNorth.png");

@@ -36,8 +36,12 @@ public class CombatWindow {
     boolean playerTurn = false;
 
     public void startCombat(TextArea textarea, ProgressBar monsterHealth, ProgressBar combatTimeLeft, ProgressBar playerHealth, AnchorPane combatPane, int difficulty, IPlayer player, Label monsterNameLabel, AnchorPane lostPane) {
-        monster = monsterGen.generateMonster(difficulty);
         questionTimer.setTime((Player) player);
+        if (difficulty == 4) {
+            monster = monsterGen.generateBoss();
+        } else {
+            monster = monsterGen.generateMonster(difficulty);
+        }
 
         monsterNameLabel.setText(monster.getName());
         playerTurn = false;
@@ -61,6 +65,7 @@ public class CombatWindow {
                     textarea.clear();
                     textarea.appendText("The monster dropped an item\n");
                     textarea.appendText("You win! Press 'ENTER' to exit combat");
+
                 } else if (player.getHp() < 0) {
                     questionTimer.stopTimer();
                     lostPane.setVisible(true);
@@ -68,11 +73,18 @@ public class CombatWindow {
                     combatInitialized = false;
 
                 }
+
+                    if(difficulty == 4){
+                        lostPane.setVisible(true);
+                        lostPane.setDisable(false);
+                        combatInitialized = false;
+                    }
             }
 
         };
         combatTimer.start();
     }
+
 
     public void monsterTurn(TextArea textarea) {
         while (true) {
@@ -114,6 +126,7 @@ public class CombatWindow {
         monsterHealth.setProgress(percentage);
     }
 
+
     public void updateTimeLeft(ProgressBar combatTimeLeft) {
         double percentage = (double) questionTimer.getTime() / (double) questionTimer.getMaxTime();
         if (percentage < 0) {
@@ -121,6 +134,7 @@ public class CombatWindow {
         }
         combatTimeLeft.setProgress(percentage);
     }
+
 
     public void updatePlayerHealth(IPlayer player, ProgressBar playerHealth) {
         double percentage = (double) player.getHp() / (double) player.getMaxHp();
@@ -150,6 +164,7 @@ public class CombatWindow {
 
     public void resetCombat(Boolean combatState) {
         this.combatInitialized = combatState;
+
 
     }
 

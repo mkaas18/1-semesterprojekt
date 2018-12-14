@@ -35,11 +35,27 @@ public class Monster implements IMonster {
             case 3:
                 questions = new QuestionHard();
                 break;
+            case 4:
+                questions = new QuestionHard();
+                break;
         }
         this.type = type;
         this.hp = 100;
         this.MAX_HP = hp;
         this.damage = 35;
+        this.nochange = 0;
+    }
+
+    public Monster(String name) {
+        this.name = name;
+        this.difficulty = difficulty;
+
+        questions = new QuestionHard();
+
+        this.type = type;
+        this.hp = 300;
+        this.MAX_HP = hp;
+        this.damage = 50;
         this.nochange = 0;
     }
 

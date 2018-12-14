@@ -13,4 +13,5 @@ import worldofzuul.logic.Monster;
  */
 public interface IMonsterGenerator {
     public Monster generateMonster(int difficulty);
+    public Monster generateBoss();
 }
