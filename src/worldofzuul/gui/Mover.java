@@ -7,6 +7,8 @@ package worldofzuul.gui;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
@@ -22,23 +24,33 @@ public class Mover {
     private double playerDAngle = 0;
     private final int MOVESPEED = 5;
     
+    private Image playerSouth = new Image("PlayerSouth.png");
+    private Image playerNorth = new Image("PlayerNorth.png");
+    private Image playerEast = new Image("PlayerEast.png");
+    private Image playerWest = new Image("PlayerWest.png");
+    
+    
     public Mover() {
 
     }
 
-    public void keyPressed(KeyEvent event) {
+    public void keyPressed(KeyEvent event, ImageView playerImg) {
         switch (event.getCode()) {
             case S:
                 playerDY = MOVESPEED;
+                playerImg.setImage(playerSouth);
                 break;
             case W:
                 playerDY = -MOVESPEED;
+                playerImg.setImage(playerNorth);
                 break;
             case A:
                 playerDX = -MOVESPEED;
+                playerImg.setImage(playerWest);
                 break;
             case D:
                 playerDX = MOVESPEED;
+                playerImg.setImage(playerEast);
                 break;
         }
     }
