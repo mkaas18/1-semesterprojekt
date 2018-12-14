@@ -208,7 +208,7 @@
          </children>
       </AnchorPane>
       
-      <AnchorPane fx:id="lostPane" disable="true" prefHeight="514.0" prefWidth="907.0">
+      <AnchorPane fx:id="lostPane" disable="true" prefHeight="514.0" prefWidth="907.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#606060" height="514.0" stroke="BLACK" strokeType="INSIDE" width="907.0" />
             <Label layoutX="216.0" layoutY="364.0" text="Press enter to see your highscore!">
