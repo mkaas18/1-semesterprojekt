@@ -33,7 +33,7 @@ public class CombatWindow {
     private AnimationTimer combatTimer;
     boolean playerTurn = false;
 
-    public void startCombat(TextArea textarea, ProgressBar monsterHealth, ProgressBar playerHealth, AnchorPane combatPane, int difficulty, IPlayer player, Label monsterNameLabel, AnchorPane lostPane, MusicPlayer musicPlayer) {
+    public void startCombat(TextArea textarea, ProgressBar monsterHealth, ProgressBar playerHealth, AnchorPane combatPane, int difficulty, IPlayer player, Label monsterNameLabel, AnchorPane lostPane) {
         monster = monsterGen.generateMonster(difficulty);
         monsterNameLabel.setText(monster.getName());
         playerTurn = false;
