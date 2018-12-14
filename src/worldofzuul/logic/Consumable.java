@@ -4,6 +4,11 @@ package worldofzuul.logic;
 import worldofzuul.interfaces.IConsumable;
 
 
+/*
+This class makes comsumable(healing potions).
+It should heal the player when the player uses them.
+*/
+
 public class Consumable implements IConsumable{
     
     private String name;

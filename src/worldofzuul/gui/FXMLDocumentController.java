@@ -121,12 +121,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ImageView playerImg;
     
+    // Sets the player name typing in at the text in FXMLSTARTUP
     public void setPlayerName(String playerName) {
         player.setName(playerName);
         System.out.println(player.toString());
         highscore = game.getHighscore();
         highscore.setName((Player)player);
-//        System.out.println(game.getPlayer().getName());
     }
 
     @FXML

@@ -1,5 +1,9 @@
 package worldofzuul.logic;
 
+/*
+Sort the highscores, so the best highscore is highest on the list.
+*/
+
 import java.util.Comparator;
 
 public class ScoreComparator implements Comparator<String> {
