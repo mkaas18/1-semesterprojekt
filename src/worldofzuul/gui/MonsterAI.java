@@ -23,7 +23,7 @@ public class MonsterAI {
     private Mover monsterMover = new Mover();
     private AnimationTimer monsterAnimation;
     private boolean combatInitiated = false;
-    private final static int MONSTER_SPEED = 1;
+    private final static int MONSTER_SPEED = 0;
     
 
 
