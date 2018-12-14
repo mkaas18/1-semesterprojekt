@@ -78,8 +78,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TabPane shopMode;
     @FXML
-    MovementAnimation movementAni = new MovementAnimation(); 
-    @FXML
     private ListView<IItem> playerItemList, playerConsumeList, waresList, consumableList;
     @FXML
     private Circle playerGui;
