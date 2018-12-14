@@ -84,7 +84,7 @@ public class Game implements IGame {
 //        }
 //
 //        return wantToQuit;
-//    }
+//    }   
     @Override
     public String printHelp() {
         String output = "";
@@ -138,7 +138,7 @@ public class Game implements IGame {
 
     @Override
     public Item giveItem() {
-        System.out.println("hej");
+//        System.out.println("hej");
         return new ItemGenerator().generateItem(1);
     }
 

@@ -1,5 +1,9 @@
 package worldofzuul.logic;
 
+/*
+This class should read, write and sort the highsocre the player gets playing the game.
+*/
+
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -32,6 +36,7 @@ public class Highscore implements Serializable, IHighscore {
         return score;
     }
 
+    // Calculate the score the player gets.
     @Override
     public void setScore(Player player) {
         this.score = player.getKillCounter() * player.calculateStats();
@@ -50,6 +55,7 @@ public class Highscore implements Serializable, IHighscore {
         return getName() + ":" + getScore();
     }
 
+    // Reads the highscore arraylist
     @Override
     public String readHighscoreList() {
         String highscore = "";
@@ -59,6 +65,7 @@ public class Highscore implements Serializable, IHighscore {
         return highscore;
     }
 
+    // Read the highscore file and add the strings to an array and observerblelist.
     public void loadHighscoreList() {
         for (String highscoreString : fileR.readFile()) {
             highscoreList.add(highscoreString);
@@ -69,6 +76,7 @@ public class Highscore implements Serializable, IHighscore {
         }
     }
 
+    // Write the current highscore gets playing the game and write the hole list to the file.
     @Override
     public void writeHighscoreList() {
         highscoreList.add(this.toString());
@@ -76,6 +84,7 @@ public class Highscore implements Serializable, IHighscore {
         fileW.writeFile(highscoreList);
     }
 
+    // Sorts the highscore list
     private void sort() {
         ScoreComparator comparator = new ScoreComparator();
         Collections.sort(highscoreList, comparator);

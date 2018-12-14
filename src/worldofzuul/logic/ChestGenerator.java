@@ -2,10 +2,7 @@ package worldofzuul.logic;
 
 import java.util.ArrayList;
 
-/*
-Skal denne klasse bruges??
-Ellers sletter vi den bare, synes nemlig vi skal fokuser på andre ting før vi adder "nice to have" ting.
-*/
+// Didnt have time to implement this.
 
 public class ChestGenerator {
 

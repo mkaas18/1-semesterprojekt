@@ -45,7 +45,7 @@ public class FXMLSTARTUPController implements Initializable {
     private ListView<String> listViewTable;
 
     ObservableList<String> obsHighscoreList;
-    
+
     private Highscore highscore = new Highscore(playerName);
 
     public String getPlayerName() {
@@ -55,9 +55,9 @@ public class FXMLSTARTUPController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
     }
 
+    // Handle the play button on the start window and loads the other FXML document with the playerable game.
     @FXML
     public void handlePlayBtn(ActionEvent event) throws IOException {
 
@@ -84,11 +84,13 @@ public class FXMLSTARTUPController implements Initializable {
         gameController.setPlayerName(playerName);
     }
 
+    // Exit the application.
     @FXML
     public void handleExitBtn(ActionEvent event) {
         System.exit(1);
     }
 
+    // MAkes it able to press enter on the text field
     @FXML
     private void handleTxtFieldPlayGame(KeyEvent e) throws IOException {
         if (e.getCode() == KeyCode.ENTER) {
@@ -116,9 +118,10 @@ public class FXMLSTARTUPController implements Initializable {
         }
     }
 
+    // Shows the highscores and hide the intro/main menu
     @FXML
     private void handleHighscoreBTN(ActionEvent event) {
-        
+
         obsHighscoreList = highscore.getObsHighscoreList();
         listViewTable.setItems(obsHighscoreList);
 
@@ -130,6 +133,7 @@ public class FXMLSTARTUPController implements Initializable {
 
     }
 
+    // Shows the intro/main menu and hide the highscores
     @FXML
     private void handleBackBTN(ActionEvent event) {
         mainMenuPane.setVisible(true);

@@ -21,6 +21,7 @@ public class Item implements IItem{
         this.stats = stats;
     }
 
+    // This is not used.
     public Item(String itemName, Stats stats, String itemDescription) {
         this.itemName = itemName;
         this.stats = stats;
@@ -49,6 +50,7 @@ public class Item implements IItem{
         return itemDescription;
     }
 
+    // This is not used.
     public void setItemDescription(String itemDescription) {
         this.itemDescription = itemDescription;
     }

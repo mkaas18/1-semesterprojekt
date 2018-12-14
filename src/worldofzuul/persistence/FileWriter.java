@@ -17,14 +17,15 @@ public class FileWriter implements IFileWriter {
     public FileWriter(String path) {
         this.path = path;
     }
-    public String getSavedScore(){
+
+    public String getSavedScore() {
         String test = "";
-        for(String string : fileReader.readFile()){
+        for (String string : fileReader.readFile()) {
             test += string + "\n";
         }
         return test;
     }
-    
+
     @Override
     public void writeFile(String input) {
         PrintWriter pw;
@@ -37,12 +38,14 @@ public class FileWriter implements IFileWriter {
             System.out.println("There was an error writing to the file.");
         }
     }
+
+    
     @Override
     public void writeFile(ArrayList<String> highscoreList) {
         PrintWriter pw;
         try {
             pw = new PrintWriter(path);
-            for(String output : highscoreList){
+            for (String output : highscoreList) {
                 pw.println(output);
             }
             pw.close();

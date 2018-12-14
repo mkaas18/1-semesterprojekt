@@ -9,44 +9,81 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="299.0" prefWidth="384.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.gui.FXMLSTARTUPController">
    <children>
-      <AnchorPane fx:id="mainMenuPane" prefHeight="299.0" prefWidth="384.0">
+      <AnchorPane fx:id="mainMenuPane" prefHeight="422.0" prefWidth="537.0">
          <children>
-            <Label layoutX="11.0" layoutY="1.0" prefHeight="49.0" prefWidth="362.0" text="Wrath of the Mathknight">
+            <ImageView fitHeight="422.0" fitWidth="537.0" layoutX="1.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Scroll.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="73.0" layoutY="53.0" prefHeight="49.0" prefWidth="374.0" text="Wrath of the Mathknight">
                <font>
-                  <Font name="Lucida Handwriting Italic" size="25.0" />
+                  <Font name="Lucida Handwriting Italic" size="26.0" />
                </font>
             </Label>
-            <TextField fx:id="playernameTxtField" layoutX="11.0" layoutY="229.0" onKeyPressed="#handleTxtFieldPlayGame" prefHeight="25.0" prefWidth="362.0">
+            <TextField fx:id="playernameTxtField" layoutX="52.0" layoutY="344.0" onKeyPressed="#handleTxtFieldPlayGame" prefHeight="25.0" prefWidth="362.0">
                <padding>
                   <Insets left="10.0" right="10.0" />
                </padding>
             </TextField>
-            <Button fx:id="playBTN" layoutX="10.0" layoutY="260.0" mnemonicParsing="false" onAction="#handlePlayBtn" text="Play" />
-            <Button fx:id="exitBTN" layoutX="323.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleExitBtn" prefHeight="25.0" prefWidth="50.0" text="Exit" />
-            <Label layoutX="10.0" layoutY="212.0" text="Enter your player name" />
-            <ImageView fitHeight="135.0" fitWidth="141.0" layoutX="221.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="playBTN" layoutX="52.0" layoutY="376.0" mnemonicParsing="false" onAction="#handlePlayBtn" prefHeight="25.0" prefWidth="50.0" stylesheets="@playBTNStyle.css" text="Play" />
+            <Button fx:id="exitBTN" layoutX="443.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleExitBtn" prefHeight="25.0" prefWidth="50.0" stylesheets="@exitBTNStyle.css" text="Exit" />
+            <Label layoutX="52.0" layoutY="327.0" text="Enter your player name" />
+            <ImageView fitHeight="49.0" fitWidth="50.0" layoutX="448.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../monsterSprite.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="135.0" fitWidth="141.0" layoutX="11.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="HighscoreBTN" layoutX="126.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleHighscoreBTN" stylesheets="@highscoreBTNStyle.css" text="Highscore" />
+            <ImageView fitHeight="49.0" fitWidth="50.0" layoutX="28.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../playerSprite.png" />
                </image>
             </ImageView>
-            <Button fx:id="HighscoreBTN" layoutX="71.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleHighscoreBTN" text="Highscore" />
+            <Text layoutX="48.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to our Math game, that is designed to">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="48.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have to defeat monster that attack you, to defeat">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="48.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="question the monster ask you.">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="280.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controls:" />
+            <Text layoutX="280.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="W - moves your player up." />
+            <Text layoutX="280.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A - moves your player to the left." />
+            <Text layoutX="280.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S - moves your player down." />
+            <Text layoutX="280.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D - moves your player to the right." />
+            <Text layoutX="280.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E - Makes you enter a Shop or Staircase." />
+            <Text layoutX="48.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="make you better af Math.">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="48.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="them you have to give the right anwser to the math ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="highscorePane" disable="true" prefHeight="299.0" prefWidth="384.0" visible="false">
+      <AnchorPane fx:id="highscorePane" disable="true" prefHeight="422.0" prefWidth="537.0" visible="false">
          <children>
-            <ListView fx:id="listViewTable" layoutY="56.0" prefHeight="197.0" prefWidth="384.0" stylesheets="@align.css" />
-            <Button fx:id="backToMainMenuBTN" layoutX="323.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleBackBTN" prefHeight="25.0" prefWidth="50.0" text="Back" />
-            <Label layoutX="98.0" text="Highscore">
+            <ListView fx:id="listViewTable" layoutY="97.0" prefHeight="259.0" prefWidth="537.0" stylesheets="@highscoreListViewStyle.css" />
+            <Button fx:id="backToMainMenuBTN" layoutX="443.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleBackBTN" prefHeight="25.0" prefWidth="50.0" stylesheets="@backToMainMenuBTNStyle.css" text="Back" />
+            <Label layoutX="128.0" layoutY="14.0" text="Highscore">
                <font>
-                  <Font name="Baskerville Old Face" size="46.0" />
+                  <Font name="Baskerville Old Face" size="69.0" />
                </font>
             </Label>
          </children>

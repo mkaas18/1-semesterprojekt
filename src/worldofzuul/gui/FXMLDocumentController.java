@@ -128,12 +128,13 @@ public class FXMLDocumentController implements Initializable {
     private ImageView playerImg;
 
     //Grabs the playername submitted in the Startup document controller and sets the player name to that string submitted
+    
+    // Sets the player name typing in at the text in FXMLSTARTUP
     public void setPlayerName(String playerName) {
         player.setName(playerName);
         System.out.println(player.toString());
         highscore = game.getHighscore();
-        highscore.setName((Player) player);
-//        System.out.println(game.getPlayer().getName());
+        highscore.setName((Player)player);
     }
     //Takes the player input and executes methods
     @FXML
