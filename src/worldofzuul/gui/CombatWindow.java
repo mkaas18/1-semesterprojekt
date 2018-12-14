@@ -18,12 +18,8 @@ import worldofzuul.interfaces.IQuestionResults;
 import worldofzuul.logic.MonsterGenerator;
 import worldofzuul.logic.Player;
 import worldofzuul.logic.QuestionResults;
-import worldofzuul.logic.MusicPlayer;
 
-/**
- *
- * @author fredd
- */
+
 public class CombatWindow {
 
     IMonsterGenerator monsterGen = new MonsterGenerator();

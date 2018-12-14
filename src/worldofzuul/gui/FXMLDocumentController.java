@@ -356,7 +356,6 @@ public class FXMLDocumentController implements Initializable {
         monster1Ai.monsterReset(monster1);
         monster2Ai.monsterReset(monster2);
         if (game.getCurrentRoom().getDifficulty() == 4) {
-            
         } else {
             if (monster1Ai.monsterSpawn(monster1, gameWindow)) {
                 monster1Ai.startMonsterMovement();

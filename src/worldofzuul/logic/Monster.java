@@ -86,6 +86,10 @@ public class Monster implements IMonster {
     }
 
 //Monster QuestionResults
+//This method uses 3 different if statements to decide which type of damage is done to either the player or the monster.
+//First of all it checks if the answer is correct, if the answer is correct, it checks the stats of the player and takes them into account for the damage done to the monster.
+//If the answer is wrong, it takes into account how much health the player has left, and does the stated damage.
+    
     @Override
     public String answerChecker(QuestionResults results, double input, Player player) {
         QuestionTimer timer1 = new QuestionTimer(player);

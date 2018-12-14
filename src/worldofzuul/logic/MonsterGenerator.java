@@ -11,6 +11,7 @@ public class MonsterGenerator implements IMonsterGenerator{
     ArrayList<String> bossWord;
     ArrayList<String> bossWordtwo;
 
+//Constructor using ArrayList to set names for methods
     public MonsterGenerator(){
         this.firstWord = new ArrayList<>();
         this.middleWord = new ArrayList<>();
@@ -47,25 +48,26 @@ public class MonsterGenerator implements IMonsterGenerator{
     }
 
     @Override
+//Generation method for a monster
     public Monster generateMonster(int difficulty) {
         Monster monster = new Monster(generateMonsterName(), difficulty);
         monster.setName(generateMonsterName());
         return monster;
     }
-
+//Generation method for a boss
     public Monster generateBoss() {
         Monster boss = new Monster(generateBossName(), 4);
         boss.setName(generateBossName());
         return boss;
     }
-
+//Generation method for a monsters name
     public String generateMonsterName() {
         int i = (int) Math.floor(Math.random() * firstWord.size());
         int k = (int) Math.floor(Math.random() * lastWord.size());
         String name = (firstWord.get(i) + " " + middleWord.get(0) + " " + lastWord.get(k));
         return name;
     }
-
+//Generation method for a boss' name
     public String generateBossName() {
         int i = (int) Math.floor(Math.random() * bossWord.size());
         int k = (int) Math.floor(Math.random() * bossWordtwo.size());
