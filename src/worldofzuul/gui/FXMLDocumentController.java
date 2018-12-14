@@ -38,6 +38,7 @@ import worldofzuul.logic.Boss;
 import worldofzuul.logic.Game;
 import worldofzuul.logic.Item;
 import worldofzuul.logic.ItemGenerator;
+import worldofzuul.logic.MusicPlayer;
 import worldofzuul.logic.Player;
 
 /**
@@ -123,6 +124,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ImageView playerImg;
 
+            String filepath = "backgroundMusic.wav";
+
+        MusicPlayer musicObject = new MusicPlayer();
+ 
+    
     public void setPlayerName(String playerName) {
         player.setName(playerName);
         System.out.println(player.toString());
@@ -411,6 +417,7 @@ public class FXMLDocumentController implements Initializable {
         goldCount.setText("Gold: " + player.getGold());
         monster1Ai.startMonsterMovement(monster1, playerGui);
         monster2Ai.startMonsterMovement(monster2, playerGui);
+        musicObject.playMusic(filepath);
     }
 
 }

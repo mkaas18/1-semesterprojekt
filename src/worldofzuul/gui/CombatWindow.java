@@ -18,6 +18,7 @@ import worldofzuul.interfaces.IQuestionResults;
 import worldofzuul.logic.MonsterGenerator;
 import worldofzuul.logic.Player;
 import worldofzuul.logic.QuestionResults;
+import worldofzuul.logic.MusicPlayer;
 
 /**
  *
@@ -32,7 +33,7 @@ public class CombatWindow {
     private AnimationTimer combatTimer;
     boolean playerTurn = false;
 
-    public void startCombat(TextArea textarea, ProgressBar monsterHealth, ProgressBar playerHealth, AnchorPane combatPane, int difficulty, IPlayer player, Label monsterNameLabel, AnchorPane lostPane) {
+    public void startCombat(TextArea textarea, ProgressBar monsterHealth, ProgressBar playerHealth, AnchorPane combatPane, int difficulty, IPlayer player, Label monsterNameLabel, AnchorPane lostPane, MusicPlayer musicPlayer) {
         monster = monsterGen.generateMonster(difficulty);
         monsterNameLabel.setText(monster.getName());
         playerTurn = false;

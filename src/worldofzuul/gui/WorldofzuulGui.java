@@ -24,11 +24,6 @@ public class WorldofzuulGui extends Application {
         stage.getIcons().add(new Image("playerSprite.png"));
         stage.setScene(scene);
         stage.show();
-
-        String filepath = "epic.wav";
-
-        MusicPlayer musicObject = new MusicPlayer();
-        musicObject.playMusic(filepath);
     }
 
     public static void main(String[] args) {
