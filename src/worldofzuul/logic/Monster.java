@@ -88,29 +88,31 @@ public class Monster implements IMonster {
 //Monster QuestionResults
     @Override
     public String answerChecker(QuestionResults results, double input, Player player) {
-        QuestionTimer timer1 = new QuestionTimer(player);
-        timer1.start();
 
         if (input == results.getAnswer()) {
             changeHp((-(player.getDamage()) + (-player.getStrength())));
             return "\nYou answered correct!\nThe monster takes " + (damage + player.getStrength()) + " damage" + "\n";
         } else {
-            if (player.getAgility() == 0) {
-                player.addHp(-(damage - player.getEndurance()));
-                return "\nYou answered incorrect!\nYou take damage! " + (-(damage - player.getEndurance())) + "\n";
-            } else {
-                if (new Random().nextInt(100) + (player.getAgility())
-                        > 99) {
-                    player.addHp((nochange));
-                    return "\nYou answered incorret!\nRolling dice of agility --> Jackpot, you lost no hp! Attack the monster again " + "\n";
-                } else {
-                    player.addHp(-(damage - player.getEndurance()));
-                    return "\nYou answered incorrect!\nYou lost dice of agility. You take damage! " + (-(damage - player.getEndurance())) + "\n";
-                }
-            }
+            return monsterAttack(player);
 
         }
 
+    }
+
+    public String monsterAttack(Player player) {
+        if (player.getAgility() == 0) {
+            player.addHp(-(damage - player.getEndurance()));
+            return "\nYou answered incorrect!\nYou take damage! " + (-(damage - player.getEndurance())) + "\n";
+        } else {
+            if (new Random().nextInt(100) + (player.getAgility())
+                    > 99) {
+                player.addHp((nochange));
+                return "\nYou answered incorret!\nRolling dice of agility --> Jackpot, you lost no hp! Attack the monster again " + "\n";
+            } else {
+                player.addHp(-(damage - player.getEndurance()));
+                return "\nYou answered incorrect!\nYou lost dice of agility. You take damage! " + (-(damage - player.getEndurance())) + "\n";
+            }
+        }
     }
 
     @Override

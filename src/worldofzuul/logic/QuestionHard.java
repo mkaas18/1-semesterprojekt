@@ -37,8 +37,8 @@ public class QuestionHard extends Question{
     @Override
     public QuestionResults division() {
         while(true){
-            number1 = (getRandomNumber()*10);
-            number2 = getRandomNumber()/10.0;
+            number1 = (getRandomNumber()/5);
+            number2 = getRandomNumber()/5;
             if(number1%number2==0 && number2 > 1){
                 break;
             }
@@ -59,7 +59,7 @@ public class QuestionHard extends Question{
 
     @Override
     public double getRandomNumber() {    
-        return new Random().nextInt(100)+1;
+        return new Random().nextInt(50)+1;
     }
   
     

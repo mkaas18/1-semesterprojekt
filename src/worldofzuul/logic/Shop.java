@@ -113,7 +113,7 @@ public class Shop implements IShop {
     public void buyWare(Item item, Player player) {
         if (!item.getName().equals("Sold out!")) {
             player.pickupItem(item);
-            player.setGold(player.getGold() - item.getStats().getValue());
+            player.setGold(-item.getStats().getValue());
             buyable.set(buyable.indexOf(item), new Item("Sold out!"));
 
         }
@@ -137,7 +137,7 @@ public class Shop implements IShop {
     @Override
     public void sellWare(Item item, Player player) {
         player.dropItem(item);
-        player.setGold(player.getGold() + (int) (item.getStats().getValue() / 1.5));
+        player.setGold((int) (item.getStats().getValue() / 1.5));
     }
 
     @Override

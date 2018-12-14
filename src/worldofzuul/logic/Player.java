@@ -57,8 +57,8 @@ public class Player implements IPlayer {
     }
 
     @Override
-    public void setGold(int difficulty) {
-        this.gold = this.gold + (20 * difficulty);
+    public void setGold(int gold) {
+        this.gold += gold;
     }
 
     public String getName() {

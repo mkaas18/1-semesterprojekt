@@ -1,45 +1,66 @@
 package worldofzuul.logic;
 
-
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
+import worldofzuul.interfaces.IQuestionTimer;
 
-public class QuestionTimer extends Thread {
-static int interval;
-static Timer timer;
-int s = 2;   
-Player player;
-int normalTime = 20;
+public class QuestionTimer extends Thread implements IQuestionTimer {
 
+    static int interval;
+    static Timer timer;
+    int s = 2;
+    int timeLeft;
+    int normalTime = 20;
+    int maxTimeLeft;
 
-public QuestionTimer(Player player){
-    this.player = player;
-    
-}
+    public QuestionTimer() {
+    }
 
-public void stopTimer(){
-    timer.cancel();
-}
-
-public void run(){
-    
-    int delay = 1000;
-    int period = 1000;
-    timer = new Timer();
-    interval = (int) (normalTime + (player.getIntelligence()*0.2)); 
-    timer.scheduleAtFixedRate(new TimerTask() {
-
-        public void run() {
-            System.out.println(setInterval());
-
-        }
-    }, delay, period);
-}
-
-private static final int setInterval() {
-    if (interval == 1)
+    @Override
+    public void stopTimer() {
         timer.cancel();
-    return --interval;
-}
+
+    }
+
+    @Override
+    public void startTimer() {
+        timeLeft = maxTimeLeft;
+        int delay = 1000;
+        int period = 1000;
+        timer = new Timer();
+        interval = maxTimeLeft;
+        timer.scheduleAtFixedRate(new TimerTask() {
+
+            @Override
+            public void run() {
+                timeLeft = setInterval();
+            }
+        }, delay, period);
+    }
+
+    private static final int setInterval() {
+        if (interval == 1) {
+            timer.cancel();
+        }
+        return --interval;
+    }
+
+    @Override
+    public int getTime() {
+        return timeLeft;
+    }
+
+    @Override
+    public Timer getTimer() {
+        return timer;
+    }
+    @Override
+    public void setTime(Player player){
+        this.maxTimeLeft = (int) (normalTime + (player.getIntelligence() * 0.2));
+    }
+
+    public int getMaxTime() {
+        return maxTimeLeft;
+    }
 }

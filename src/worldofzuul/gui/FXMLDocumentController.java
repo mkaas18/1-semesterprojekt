@@ -32,7 +32,6 @@ import worldofzuul.interfaces.IGame;
 import worldofzuul.interfaces.IHighscore;
 import worldofzuul.interfaces.IItem;
 import worldofzuul.interfaces.IItemGenerator;
-import worldofzuul.interfaces.IMonster;
 import worldofzuul.interfaces.IPlayer;
 import worldofzuul.logic.Game;
 import worldofzuul.logic.Item;
@@ -45,19 +44,26 @@ import worldofzuul.logic.Player;
  */
 public class FXMLDocumentController implements Initializable {
 
+    //We have taken the the decision to have all our gui assets in the document controller and changing them by using them as arguments in methods from other
+    //classes that controll different parts of the game. 
+    //This enables access to our logic package
     private IGame game = new Game();
     private IPlayer player = game.getPlayer();
-    private IItem item;
+    private IItem item, droppedItem;
     private IHighscore highscore;
+    private IItemGenerator itemGen = new ItemGenerator();
+    //Controls the inventory
     private InventoryWindow inventoryWindow = new InventoryWindow(player);
+    //Controls the shop
     private ShopWindow shopWindow = new ShopWindow(game.getCurrentRoom().getShop(), player);
+    //Controls the combat
     private CombatWindow combatWindow = new CombatWindow();
+    //Controls the monster AI
     private MonsterAI monster1Ai = new MonsterAI();
     private MonsterAI monster2Ai = new MonsterAI();
-    private String output;
-    private IItemGenerator itemGen = new ItemGenerator();
-    private Item droppedItem;
+    //Controls the player movement
     private Mover mover = new Mover();
+    private String output;
     private HashMap<String, Rectangle> exitMap = new HashMap<>();
     private HashMap<String, ImageView> exitGuiMap = new HashMap<>();
     @FXML
@@ -120,21 +126,25 @@ public class FXMLDocumentController implements Initializable {
     private ImageView shopImg;
     @FXML
     private ImageView playerImg;
-    
+
+    //Grabs the playername submitted in the Startup document controller and sets the player name to that string submitted
     public void setPlayerName(String playerName) {
         player.setName(playerName);
         System.out.println(player.toString());
         highscore = game.getHighscore();
-        highscore.setName((Player)player);
+        highscore.setName((Player) player);
 //        System.out.println(game.getPlayer().getName());
     }
-
+    //Takes the player input and executes methods
     @FXML
     private void keyPressed(KeyEvent event) {
+        //Sends the input to the mover to move the player around
         mover.keyPressed(event, playerImg);
+        //Used to interact
         if (event.getCode() == KeyCode.E) {
             if (exitMap.get("down").getBoundsInParent().intersects(playerHitbox.getBoundsInParent())
                     && !exitMap.get("down").isDisabled() && player.getKillCounter() >= game.getCurrentRoom().getKillRequirement()) {
+                System.out.println("hej");
                 output = game.goRoom("down");
                 console.appendText(output);
             }
@@ -149,25 +159,14 @@ public class FXMLDocumentController implements Initializable {
 
             }
         }
-        if (event.getCode() == KeyCode.B) {
-            player.addHp(-35);
-        }
-        if (event.getCode() == KeyCode.C) {
-            highscore.writeHighscoreList();
-
-        }
-        if (event.getCode() == KeyCode.I) {
-            System.out.println(highscore.readHighscoreList());
-
-        }
     }
-
+    
     @FXML
     private void keyReleased(KeyEvent event) {
         mover.keyReleased(event);
 
     }
-
+    
     @FXML
     private void inventoryToggle(ActionEvent event) {
         if (inventoryPane.isVisible()) {
@@ -179,9 +178,10 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-
+    
     @FXML
     private void buyItem(ActionEvent event) {
+        //Checks if tab is for consumable or item
         if (shopMode.getTabs().get(0) == shopMode.getSelectionModel().getSelectedItem()) {
             shopWindow.buyItem();
         } else if (shopMode.getTabs().get(1) == shopMode.getSelectionModel().getSelectedItem()) {
@@ -211,6 +211,7 @@ public class FXMLDocumentController implements Initializable {
     //This method is executed everytime you submit an answer during combat
     @FXML
     private void combatInput(ActionEvent event) {
+        //If the combat has ended, the combat window is closed.
         if (combatWindow.getCombatState()) {
             combatWindow.playerTurn(combatInput, player, console);
         } else {
@@ -225,8 +226,8 @@ public class FXMLDocumentController implements Initializable {
             combatWindow.resetCombat(true);
             player.setKillCounter();
             droppedItem = itemGen.generateItem(game.getCurrentRoom().getDifficulty());
-            player.pickupItem(droppedItem);
-            player.setGold(game.getCurrentRoom().getDifficulty());
+            player.pickupItem((Item) droppedItem);
+            player.setGold(game.getCurrentRoom().getDifficulty() * 20);
             console.clear();
             console.appendText(game.getCurrentRoom().getLongDescription());
             System.out.println(player.getHp());
@@ -240,7 +241,7 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-
+    //Shows or hides the shop window depending on the current state
     private void shopToggle() {
         if (shopPane.isVisible()) {
             shopPane.setVisible(false);
@@ -260,7 +261,7 @@ public class FXMLDocumentController implements Initializable {
 
         }
     }
-
+    //This is the timer that checks in real time.
     private AnimationTimer moveTimer = new AnimationTimer() {
         @Override
         public void handle(long now) {
@@ -277,8 +278,11 @@ public class FXMLDocumentController implements Initializable {
 
         }
     };
-
+    //Checks which exit is the player is moving into
     private void checkExits() {
+        //The exits is in a hashmap that contains a string name and the javafx node that is represents the exit.
+        //If the player node intersects with the exit, the corresponding string is used to move the player to that room that
+        //is connected to that room via the exit.
         for (Rectangle exit : exitMap.values()) {
             if (exit.getBoundsInParent().intersects(playerHitbox.getBoundsInParent())
                     && !exit.isDisabled()) {
@@ -347,10 +351,10 @@ public class FXMLDocumentController implements Initializable {
     private void monsterSpawner() {
         monster1Ai.monsterReset(monster1);
         monster2Ai.monsterReset(monster2);
-        if (monster1Ai.monsterSpawn(monster1, gameWindow)) {
+        if (monster1Ai.monsterSpawn(monster1, gameWindow) && game.getCurrentRoom().getDifficulty() > 0) {
             monster1Ai.startMonsterMovement();
         }
-        if (monster2Ai.monsterSpawn(monster2, gameWindow)) {
+        if (monster2Ai.monsterSpawn(monster2, gameWindow) && game.getCurrentRoom().getDifficulty() > 0) {
             monster2Ai.startMonsterMovement();
         }
     }
@@ -368,13 +372,13 @@ public class FXMLDocumentController implements Initializable {
     private void combatStart() {
         if (monster1Ai.combatCheck()) {
             moveTimer.stop();
-            combatWindow.startCombat(console, combatMonsterHpBar, combatHpBar, combatPane, game.getCurrentRoom().getDifficulty(), player, monsterName, lostPane);
+            combatWindow.startCombat(console, combatMonsterHpBar, combatTimeLeft, combatHpBar, combatPane, game.getCurrentRoom().getDifficulty(), player, monsterName, lostPane);
 //            hpBar.setVisible(false);
             monster2Ai.pauseMonsterMovement();
             monsterCombat = monster1;
         } else if (monster2Ai.combatCheck()) {
             moveTimer.stop();
-            combatWindow.startCombat(console, combatMonsterHpBar, combatHpBar, combatPane, game.getCurrentRoom().getDifficulty(), player, monsterName, lostPane);
+            combatWindow.startCombat(console, combatMonsterHpBar, combatTimeLeft, combatHpBar, combatPane, game.getCurrentRoom().getDifficulty(), player, monsterName, lostPane);
 //            hpBar.setVisible(false);
             monster1Ai.pauseMonsterMovement();
             monsterCombat = monster2;

@@ -15,9 +15,11 @@ import worldofzuul.interfaces.IMonster;
 import worldofzuul.interfaces.IMonsterGenerator;
 import worldofzuul.interfaces.IPlayer;
 import worldofzuul.interfaces.IQuestionResults;
+import worldofzuul.interfaces.IQuestionTimer;
 import worldofzuul.logic.MonsterGenerator;
 import worldofzuul.logic.Player;
 import worldofzuul.logic.QuestionResults;
+import worldofzuul.logic.QuestionTimer;
 
 /**
  *
@@ -28,12 +30,15 @@ public class CombatWindow {
     IMonsterGenerator monsterGen = new MonsterGenerator();
     IMonster monster;
     IQuestionResults questionResults;
+    IQuestionTimer questionTimer = new QuestionTimer();
     private boolean combatInitialized = true;
     private AnimationTimer combatTimer;
     boolean playerTurn = false;
 
-    public void startCombat(TextArea textarea, ProgressBar monsterHealth, ProgressBar playerHealth, AnchorPane combatPane, int difficulty, IPlayer player, Label monsterNameLabel, AnchorPane lostPane) {
+    public void startCombat(TextArea textarea, ProgressBar monsterHealth, ProgressBar combatTimeLeft, ProgressBar playerHealth, AnchorPane combatPane, int difficulty, IPlayer player, Label monsterNameLabel, AnchorPane lostPane) {
         monster = monsterGen.generateMonster(difficulty);
+        questionTimer.setTime((Player) player);
+
         monsterNameLabel.setText(monster.getName());
         playerTurn = false;
         combatWindowToggle(combatPane);
@@ -43,29 +48,39 @@ public class CombatWindow {
             public void handle(long now) {
                 if (!playerTurn) {
                     monsterTurn(textarea);
+                    questionTimer.startTimer();
                 }
                 updatePlayerHealth(player, playerHealth);
                 updateMonsterHealth(monsterHealth);
+                System.out.println(questionTimer.getTime());
+                updateTimeLeft(combatTimeLeft);
+                checkTimeLeft(questionTimer.getTime(), textarea, player);
                 if (monster.getHp() < 0) {
                     combatInitialized = false;
+                    questionTimer.stopTimer();
                     textarea.clear();
                     textarea.appendText("The monster dropped an item\n");
                     textarea.appendText("You win! Press 'ENTER' to exit combat");
-                } else if (player.getHp()< 0){
+                } else if (player.getHp() < 0) {
+                    questionTimer.stopTimer();
                     lostPane.setVisible(true);
                     lostPane.setDisable(false);
                     combatInitialized = false;
+
                 }
             }
 
         };
         combatTimer.start();
     }
-    public void combat(){
-        
-    }
+
     public void monsterTurn(TextArea textarea) {
-        questionResults = monster.questionPicker();
+        while (true) {
+            questionResults = monster.questionPicker();
+            if (questionResults != null) {
+                break;
+            }
+        }
         textarea.appendText(questionResults.getQuestion());
         playerTurn = true;
     }
@@ -84,6 +99,7 @@ public class CombatWindow {
                 textArea.appendText(monster.answerChecker((QuestionResults) questionResults, input, (Player) player));
                 System.out.println(player.getHp());
                 combatInput.clear();
+                questionTimer.stopTimer();
                 playerTurn = false;
             }
 
@@ -97,6 +113,15 @@ public class CombatWindow {
         }
         monsterHealth.setProgress(percentage);
     }
+
+    public void updateTimeLeft(ProgressBar combatTimeLeft) {
+        double percentage = (double) questionTimer.getTime() / (double) questionTimer.getMaxTime();
+        if (percentage < 0) {
+            percentage = 0;
+        }
+        combatTimeLeft.setProgress(percentage);
+    }
+
     public void updatePlayerHealth(IPlayer player, ProgressBar playerHealth) {
         double percentage = (double) player.getHp() / (double) player.getMaxHp();
         if (percentage < 0) {
@@ -122,9 +147,18 @@ public class CombatWindow {
     public boolean getCombatState() {
         return combatInitialized;
     }
-    
-    public void resetCombat(Boolean combatState){
+
+    public void resetCombat(Boolean combatState) {
         this.combatInitialized = combatState;
-        
+
+    }
+
+    public void checkTimeLeft(int timeleft, TextArea textArea, IPlayer player) {
+        if (timeleft == 0) {
+            textArea.appendText("You ran out of time! The monster attacks!\n");
+            textArea.appendText(monster.monsterAttack((Player) player));
+            questionTimer.stopTimer();
+            playerTurn = false;
+        }
     }
 }

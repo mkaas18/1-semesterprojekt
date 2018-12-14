@@ -19,4 +19,5 @@ public interface IMonster {
     public int getMAX_HP();
     public int getHp();
     public String getName();
+    public String monsterAttack(Player player);
 }
