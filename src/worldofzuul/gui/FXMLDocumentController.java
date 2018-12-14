@@ -61,9 +61,9 @@ public class FXMLDocumentController implements Initializable {
     //Controls the monster AI
     private MonsterAI monster1Ai = new MonsterAI();
     private MonsterAI monster2Ai = new MonsterAI();
+    private String output;
     //Controls the player movement
     private Mover mover = new Mover();
-    private String output;
     private HashMap<String, Rectangle> exitMap = new HashMap<>();
     private HashMap<String, ImageView> exitGuiMap = new HashMap<>();
     @FXML
@@ -128,8 +128,6 @@ public class FXMLDocumentController implements Initializable {
     private ImageView playerImg;
 
     //Grabs the playername submitted in the Startup document controller and sets the player name to that string submitted
-    
-    // Sets the player name typing in at the text in FXMLSTARTUP
     public void setPlayerName(String playerName) {
         player.setName(playerName);
         System.out.println(player.toString());
@@ -359,7 +357,7 @@ public class FXMLDocumentController implements Initializable {
             monster2Ai.startMonsterMovement();
         }
     }
-
+    
     //sets the progressbar with the health percentage
     private void updateHealth() {
         double percentage = (double) player.getHp() / (double) player.getMaxHp();
