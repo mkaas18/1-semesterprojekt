@@ -34,7 +34,6 @@ public class MusicPlayer {
             else{
                 System.out.println("can't find file");
             }
-            
         }
         catch(Exception ex){
             ex.printStackTrace();

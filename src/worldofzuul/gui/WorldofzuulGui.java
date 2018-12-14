@@ -27,7 +27,7 @@ public class WorldofzuulGui extends Application {
         stage.setScene(scene);
         stage.show();
         
-         String filepath = "epic.wav";
+        String filepath = "background.wav";
         
         MusicPlayer musicObject = new MusicPlayer();
         musicObject.playMusic(filepath);

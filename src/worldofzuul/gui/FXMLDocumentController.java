@@ -26,12 +26,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import worldofzuul.interfaces.IBoss;
 import worldofzuul.interfaces.IGame;
 import worldofzuul.interfaces.IHighscore;
 import worldofzuul.interfaces.IItem;
 import worldofzuul.interfaces.IItemGenerator;
 import worldofzuul.interfaces.IMonster;
 import worldofzuul.interfaces.IPlayer;
+import worldofzuul.logic.Boss;
 import worldofzuul.logic.Game;
 import worldofzuul.logic.Item;
 import worldofzuul.logic.ItemGenerator;
@@ -52,6 +54,7 @@ public class FXMLDocumentController implements Initializable {
     CombatWindow combatWindow = new CombatWindow();
     MonsterAI monster1Ai = new MonsterAI();
     MonsterAI monster2Ai = new MonsterAI();
+    IBoss Boss = new Boss();
     String output;
     IItemGenerator itemGen = new ItemGenerator();
     Item droppedItem;
@@ -287,11 +290,14 @@ public class FXMLDocumentController implements Initializable {
     private void monsterSpawner() {
         monster1Ai.monsterReset(monster1);
         monster2Ai.monsterReset(monster2);
-        if (monster1Ai.monsterSpawn(monster1, gameWindow)) {
-            monster1Ai.startMonsterMovement();
-        }
-        if (monster2Ai.monsterSpawn(monster2, gameWindow)) {
-            monster2Ai.startMonsterMovement();
+        if (game.getCurrentRoom().getDifficulty() == 4) {
+        } else {
+            if (monster1Ai.monsterSpawn(monster1, gameWindow)) {
+                monster1Ai.startMonsterMovement();
+            }
+            if (monster2Ai.monsterSpawn(monster2, gameWindow)) {
+                monster2Ai.startMonsterMovement();
+            }
         }
     }
 

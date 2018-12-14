@@ -19,17 +19,12 @@ public class MonsterGenerator implements IMonsterGenerator{
         this.bossWordtwo = new ArrayList<>();
 
         firstWord.add("Orc");
-        firstWord.add("Undead");
         firstWord.add("Troll");
         firstWord.add("Leper Gnome");
         firstWord.add("Giant");
-        firstWord.add("Wolf");
-        firstWord.add("Gnome");
-        firstWord.add("Thief");
-        firstWord.add("Bandit");
+        firstWord.add("Goblin");
 
         bossWord.add("King");
-        bossWord.add("Queen");
 
         middleWord.add("of");
 
@@ -44,6 +39,7 @@ public class MonsterGenerator implements IMonsterGenerator{
         bossWordtwo.add("the Andees");
         bossWordtwo.add("the Mountains");
         bossWordtwo.add("the E-tivitet");
+        bossWordtwo.add("Southern university of Denmark");
     }
 
     @Override

@@ -2,32 +2,31 @@ package worldofzuul.logic;
 
 import java.util.Random;
 import java.util.Scanner;
-import worldofzuul.interfaces.IMonster;
+import worldofzuul.interfaces.IBoss;
 import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-public class Monster implements IMonster {
+public class Boss implements IBoss {
     
     private String name;
     private Question questions;
-    private int difficulty;
+    private int difficulty = 4;
     private int damage;
-    public String monsterName;
     public String bossName;
     private final int MAX_HP;
     private int hp;
     private String type;
     private int nochange;
     
-    public Monster() {
-        this.hp = 100;
+    public Boss() {
+        this.hp = 300;
         this.MAX_HP = hp;
     }
     
     
-    public Monster(String name, int difficulty) {
+    public Boss(String name, int difficulty) {
         this.name = name;
         this.difficulty = difficulty;
         switch (difficulty) {
@@ -45,18 +44,18 @@ public class Monster implements IMonster {
                 break;
         }
         this.type = type;
-        this.hp = 100;
+        this.hp = 300;
         this.MAX_HP = hp;
-        this.damage = 35;
+        this.damage = 50;
         this.nochange = 0;
     }
      
-    
-    public String getName() {
+    @Override
+    public String getBossName() {
         return name;
     }
     
-    public void setName(String name) {
+    public void setBossName(String name) {
         this.name = name;
     }
     
@@ -86,14 +85,6 @@ public class Monster implements IMonster {
         return this.difficulty;
     }
     
-    
-    @Override
-    public boolean monsterSpawnDiceroll() {
-        if (new Random().nextInt(100) + 1 > 80) {
-            return true;
-        }
-        return false;
-    }
 
 //Monster QuestionResults
     @Override
@@ -104,17 +95,17 @@ public class Monster implements IMonster {
         if (input == results.getAnswer()) {
             changeHp((-(player.getDamage()) +(-player.getStrength())));
             player.setQuestionsCorrectAnswered(1);
-            return "\nYou answered correct!\nThe monster takes " + (damage + player.getStrength())+ " damage" + "\n";
+            return "\nYou answered correct!\nThe boss takes " + (damage + player.getStrength())+ " damage" + "\n";
         } else {
             if(player.getAgility() == 0){player.addHp(-(damage - player.getEndurance()));
             return "\nYou answered incorrect!\nYou take damage! " + (-(damage - player.getEndurance())) + "\n";
             } else { if(new Random().nextInt(100) + (player.getAgility())
                       > 99) {
             player.addHp((nochange));
-            return "\nYou answered incorret!\nRolling dice of agility --> Jackpot, you lost no hp! Attack the monster again " +"\n";
+            return "\nYou answered incorret!\nRolling dice of agility --> Jackpot, you took no damage! Attack the boss again " +"\n";
                     } else {
                     player.addHp(-(damage - player.getEndurance()));
-            return "\nYou answered incorrect!\nYou lost dice of agility. You take damage! " + (-(damage - player.getEndurance())) + "\n";
+            return "\nYou answered incorrect!\nYour dice roll didn't win. You take damage! " + (-(damage - player.getEndurance())) + "\n";
         }
                }     
               

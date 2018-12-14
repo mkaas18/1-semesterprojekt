@@ -16,6 +16,7 @@ import worldofzuul.interfaces.IMonsterGenerator;
 import worldofzuul.interfaces.IPlayer;
 import worldofzuul.interfaces.IQuestionResults;
 import worldofzuul.logic.MonsterGenerator;
+import worldofzuul.logic.MusicPlayer;
 import worldofzuul.logic.Player;
 import worldofzuul.logic.QuestionResults;
 
@@ -55,6 +56,7 @@ public class CombatWindow {
 
         };
         combatTimer.start();
+        
     }
 
     public void monsterTurn(TextArea textarea) {
