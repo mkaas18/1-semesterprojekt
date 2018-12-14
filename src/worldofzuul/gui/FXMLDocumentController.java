@@ -34,6 +34,7 @@ import worldofzuul.interfaces.IItem;
 import worldofzuul.interfaces.IItemGenerator;
 import worldofzuul.interfaces.IMonster;
 import worldofzuul.interfaces.IPlayer;
+import worldofzuul.logic.Boss;
 import worldofzuul.logic.Game;
 import worldofzuul.logic.Item;
 import worldofzuul.logic.ItemGenerator;
@@ -54,6 +55,7 @@ public class FXMLDocumentController implements Initializable {
     private CombatWindow combatWindow = new CombatWindow();
     private MonsterAI monster1Ai = new MonsterAI();
     private MonsterAI monster2Ai = new MonsterAI();
+    private Boss Boss = new Boss();
     private String output;
     private IItemGenerator itemGen = new ItemGenerator();
     private Item droppedItem;
@@ -120,12 +122,12 @@ public class FXMLDocumentController implements Initializable {
     private ImageView shopImg;
     @FXML
     private ImageView playerImg;
-    
+
     public void setPlayerName(String playerName) {
         player.setName(playerName);
         System.out.println(player.toString());
         highscore = game.getHighscore();
-        highscore.setName((Player)player);
+        highscore.setName((Player) player);
 //        System.out.println(game.getPlayer().getName());
     }
 
@@ -347,14 +349,18 @@ public class FXMLDocumentController implements Initializable {
     private void monsterSpawner() {
         monster1Ai.monsterReset(monster1);
         monster2Ai.monsterReset(monster2);
-        if (monster1Ai.monsterSpawn(monster1, gameWindow)) {
-            monster1Ai.startMonsterMovement();
-        }
-        if (monster2Ai.monsterSpawn(monster2, gameWindow)) {
-            monster2Ai.startMonsterMovement();
+        if (game.getCurrentRoom().getDifficulty() == 4) {
+            
+        } else {
+            if (monster1Ai.monsterSpawn(monster1, gameWindow)) {
+                monster1Ai.startMonsterMovement();
+            }
+            if (monster2Ai.monsterSpawn(monster2, gameWindow)) {
+                monster2Ai.startMonsterMovement();
+            }
         }
     }
-
+    
     //sets the progressbar with the health percentage
     private void updateHealth() {
         double percentage = (double) player.getHp() / (double) player.getMaxHp();
